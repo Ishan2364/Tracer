@@ -1,0 +1,39 @@
+{
+  "ceiling": 0.5083,
+  "margin": 0.05,
+  "threshold": 0.5583,
+  "canaries": [
+    {
+      "query": "What's a good recipe for chocolate chip cookies?",
+      "similarity": 0.4657
+    },
+    {
+      "query": "Who won the Super Bowl last year?",
+      "similarity": 0.4821
+    },
+    {
+      "query": "What is the capital of France?",
+      "similarity": 0.409
+    },
+    {
+      "query": "How do I fix a flat tire on my bicycle?",
+      "similarity": 0.5083
+    },
+    {
+      "query": "What's the best way to remove a red wine stain from carpet?",
+      "similarity": 0.4205
+    },
+    {
+      "query": "Give me tips for training a puppy not to bite.",
+      "similarity": 0.496
+    },
+    {
+      "query": "When is the tax filing deadline this year?",
+      "similarity": 0.4658
+    },
+    {
+      "query": "Recommend a good hiking trail near Denver.",
+      "similarity": 0.4406
+    }
+  ]
+}

@@ -21,6 +21,22 @@ PRIMARY_MODEL = config.EMBEDDING_MODEL
 FALLBACK_MODEL = config.EMBEDDING_MODEL_FALLBACK
 BATCH_SIZE = 100
 
+# Deliberately NOT physics - the one thing we know for certain about any future
+# catalogue is that it's a physics podcast, so these are reliable "should refuse"
+# ground truth regardless of which physics episodes actually get indexed. Used to
+# measure a corpus-specific refusal threshold instead of hardcoding one dataset's.
+CANARY_QUERIES = [
+    "What's a good recipe for chocolate chip cookies?",
+    "Who won the Super Bowl last year?",
+    "What is the capital of France?",
+    "How do I fix a flat tire on my bicycle?",
+    "What's the best way to remove a red wine stain from carpet?",
+    "Give me tips for training a puppy not to bite.",
+    "When is the tax filing deadline this year?",
+    "Recommend a good hiking trail near Denver.",
+]
+CANARY_MARGIN = 0.05
+
 
 def get_embedding_function():
     try:
@@ -50,6 +66,36 @@ def load_episode_numbers(manifest_path: Path) -> dict[str, int]:
     with open(manifest_path, "r", encoding="utf-8") as f:
         manifest = json.load(f)
     return {e["episode_id"]: e["episode_number"] for e in manifest}
+
+
+def calibrate_refusal_threshold(collection) -> dict:
+    """Measures how high a definitely-off-topic query can score against this specific
+    index, and writes ceiling + margin to config.CALIBRATION_PATH as the refusal
+    threshold - see config.py's SIMILARITY_THRESHOLD for how it's consumed."""
+    ceiling = 0.0
+    per_canary = []
+    for query in CANARY_QUERIES:
+        result = collection.query(query_texts=[query], n_results=1)
+        if not result["distances"][0]:
+            continue
+        similarity = 1 - result["distances"][0][0]
+        per_canary.append({"query": query, "similarity": round(similarity, 4)})
+        ceiling = max(ceiling, similarity)
+
+    threshold = round(ceiling + CANARY_MARGIN, 4)
+    calibration = {
+        "ceiling": round(ceiling, 4),
+        "margin": CANARY_MARGIN,
+        "threshold": threshold,
+        "canaries": per_canary,
+    }
+
+    calib_path = Path(config.CALIBRATION_PATH)
+    calib_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(calib_path, "w", encoding="utf-8") as f:
+        json.dump(calibration, f, indent=2)
+
+    return calibration
 
 
 def main():
@@ -146,6 +192,13 @@ def main():
     if not all_match:
         print("ERROR: scoped query returned results outside the requested episode_id.", file=sys.stderr)
         sys.exit(1)
+
+    print("\n=== Refusal threshold calibration ===")
+    calibration = calibrate_refusal_threshold(collection)
+    for c in calibration["canaries"]:
+        print(f"  sim={c['similarity']:.4f}  {c['query']}")
+    print(f"  ceiling={calibration['ceiling']:.4f}  +margin={calibration['margin']} "
+          f"-> threshold={calibration['threshold']:.4f}  (written to {config.CALIBRATION_PATH})")
 
     print("\nIndex build complete and verified.")
 

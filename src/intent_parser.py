@@ -13,6 +13,7 @@ from groq import APIError, Groq
 from langsmith import traceable
 
 import config
+from generate import load_manifest
 
 VALID_QUERY_TYPES = {
     "single_episode",
@@ -33,8 +34,14 @@ matching exactly this schema, nothing else:
 {"query_type": "single_episode|named_comparison|broad_comparison|recommendation|follow_up|general", "topic": "short phrase", "episode_refs": [1, 2]}
 
 query_type definitions:
-- single_episode: names exactly one episode.
-- named_comparison: names a small explicit set of episodes (2-6).
+- single_episode: unambiguously names exactly one episode.
+- named_comparison: names a small explicit set of episodes (2-6). ALSO use this when a
+  title/topic reference is ambiguous - i.e. it could plausibly match more than one
+  episode in the Known episodes list (e.g. "the relativity episode" when the list has
+  both "Special Relativity" and "General Relativity") - list ALL plausible matches in
+  episode_refs rather than guessing just one. Only resolve to a single episode when the
+  query's own wording clearly distinguishes it from the others (e.g. "the SPECIAL
+  relativity episode" is unambiguous even with two relativity episodes present).
 - broad_comparison: asks to compare/cover "all episodes", or names no specific episodes
   but implies more than a handful.
 - recommendation: asks which episode to listen to for a topic.
@@ -43,9 +50,15 @@ query_type definitions:
   "go on", "can you explain that differently").
 - general: a topic question with no episode scoping implied either way.
 
-episode_refs: a flat list of integers. Normalize both comma lists ("episodes 1, 2, 3")
-and ranges ("episodes 1-3") into individual integers, e.g. both become [1, 2, 3].
-Empty list if no episode is named.
+episode_refs: a flat list of integers, using the episode numbers from the "Known
+episodes" list provided below the query. Resolve BOTH explicit numeric references
+("episode 1", "episodes 1, 2, 3", "episodes 1-3" -> [1, 2, 3]) AND references made by
+title or topic instead of number (e.g. "the black holes episode", "the one about DNA",
+"the Shannon episode") - match those against the titles in the Known episodes list and
+resolve to the correct number(s). When a title/topic reference matches more than one
+episode ambiguously, include all of them (see named_comparison above) rather than
+arbitrarily picking one. Empty list if no episode is named or clearly implied by
+title/topic.
 
 topic: a short phrase suitable for embedding-based search - strip out episode
 references and conversational framing. For a follow_up, topic may be empty.
@@ -70,6 +83,12 @@ def _validate(data: dict) -> dict:
     }
 
 
+def _episode_list_text() -> str:
+    manifest = load_manifest()
+    entries = sorted(manifest.values(), key=lambda e: e["episode_number"])
+    return "\n".join(f"{e['episode_number']}: {e['title']}" for e in entries)
+
+
 def _format_history(history: list[dict]) -> str:
     if not history:
         return "(none - this is the first turn)"
@@ -89,9 +108,14 @@ def parse_intent(query: str, history: list[dict] | None = None) -> dict:
     client = Groq(api_key=api_key)
     history = history or []
 
+    user_content = (
+        f"Known episodes:\n{_episode_list_text()}\n\n"
+        f"Conversation history:\n{_format_history(history)}\n\n"
+        f"Current query: {query}"
+    )
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user", "content": f"Conversation history:\n{_format_history(history)}\n\nCurrent query: {query}"},
+        {"role": "user", "content": user_content},
     ]
 
     last_error = None

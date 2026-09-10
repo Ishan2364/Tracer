@@ -1,6 +1,8 @@
 """Shared, named constants for the retrieval + generation pipeline (Phase 2+3)."""
 
+import json
 import os
+from pathlib import Path
 
 from dotenv import load_dotenv
 
@@ -23,15 +25,36 @@ EMBEDDING_MODEL_FALLBACK = "all-MiniLM-L6-v2"
 
 # Retrieval
 N_RESULTS = 5
+
 # Best-match cosine similarity below this -> refuse rather than guess.
-# Phase 3's placeholder (0.35) never separated in-/out-of-scope queries with
-# bge-base-en-v1.5 on this catalogue, so it was raised to 0.58 (off-topic queries
-# scored up to 0.52, on-topic queries started at 0.67).
-# Phase 5 eval (case_12) found 0.58 still too high: a vague-but-legitimately-broad
-# query ("tell me something interesting") scored 0.5775 - just under the line -
-# and was incorrectly refused, while the genuinely uncovered case in the same run
-# scored 0.5491. 0.56 sits in the empirical gap between those two measured points.
-SIMILARITY_THRESHOLD = 0.56
+# This used to be a single hardcoded constant (0.56), hand-measured against our
+# specific 4-episode catalogue's embedding distribution. That number doesn't
+# transfer to a different set of episodes - a different corpus's vocabulary
+# overlap shifts where "off-topic" actually plateaus in this embedding space.
+#
+# Instead, build_index.py now measures it automatically at index-build time:
+# it embeds a fixed set of canary queries that are almost certainly NOT covered
+# by any physics podcast (cooking, sports, geography, ...), checks their best
+# similarity against whatever episodes actually got indexed, and writes
+# ceiling + margin to CALIBRATION_PATH. That measured value is loaded below;
+# DEFAULT_SIMILARITY_THRESHOLD is only a fallback for an index that predates
+# calibration (no calibration.json yet) - run build_index.py to replace it.
+DEFAULT_SIMILARITY_THRESHOLD = 0.56
+CALIBRATION_PATH = "index/calibration.json"
+
+
+def _load_similarity_threshold(default: float) -> float:
+    path = Path(CALIBRATION_PATH)
+    if not path.exists():
+        return default
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return float(json.load(f)["threshold"])
+    except Exception:
+        return default
+
+
+SIMILARITY_THRESHOLD = _load_similarity_threshold(DEFAULT_SIMILARITY_THRESHOLD)
 
 # Generation
 GENERATION_MODEL = os.environ.get("GENERATION_MODEL", "openai/gpt-oss-120b")

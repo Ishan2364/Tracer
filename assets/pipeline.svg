@@ -1,0 +1,49 @@
+<svg width="1000" height="230" viewBox="0 0 1000 230" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="node" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e2140"/>
+      <stop offset="100%" stop-color="#141833"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+
+  <rect width="1000" height="230" fill="none"/>
+
+  <!-- Node 1: Audio -->
+  <rect x="10" y="70" width="180" height="90" rx="10" fill="url(#node)" stroke="#334155" stroke-width="1.5"/>
+  <text x="100" y="108" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#f8fafc">Raw Audio</text>
+  <text x="100" y="130" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">.mp3 / .wav / .m4a / .flac</text>
+
+  <line x1="190" y1="115" x2="228" y2="115" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node 2: Deepgram -->
+  <rect x="230" y="60" width="220" height="110" rx="10" fill="url(#node)" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="340" y="100" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#f8fafc">Deepgram Nova-3</text>
+  <text x="340" y="122" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">ASR + Diarization</text>
+  <text x="340" y="142" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">single API call</text>
+
+  <line x1="450" y1="115" x2="488" y2="115" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node 3: Raw JSON -->
+  <rect x="490" y="20" width="200" height="80" rx="10" fill="url(#node)" stroke="#334155" stroke-width="1.5"/>
+  <text x="590" y="55" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#f8fafc">raw/{episode_id}.json</text>
+  <text x="590" y="76" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#94a3b8">verbatim API response</text>
+
+  <line x1="590" y1="100" x2="590" y2="130" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node 4: Structured JSON -->
+  <rect x="490" y="132" width="200" height="80" rx="10" fill="url(#node)" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="590" y="163" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#f8fafc">structured/{episode_id}.json</text>
+  <text x="590" y="184" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#94a3b8">normalized utterances</text>
+  <text x="590" y="202" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#94a3b8">episode_id, speaker, start, end, text</text>
+
+  <line x1="690" y1="172" x2="728" y2="172" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node 5: Validation -->
+  <rect x="730" y="127" width="230" height="90" rx="10" fill="url(#node)" stroke="#334155" stroke-width="1.5"/>
+  <text x="845" y="160" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#f8fafc">Validation Suite</text>
+  <text x="845" y="181" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#94a3b8">timestamps, duration,</text>
+  <text x="845" y="198" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#94a3b8">speaker count checks</text>
+</svg>

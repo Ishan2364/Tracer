@@ -1,0 +1,9 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+fermi_product_overview_and_phases.md
+phase1_transcription_pipeline_spec.md
+data
+transcripts

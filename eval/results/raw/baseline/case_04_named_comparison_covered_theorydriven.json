@@ -1,0 +1,99 @@
+[
+  {
+    "query": "Compare episodes 1 and 2 - in both cases, was the breakthrough driven by a new experiment, or by working through existing theory more carefully?",
+    "query_type": "named_comparison",
+    "episode_refs": [
+      1,
+      2
+    ],
+    "retrieval_mode": "scoped_loop",
+    "unknown_episodes": [],
+    "retrieved_chunk_ids": [
+      "great_papers_01_einstein_s_special_relativity_c0011",
+      "great_papers_01_einstein_s_special_relativity_c0015",
+      "great_papers_01_einstein_s_special_relativity_c0022",
+      "great_papers_01_einstein_s_special_relativity_c0007",
+      "great_papers_01_einstein_s_special_relativity_c0001",
+      "great_papers_02_how_black_holes_radiate_hawking_1975_c0011",
+      "great_papers_02_how_black_holes_radiate_hawking_1975_c0020",
+      "great_papers_02_how_black_holes_radiate_hawking_1975_c0016",
+      "great_papers_02_how_black_holes_radiate_hawking_1975_c0008",
+      "great_papers_02_how_black_holes_radiate_hawking_1975_c0018"
+    ],
+    "answer": "**Episode\u202f1 \u2013 Einstein\u2019s Special Relativity**  \n- The core \u201cbreakthrough\u201d is presented as a conceptual insight that \u201csimultaneity \u2026 turns out to depend on your motion\u201d and that \u201cthe conceptual heart of the whole paper \u2026 is this one fact wearing different costumes\u201d (Episode\u202f1, 14:30\u201115:56).  \n- The discussion of muons is used as **evidence that the theory works** (\u201cwe get rained on by the evidence\u2026 particles called muons\u2026 their internal decay clock is dilated\u201d) rather than as the origin of the idea (Episode\u202f1, 20:21\u201121:47).  \n- **Thus, the breakthrough in Episode\u202f1 came from working through the existing theory (Einstein\u2019s 1905 paper), with experiments later confirming it.**  \n\n**Episode\u202f2 \u2013 How Black Holes Radiate (Hawking\u202f1975)**  \n- Hawking\u2019s result is described as a surprise that emerged when \u201cthe mathematics handed him a clean, nonzero temperature\u201d after he tried to prove the temperature was zero (Episode\u202f2, 14:42\u201116:04).  \n- The later segment about laboratory analogues (\u201cyou can manufacture that in other media\u2026 experimenters have made these\u2026\u201d) refers to **subsequent attempts to test the theory**, not to the original discovery (Episode\u202f2, 27:54\u201129:16).  \n- **Therefore, the breakthrough in Episode\u202f2 was driven by a careful theoretical calculation rather than a new experiment.**  \n\n### Short synthesis  \nBoth episodes describe breakthroughs that originated from deeper theoretical work\u2014Einstein\u2019s re\u2011examination of simultaneity and Hawking\u2019s mathematical analysis of horizons\u2014while experimental observations (muon decay, analogue\u2011horizon labs) serve to **confirm** those theories rather than to generate them.",
+    "citations": [
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0011",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 869.67,
+        "end": 955.97003
+      },
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0015",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 1221.465,
+        "end": 1306.95
+      },
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0022",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 1832.94,
+        "end": 1922.44
+      },
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0007",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 521.86,
+        "end": 610.4
+      },
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0001",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 0.24,
+        "end": 86.685
+      },
+      {
+        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0011",
+        "episode_number": 2,
+        "episode_title": "How Black Holes Radiate, Hawking 1975",
+        "start": 882.295,
+        "end": 964.275
+      },
+      {
+        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0020",
+        "episode_number": 2,
+        "episode_title": "How Black Holes Radiate, Hawking 1975",
+        "start": 1673.6849,
+        "end": 1756.5
+      },
+      {
+        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0016",
+        "episode_number": 2,
+        "episode_title": "How Black Holes Radiate, Hawking 1975",
+        "start": 1315.29,
+        "end": 1404.735
+      },
+      {
+        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0008",
+        "episode_number": 2,
+        "episode_title": "How Black Holes Radiate, Hawking 1975",
+        "start": 622.125,
+        "end": 711.955
+      },
+      {
+        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0018",
+        "episode_number": 2,
+        "episode_title": "How Black Holes Radiate, Hawking 1975",
+        "start": 1495.7201,
+        "end": 1585.5499
+      }
+    ],
+    "refused": false,
+    "query_call_count_delta": 2
+  }
+]

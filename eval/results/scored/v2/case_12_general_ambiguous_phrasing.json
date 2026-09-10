@@ -1,0 +1,26 @@
+{
+  "case_id": "case_12_general_ambiguous_phrasing",
+  "hard": {
+    "citation_grounded": {
+      "result": "pass",
+      "detail": "all 8 citation(s) across 1 turn(s) trace to a retrieved chunk"
+    },
+    "refusal_correct": {
+      "result": "pass",
+      "detail": "turn 0: expected=False actual=False -> pass"
+    },
+    "intent_match": {
+      "result": "pass",
+      "detail": "turn 0 type='general' refs=[], 0 follow-up turn(s) correctly classified"
+    },
+    "no_uncovered_citation": {
+      "result": "n_a",
+      "detail": "no episode marked uncovered in this case"
+    },
+    "routing_efficiency": {
+      "result": "pass",
+      "detail": "turn 0: expected=1 actual=1 -> pass"
+    }
+  },
+  "judge": null
+}

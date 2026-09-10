@@ -68,13 +68,19 @@ query_type definitions:
   single_episode/broad_comparison, not catalogue) and capability questions like "what can
   you help with" (chitchat, not catalogue).
 
-episode_refs: a flat list of integers, using the episode numbers from the "Known
-episodes" list provided below the query. Resolve BOTH explicit numeric references
+episode_refs: a flat list of integers. Resolve BOTH explicit numeric references
 ("episode 1", "episodes 1, 2, 3", "episodes 1-3" -> [1, 2, 3]) AND references made by
 title or topic instead of number (e.g. "the black holes episode", "the one about DNA",
 "the Shannon episode") - match those against the titles in the Known episodes list and
-resolve to the correct number(s). When a title/topic reference matches more than one
-episode ambiguously, include all of them (see named_comparison above) rather than
+resolve to the correct number(s). IMPORTANT: if the query names an explicit episode
+NUMBER that does NOT appear in the Known episodes list (e.g. "episode 99" when only
+1-8 exist), still include that number in episode_refs exactly as stated - do not drop
+it just because it isn't in the list. A downstream step checks validity and reports
+unknown episodes explicitly; silently omitting the number would make that check never
+run at all. This "include even if unknown" rule applies ONLY to explicit numbers, not
+to title/topic references (which have nothing to match if not in the list). When a
+title/topic reference matches more than one episode ambiguously, include all of them
+(see named_comparison above) rather than
 arbitrarily picking one. Empty list if no episode is named or clearly implied by
 title/topic.
 

@@ -109,5 +109,5 @@
   <rect x="64" y="98" width="72" height="6" rx="3" fill="url(#accent)"/>
 
   <text x="64" y="172" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="#f8fafc" letter-spacing="2">TRACER</text>
-  <text x="66" y="206" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20" fill="#94a3b8" letter-spacing="0.5">Grounded transcripts from raw podcast audio</text>
+  <text x="66" y="206" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20" fill="#94a3b8" letter-spacing="0.5">A grounded conversational companion for podcast audio</text>
 </svg>

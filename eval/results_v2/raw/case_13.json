@@ -1,0 +1,26 @@
+[
+  {
+    "query": "What's in your podcast collection?",
+    "query_type": "catalogue",
+    "episode_refs": [],
+    "retrieval_mode": "catalogue",
+    "unknown_episodes": [],
+    "retrieved_chunk_ids": [],
+    "answer": "The collection has 8 episode(s):\n- Episode 1: Einstein's Special Relativity (52:14)\n- Episode 2: How Black Holes Radiate, Hawking 1975 (45:17)\n- Episode 3: The Double Helix, Watson and Crick 1953 (43:16)\n- Episode 4: Shannon and the Birth of Information, 1948 (39:52)\n- Episode 5: Attention Is All You Need, 2017 (36:24)\n- Episode 6: General Relativity, Einstein 1915 (33:48)\n- Episode 7: On Computable Numbers, Turing 1936 (33:02)\n- Episode 8: Natural Selection, Darwin and Wallace 1858 (33:13)",
+    "citations": [],
+    "refused": false,
+    "query_call_count_delta": 0
+  },
+  {
+    "query": "Which episodes do you contain?",
+    "query_type": "catalogue",
+    "episode_refs": [],
+    "retrieval_mode": "catalogue",
+    "unknown_episodes": [],
+    "retrieved_chunk_ids": [],
+    "answer": "The collection has 8 episode(s):\n- Episode 1: Einstein's Special Relativity (52:14)\n- Episode 2: How Black Holes Radiate, Hawking 1975 (45:17)\n- Episode 3: The Double Helix, Watson and Crick 1953 (43:16)\n- Episode 4: Shannon and the Birth of Information, 1948 (39:52)\n- Episode 5: Attention Is All You Need, 2017 (36:24)\n- Episode 6: General Relativity, Einstein 1915 (33:48)\n- Episode 7: On Computable Numbers, Turing 1936 (33:02)\n- Episode 8: Natural Selection, Darwin and Wallace 1858 (33:13)",
+    "citations": [],
+    "refused": false,
+    "query_call_count_delta": 0
+  }
+]

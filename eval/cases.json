@@ -1,0 +1,137 @@
+[
+  {
+    "case_id": "case_01_single_episode_covered_clocksync",
+    "query_type": "single_episode",
+    "acceptable_query_types": ["single_episode"],
+    "turns": [{"query": "According to episode 1, what method did Einstein propose for synchronizing two clocks?"}],
+    "expected_episode_refs": [1],
+    "expected_unknown_episodes": [],
+    "coverage_expectation": {"1": true},
+    "expected_refused": [false],
+    "notes": "Ground truth: episode 1 explicitly describes sending a light flash between two clocks and defining them as synchronized when the round trip is split evenly (~11:34-13:00). Baseline grounded single-episode Q&A."
+  },
+  {
+    "case_id": "case_02_single_episode_covered_dnabonds",
+    "query_type": "single_episode",
+    "acceptable_query_types": ["single_episode"],
+    "turns": [{"query": "According to episode 3, how many hydrogen bonds hold guanine and cytosine together, compared to adenine and thymine?"}],
+    "expected_episode_refs": [3],
+    "expected_unknown_episodes": [],
+    "coverage_expectation": {"3": true},
+    "expected_refused": [false],
+    "notes": "Ground truth: episode 3 states A-T pairs form 2 hydrogen bonds, G-C pairs form 3. Verified via keyword search (9 'hydrogen bond' mentions in episode 3 only)."
+  },
+  {
+    "case_id": "case_03_single_episode_uncovered_dnainep1",
+    "query_type": "single_episode",
+    "acceptable_query_types": ["single_episode"],
+    "turns": [{"query": "According to episode 1, how many hydrogen bonds hold guanine and cytosine together?"}],
+    "expected_episode_refs": [1],
+    "expected_unknown_episodes": [],
+    "coverage_expectation": {"1": false},
+    "expected_refused": [false],
+    "notes": "Basic refusal case. 'hydrogen bond' has zero occurrences in episode 1 (relativity, not biology). Because retrieval is explicitly scoped to a named episode we know exists, the code-level `refused` flag is NOT expected to be true here (see Phase 4 architecture note in EVAL.md) - correctness is instead judged on whether the answer text itself explicitly declines rather than fabricating an answer. Scored via LLM judge (episode_acknowledgment), not the hard refusal_correct check."
+  },
+  {
+    "case_id": "case_04_named_comparison_covered_theorydriven",
+    "query_type": "named_comparison",
+    "acceptable_query_types": ["named_comparison"],
+    "turns": [{"query": "Compare episodes 1 and 2 - in both cases, was the breakthrough driven by a new experiment, or by working through existing theory more carefully?"}],
+    "expected_episode_refs": [1, 2],
+    "expected_unknown_episodes": [],
+    "coverage_expectation": {"1": true, "2": true},
+    "expected_refused": [false],
+    "notes": "Both episodes are covered and share a real theme (theory-first discovery). Manually verified in-conversation already: episode 1 cites the muon time-dilation passage (20:21-21:47), episode 2 cites the 'mathematics handed him a nonzero temperature' passage (14:42-16:04). Tests multi-episode synthesis without forced/fabricated differences."
+  },
+  {
+    "case_id": "case_05_named_comparison_covered_reliablecopying",
+    "query_type": "named_comparison",
+    "acceptable_query_types": ["named_comparison"],
+    "turns": [{"query": "Compare episodes 3 and 4 - what rule or mechanism does each one describe that makes reliably copying or transmitting information possible?"}],
+    "expected_episode_refs": [3, 4],
+    "expected_unknown_episodes": [],
+    "coverage_expectation": {"3": true, "4": true},
+    "expected_refused": [false],
+    "notes": "Episode 3: A-T/G-C base-pairing rule enables DNA replication (38 'copy'/'copies' mentions). Episode 4: redundancy and channel capacity enable reliable transmission over a noisy channel (14 'redundan-' mentions, Shannon-Hartley formula). Both covered, genuinely comparable theme."
+  },
+  {
+    "case_id": "case_06_named_comparison_partial_hydrogenbonds",
+    "query_type": "named_comparison",
+    "acceptable_query_types": ["named_comparison"],
+    "turns": [{"query": "What do episodes 1 and 3 say about hydrogen bonds in molecular structure?"}],
+    "expected_episode_refs": [1, 3],
+    "expected_unknown_episodes": [],
+    "coverage_expectation": {"1": false, "3": true},
+    "expected_refused": [false],
+    "notes": "THE hard case. Episode 3 covers hydrogen bonds directly (base pairing). Episode 1 (special relativity) never mentions them - verified zero occurrences. A good answer cites episode 3 concretely AND explicitly states episode 1 doesn't cover it, rather than silently omitting episode 1 or refusing outright just because one of the two named episodes has nothing. Scored by no_uncovered_citation (hard) + episode_acknowledgment (judge). KNOWN VARIANCE (observed across baseline/v2/manual runs): the model sometimes attaches an in-text citation to its own episode-1 'no mention' sentence (citing the specific chunk it checked) and sometimes doesn't - both are defensible, but only the no-citation form passes the current no_uncovered_citation hard check. The check can't yet distinguish 'citing evidence for a true negative' from 'citing evidence for a false claim' - that distinction needs the claim_support judge check, not a hard check."
+  },
+  {
+    "case_id": "case_07_broad_comparison_covered_limits",
+    "query_type": "broad_comparison",
+    "acceptable_query_types": ["broad_comparison", "general"],
+    "turns": [{"query": "What physical or mathematical limits come up across all the episodes?"}],
+    "expected_episode_refs": [],
+    "expected_unknown_episodes": [],
+    "coverage_expectation": {"1": true, "2": true, "3": false, "4": true},
+    "expected_refused": [false],
+    "notes": "Speed-of-light limit (ep1), black hole evaporation/temperature limits (ep2), Shannon channel capacity limit (ep4) are all real 'limit' concepts in their episodes. Episode 3 (DNA structure) has no comparable central 'limit' concept - a good answer may legitimately have little or nothing to say about it. Tests Phase 4 rebalancing across a genuinely multi-episode broad query. KNOWN GAP (found via manual run, verified against raw chunk text): the model can split ONE retrieved chunk's single start/end range into multiple invented sub-timestamps when the chunk covers more than one distinct claim (e.g. citing '(04:23-04:30)' and '(04:31-05:10)' as if they were two separate excerpts, when the actual retrieved chunk is one continuous 262.6-352.5s span). The underlying facts were genuinely in that chunk - this is fabricated timestamp precision, not a hallucinated fact - but no current hard check catches it, since citation_grounded only verifies the chunk_id is real, not that in-text sub-timestamps fall within that chunk's real start/end. Candidate for a future hard check: parse in-text '(Episode N, mm:ss-mm:ss)' timestamps and confirm each falls within some retrieved chunk's actual [start, end] for that episode."
+  },
+  {
+    "case_id": "case_08_broad_comparison_uncovered_nuclearpolicy",
+    "query_type": "broad_comparison",
+    "acceptable_query_types": ["broad_comparison", "general"],
+    "turns": [{"query": "What do the episodes say about how governments regulated nuclear weapons development?"}],
+    "expected_episode_refs": [],
+    "expected_unknown_episodes": [],
+    "coverage_expectation": {"1": false, "2": false, "3": false, "4": false},
+    "expected_refused": [true],
+    "notes": "Verified zero 'nuclear weapon' occurrences across all 4 episodes. Genuinely uncovered even at broad/unscoped scale - should refuse via the broad_rebalanced refusal threshold rather than force an answer from tangentially-similar physics content."
+  },
+  {
+    "case_id": "case_09_recommendation_covered_bhentropy",
+    "query_type": "recommendation",
+    "acceptable_query_types": ["recommendation"],
+    "turns": [{"query": "Which episode should I listen to if I want to understand entropy in the context of black holes?"}],
+    "expected_episode_refs": [],
+    "expected_unknown_episodes": [],
+    "coverage_expectation": {"2": true},
+    "expected_refused": [false],
+    "notes": "Episode 2 has 54 'entropy' mentions (Bekenstein's horizon-area-as-entropy argument) and is the unambiguous correct recommendation given the black-hole framing, even though episode 4 also discusses entropy in an information-theoretic sense."
+  },
+  {
+    "case_id": "case_10_followup_covered_simultaneity",
+    "query_type": "follow_up",
+    "acceptable_query_types": ["general", "single_episode"],
+    "turns": [
+      {"query": "What did Einstein realize about simultaneity?"},
+      {"query": "Walk me through that step by step, I did not follow"}
+    ],
+    "expected_episode_refs": [],
+    "expected_unknown_episodes": [],
+    "coverage_expectation": {"1": true},
+    "expected_refused": [false, false],
+    "notes": "Turn 1's query_type has been observed to classify as either 'general' or 'single_episode' across runs (no explicit episode number named) - both accepted. Turn 2 must classify as follow_up and trigger zero new Chroma calls, expanding on turn 1's exact grounding rather than re-searching."
+  },
+  {
+    "case_id": "case_11_named_comparison_nonexistent_episode",
+    "query_type": "named_comparison",
+    "acceptable_query_types": ["named_comparison"],
+    "turns": [{"query": "What do episodes 1 and 9 say about time?"}],
+    "expected_episode_refs": [1, 9],
+    "expected_unknown_episodes": [9],
+    "coverage_expectation": {"1": true},
+    "expected_refused": [false],
+    "notes": "Episode 9 doesn't exist (catalogue only has 4 episodes). Answer should cover episode 1 normally AND explicitly state episode 9 doesn't exist - not silently drop it, not refuse episode 1 because of it."
+  },
+  {
+    "case_id": "case_12_general_ambiguous_phrasing",
+    "query_type": "general",
+    "acceptable_query_types": ["general", "broad_comparison", "recommendation"],
+    "turns": [{"query": "Tell me something interesting from these podcasts"}],
+    "expected_episode_refs": [],
+    "expected_unknown_episodes": [],
+    "coverage_expectation": {},
+    "expected_refused": [false],
+    "notes": "Deliberately ambiguous, no clear topic or episode scoping - stress-tests intent parser robustness (must still produce valid schema, not crash) and broad retrieval on a vague query. Not scored on coverage; scored on schema validity, no crash, and helpfulness (judge)."
+  }
+]

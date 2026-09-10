@@ -1,0 +1,26 @@
+{
+  "case_id": "case_07_broad_comparison_covered_limits",
+  "hard": {
+    "citation_grounded": {
+      "result": "pass",
+      "detail": "all 10 citation(s) across 1 turn(s) trace to a retrieved chunk"
+    },
+    "refusal_correct": {
+      "result": "pass",
+      "detail": "turn 0: expected=False actual=False -> pass"
+    },
+    "intent_match": {
+      "result": "pass",
+      "detail": "turn 0 type='broad_comparison' refs=[], 0 follow-up turn(s) correctly classified"
+    },
+    "no_uncovered_citation": {
+      "result": "pass",
+      "detail": "no in-text citation attributes a claim to uncovered episode(s) [3]"
+    },
+    "routing_efficiency": {
+      "result": "pass",
+      "detail": "turn 0: expected=1 actual=1 -> pass"
+    }
+  },
+  "judge": null
+}

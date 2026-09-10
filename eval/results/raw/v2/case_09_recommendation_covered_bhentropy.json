@@ -1,0 +1,56 @@
+[
+  {
+    "query": "Which episode should I listen to if I want to understand entropy in the context of black holes?",
+    "query_type": "recommendation",
+    "episode_refs": [],
+    "retrieval_mode": "broad_rebalanced",
+    "unknown_episodes": [],
+    "retrieved_chunk_ids": [
+      "great_papers_02_how_black_holes_radiate_hawking_1975_c0023",
+      "great_papers_02_how_black_holes_radiate_hawking_1975_c0005",
+      "great_papers_02_how_black_holes_radiate_hawking_1975_c0021",
+      "great_papers_04_shannon_and_the_birth_of_information_1948_c0008",
+      "great_papers_04_shannon_and_the_birth_of_information_1948_c0010"
+    ],
+    "answer": "**Episode\u202f2 \u2013 \u201cHow Black Holes Radiate, Hawking\u202f1975\u201d**  \n\n- This episode spends a good amount of time talking about black\u2011hole entropy, the generalized second law, and how a black hole\u2019s horizon area measures its entropy (e.g., \u201cthe hole\u2019s entropy goes up by at least as much as the entropy you lost\u2026 the entropy outside plus the entropy of the horizons\u2026 never decreases\u201d\u202f(Episode\u202f2,\u202f05:53\u201107:22)).  \n- It also gives a sense of just how huge that entropy is (\u201ca single black hole of a few solar masses has more entropy \u2026 than all the ordinary matter \u2026 in a large chunk of the visible universe combined\u201d\u202f(Episode\u202f2,\u202f32:16\u201133:46)).  \n\n**Episode\u202f4 \u2013 \u201cShannon and the Birth of Information,\u202f1948\u201d**  \n\n- This episode is about Shannon\u2019s information entropy, coin\u2011flip examples, and Landauer\u2019s principle. It does not discuss black holes or their entropy at all, so it wouldn\u2019t help with that specific context.  \n\n**Bottom line:**\u202fIf you want to understand entropy as it applies to black holes, listen to **Episode\u202f2**. (Episode\u202f4 is unrelated to black\u2011hole entropy.)",
+    "citations": [
+      {
+        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0023",
+        "episode_number": 2,
+        "episode_title": "How Black Holes Radiate, Hawking 1975",
+        "start": 1936.355,
+        "end": 2025.7349
+      },
+      {
+        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0005",
+        "episode_number": 2,
+        "episode_title": "How Black Holes Radiate, Hawking 1975",
+        "start": 353.10498,
+        "end": 441.545
+      },
+      {
+        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0021",
+        "episode_number": 2,
+        "episode_title": "How Black Holes Radiate, Hawking 1975",
+        "start": 1757.615,
+        "end": 1847.075
+      },
+      {
+        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0008",
+        "episode_number": 4,
+        "episode_title": "Shannon and the Birth of Information, 1948",
+        "start": 605.225,
+        "end": 694.545
+      },
+      {
+        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0010",
+        "episode_number": 4,
+        "episode_title": "Shannon and the Birth of Information, 1948",
+        "start": 784.13,
+        "end": 869.88
+      }
+    ],
+    "refused": false,
+    "query_call_count_delta": 1
+  }
+]

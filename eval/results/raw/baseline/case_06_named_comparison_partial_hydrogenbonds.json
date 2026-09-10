@@ -1,0 +1,99 @@
+[
+  {
+    "query": "What do episodes 1 and 3 say about hydrogen bonds in molecular structure?",
+    "query_type": "named_comparison",
+    "episode_refs": [
+      1,
+      3
+    ],
+    "retrieval_mode": "scoped_loop",
+    "unknown_episodes": [],
+    "retrieved_chunk_ids": [
+      "great_papers_01_einstein_s_special_relativity_c0023",
+      "great_papers_01_einstein_s_special_relativity_c0015",
+      "great_papers_01_einstein_s_special_relativity_c0032",
+      "great_papers_01_einstein_s_special_relativity_c0035",
+      "great_papers_01_einstein_s_special_relativity_c0007",
+      "great_papers_03_the_double_helix_watson_and_crick_1953_c0014",
+      "great_papers_03_the_double_helix_watson_and_crick_1953_c0013",
+      "great_papers_03_the_double_helix_watson_and_crick_1953_c0010",
+      "great_papers_03_the_double_helix_watson_and_crick_1953_c0020",
+      "great_papers_03_the_double_helix_watson_and_crick_1953_c0019"
+    ],
+    "answer": "**Episode\u202f1 \u2013 \u201cEinstein\u2019s Special Relativity\u201d**  \nThe excerpts from Episode\u202f1 talk about time dilation, muons, atomic\u2011clock flights and velocity addition.\u202fThey never bring up hydrogen bonds or any kind of chemical bonding.\u202fSo, for this episode there is nothing to report on hydrogen bonds.  \n\n**Episode\u202f3 \u2013 \u201cThe Double Helix, Watson and Crick\u202f1953\u201d**  \nEpisode\u202f3 does discuss hydrogen bonds as the key chemical feature that locks the DNA bases together:  \n\n- A hydrogen bond is described as \u201ca weak attraction, a little molecular handshake that forms when certain atoms line up just so\u201d\u202f(Episode\u202f3,\u202f18:50\u201120:18).  \n- The authors explain that the geometry of the bases allows only specific pairings because the hydrogen\u2011bond \u201chands\u201d line up correctly: adenine (A) pairs with thymine (T) using two hydrogen bonds, and guanine (G) pairs with cytosine (C) using three hydrogen bonds; mismatched pairs (A\u2011C, G\u2011T) cannot form the proper hydrogen\u2011bond pattern\u202f(Episode\u202f3,\u202f18:50\u201120:18).  \n\n**Synthesis**  \nEpisode\u202f1 is silent on hydrogen bonding, focusing entirely on relativistic physics, whereas Episode\u202f3 highlights hydrogen bonds as the weak, directional forces that determine the precise base\u2011pairing rules in DNA\u2019s double\u2011helix structure.",
+    "citations": [
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0023",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 1922.5199,
+        "end": 2008.56
+      },
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0015",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 1221.465,
+        "end": 1306.95
+      },
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0032",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 2700.0,
+        "end": 2787.6099
+      },
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0035",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 2964.165,
+        "end": 3045.12
+      },
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0007",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 521.86,
+        "end": 610.4
+      },
+      {
+        "chunk_id": "great_papers_03_the_double_helix_watson_and_crick_1953_c0014",
+        "episode_number": 3,
+        "episode_title": "The Double Helix, Watson and Crick 1953",
+        "start": 1129.9451,
+        "end": 1217.815
+      },
+      {
+        "chunk_id": "great_papers_03_the_double_helix_watson_and_crick_1953_c0013",
+        "episode_number": 3,
+        "episode_title": "The Double Helix, Watson and Crick 1953",
+        "start": 1039.6599,
+        "end": 1129.16
+      },
+      {
+        "chunk_id": "great_papers_03_the_double_helix_watson_and_crick_1953_c0010",
+        "episode_number": 3,
+        "episode_title": "The Double Helix, Watson and Crick 1953",
+        "start": 783.23,
+        "end": 866.77
+      },
+      {
+        "chunk_id": "great_papers_03_the_double_helix_watson_and_crick_1953_c0020",
+        "episode_number": 3,
+        "episode_title": "The Double Helix, Watson and Crick 1953",
+        "start": 1661.245,
+        "end": 1745.1049
+      },
+      {
+        "chunk_id": "great_papers_03_the_double_helix_watson_and_crick_1953_c0019",
+        "episode_number": 3,
+        "episode_title": "The Double Helix, Watson and Crick 1953",
+        "start": 1571.5801,
+        "end": 1661.245
+      }
+    ],
+    "refused": false,
+    "query_call_count_delta": 2
+  }
+]

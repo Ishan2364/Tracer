@@ -1,0 +1,26 @@
+{
+  "case_id": "case_10_followup_covered_simultaneity",
+  "hard": {
+    "citation_grounded": {
+      "result": "pass",
+      "detail": "all 21 citation(s) across 2 turn(s) trace to a retrieved chunk"
+    },
+    "refusal_correct": {
+      "result": "pass",
+      "detail": "turn 0: expected=False actual=False -> pass; turn 1: n/a (mode=follow_up)"
+    },
+    "intent_match": {
+      "result": "pass",
+      "detail": "turn 0 type='general' refs=[], 1 follow-up turn(s) correctly classified"
+    },
+    "no_uncovered_citation": {
+      "result": "n_a",
+      "detail": "no episode marked uncovered in this case"
+    },
+    "routing_efficiency": {
+      "result": "pass",
+      "detail": "turn 0: expected=1 actual=1 -> pass; turn 1: expected=0 actual=0 -> pass"
+    }
+  },
+  "judge": null
+}

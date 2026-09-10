@@ -1,0 +1,99 @@
+[
+  {
+    "query": "Compare episodes 3 and 4 - what rule or mechanism does each one describe that makes reliably copying or transmitting information possible?",
+    "query_type": "named_comparison",
+    "episode_refs": [
+      3,
+      4
+    ],
+    "retrieval_mode": "scoped_loop",
+    "unknown_episodes": [],
+    "retrieved_chunk_ids": [
+      "great_papers_03_the_double_helix_watson_and_crick_1953_c0015",
+      "great_papers_03_the_double_helix_watson_and_crick_1953_c0008",
+      "great_papers_03_the_double_helix_watson_and_crick_1953_c0023",
+      "great_papers_03_the_double_helix_watson_and_crick_1953_c0002",
+      "great_papers_03_the_double_helix_watson_and_crick_1953_c0030",
+      "great_papers_04_shannon_and_the_birth_of_information_1948_c0016",
+      "great_papers_04_shannon_and_the_birth_of_information_1948_c0015",
+      "great_papers_04_shannon_and_the_birth_of_information_1948_c0011",
+      "great_papers_04_shannon_and_the_birth_of_information_1948_c0012",
+      "great_papers_04_shannon_and_the_birth_of_information_1948_c0017"
+    ],
+    "answer": "**Episode\u202f3 \u2013 \u201cThe Double Helix, Watson and Crick\u202f1953\u201d**  \nThe episode points to **Chargaff\u2019s rule (A\u202f=\u202fT,\u202fG\u202f=\u202fC) and the resulting complementary base\u2011pairing** as the mechanism that guarantees that a DNA strand can be copied faithfully.  \n\n- The speakers explain that \u201cif every single\u202fA\u202fin the molecule is sitting across the ladder from a\u202fT\u2026 the number of\u202fA\u2019s must equal the number of\u202fT\u2019s\u2026 and if every\u202fG\u202ffaces a\u202fC, the number of\u202fG\u2019s must equal the number of\u202fC\u2019s\u201d (Episode\u202f3,\u202f20:18\u201121:46).  \n- They then say this is \u201cthe direct fingerprint of base pairing\u2026 the structure predicts the rule\u2026 the moment you see the ladder with its AT and GC rungs, Chargaff\u2019s numbers stop being a mystery and become a consequence\u201d (Episode\u202f3,\u202f20:18\u201121:46).  \n\nThus, the **complementary pairing of bases** provides a built\u2011in template that lets the cell copy genetic information with high reliability.\n\n---\n\n**Episode\u202f4 \u2013 \u201cShannon and the Birth of Information,\u202f1948\u201d**  \nHere the key mechanism is **Shannon\u2019s noisy\u2011channel coding theorem and the use of structured redundancy (coding)** to overcome noise.  \n\n- The hosts note that \u201cevery real communication channel is noisy\u2026 noise randomly flips some of your symbols\u2026 engineers thought the trade\u2011off between speed and errors was inescapable\u201d (Episode\u202f4,\u202f20:16\u201121:42).  \n- Shannon then \u201cproves that every noisy channel has a definite number attached to it, its capacity\u2026 as long as you transmit at any rate below that capacity, you can make the probability of error as small as you desire\u201d (Episode\u202f4,\u202f21:42\u201123:12).  \n- The way to achieve this is \u201cthe idea of coding, of clever redundancy\u2026 you should add redundancy, yes, but structured spread\u2011out redundancy\u201d (Episode\u202f4,\u202f21:42\u201123:12).  \n\nSo, **coding with carefully designed redundancy** lets information be transmitted reliably despite random bit flips.\n\n---\n\n### Short Synthesis  \nBoth episodes describe a **rule that ties the physical form of a message to a method of error\u2011free replication**.  \n- In DNA, the **chemical rule of complementary base pairing** (A\u2194T,\u202fG\u2194C) embeds the information in a self\u2011templating structure, making copying deterministic.  \n- In digital communication, **Shannon\u2019s information\u2011theoretic rule** (capacity limit + structured coding) embeds the message in a mathematically redundant form, making transmission through noisy media arbitrarily reliable.  \n\nEach rule turns what would be a noisy, error\u2011prone process into a robust one\u2014one through molecular chemistry, the other through abstract coding theory.",
+    "citations": [
+      {
+        "chunk_id": "great_papers_03_the_double_helix_watson_and_crick_1953_c0015",
+        "episode_number": 3,
+        "episode_title": "The Double Helix, Watson and Crick 1953",
+        "start": 1217.815,
+        "end": 1305.7949
+      },
+      {
+        "chunk_id": "great_papers_03_the_double_helix_watson_and_crick_1953_c0008",
+        "episode_number": 3,
+        "episode_title": "The Double Helix, Watson and Crick 1953",
+        "start": 606.31,
+        "end": 695.50995
+      },
+      {
+        "chunk_id": "great_papers_03_the_double_helix_watson_and_crick_1953_c0023",
+        "episode_number": 3,
+        "episode_title": "The Double Helix, Watson and Crick 1953",
+        "start": 1920.835,
+        "end": 2010.2949
+      },
+      {
+        "chunk_id": "great_papers_03_the_double_helix_watson_and_crick_1953_c0002",
+        "episode_number": 3,
+        "episode_title": "The Double Helix, Watson and Crick 1953",
+        "start": 86.78,
+        "end": 170.155
+      },
+      {
+        "chunk_id": "great_papers_03_the_double_helix_watson_and_crick_1953_c0030",
+        "episode_number": 3,
+        "episode_title": "The Double Helix, Watson and Crick 1953",
+        "start": 2538.5151,
+        "end": 2595.9778
+      },
+      {
+        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0016",
+        "episode_number": 4,
+        "episode_title": "Shannon and the Birth of Information, 1948",
+        "start": 1302.395,
+        "end": 1391.595
+      },
+      {
+        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0015",
+        "episode_number": 4,
+        "episode_title": "Shannon and the Birth of Information, 1948",
+        "start": 1215.935,
+        "end": 1301.9149
+      },
+      {
+        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0011",
+        "episode_number": 4,
+        "episode_title": "Shannon and the Birth of Information, 1948",
+        "start": 870.36,
+        "end": 959.24
+      },
+      {
+        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0012",
+        "episode_number": 4,
+        "episode_title": "Shannon and the Birth of Information, 1948",
+        "start": 959.64,
+        "end": 1043.88
+      },
+      {
+        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0017",
+        "episode_number": 4,
+        "episode_title": "Shannon and the Birth of Information, 1948",
+        "start": 1391.595,
+        "end": 1481.495
+      }
+    ],
+    "refused": false,
+    "query_call_count_delta": 2
+  }
+]

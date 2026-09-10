@@ -1,0 +1,26 @@
+{
+  "case_id": "case_04_named_comparison_covered_theorydriven",
+  "hard": {
+    "citation_grounded": {
+      "result": "pass",
+      "detail": "all 10 citation(s) across 1 turn(s) trace to a retrieved chunk"
+    },
+    "refusal_correct": {
+      "result": "n_a",
+      "detail": "no broad_rebalanced turn in this case; turn 0: n/a (mode=scoped_loop)"
+    },
+    "intent_match": {
+      "result": "pass",
+      "detail": "turn 0 type='named_comparison' refs=[1, 2], 0 follow-up turn(s) correctly classified"
+    },
+    "no_uncovered_citation": {
+      "result": "n_a",
+      "detail": "no episode marked uncovered in this case"
+    },
+    "routing_efficiency": {
+      "result": "pass",
+      "detail": "turn 0: expected=2 actual=2 -> pass"
+    }
+  },
+  "judge": null
+}

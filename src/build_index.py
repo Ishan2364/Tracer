@@ -14,9 +14,11 @@ from pathlib import Path
 import chromadb
 from chromadb.utils import embedding_functions
 
-COLLECTION_NAME = "podcast_chunks"
-PRIMARY_MODEL = "BAAI/bge-small-en-v1.5"
-FALLBACK_MODEL = "all-MiniLM-L6-v2"
+import config
+
+COLLECTION_NAME = config.COLLECTION_NAME
+PRIMARY_MODEL = config.EMBEDDING_MODEL
+FALLBACK_MODEL = config.EMBEDDING_MODEL_FALLBACK
 BATCH_SIZE = 100
 
 
@@ -52,9 +54,9 @@ def load_episode_numbers(manifest_path: Path) -> dict[str, int]:
 
 def main():
     parser = argparse.ArgumentParser(description="Embed chunks and load them into a persistent Chroma collection.")
-    parser.add_argument("--input-dir", default="transcripts/chunks", help="Directory of Phase 2 chunk files")
-    parser.add_argument("--manifest", default="transcripts/episode_manifest.json", help="Path to episode manifest")
-    parser.add_argument("--index-dir", default="index/chroma_db", help="Directory for the persistent Chroma index")
+    parser.add_argument("--input-dir", default=config.CHUNKS_DIR, help="Directory of Phase 2 chunk files")
+    parser.add_argument("--manifest", default=config.MANIFEST_PATH, help="Path to episode manifest")
+    parser.add_argument("--index-dir", default=config.INDEX_DIR, help="Directory for the persistent Chroma index")
     parser.add_argument("--force", action="store_true", help="Wipe and rebuild the collection from scratch")
     args = parser.parse_args()
 
@@ -82,7 +84,11 @@ def main():
             pass
 
     embedding_function = get_embedding_function()
-    collection = client.get_or_create_collection(name=COLLECTION_NAME, embedding_function=embedding_function)
+    collection = client.get_or_create_collection(
+        name=COLLECTION_NAME,
+        embedding_function=embedding_function,
+        metadata={"hnsw:space": "cosine"},
+    )
 
     all_ids = [c["chunk_id"] for c in all_chunks]
     existing_ids: set[str] = set()

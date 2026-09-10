@@ -1,10 +1,13 @@
-"""Phase 4 CLI - thin wrapper around answer_conversational(), with in-memory
-conversation state carried across turns in the interactive loop.
+"""Phase 4 CLI - thin wrapper around answer_conversational(), with conversation
+state carried across turns.
 
 Usage:
-    python src/chat.py                      # interactive loop, multi-turn
-    python src/chat.py --query "..."        # single-shot, non-interactive
-    python src/chat.py --debug              # also print intent/retrieval routing info
+    python src/chat.py                                  # interactive loop, multi-turn, no persistence
+    python src/chat.py --query "..."                    # single-shot, non-interactive
+    python src/chat.py --session-id abc --query "..."   # persists state to sessions/abc.json,
+                                                          # so a *later*, separate invocation with
+                                                          # the same --session-id resumes it
+    python src/chat.py --debug                          # also print intent/retrieval routing info
 """
 
 from __future__ import annotations
@@ -16,6 +19,7 @@ from dotenv import load_dotenv
 from answer import answer_conversational
 from conversation_state import ConversationState
 from generate import format_timestamp
+from session_store import load_session, save_session
 
 
 def print_result(result: dict, debug: bool = False) -> None:
@@ -40,14 +44,25 @@ def main():
 
     parser = argparse.ArgumentParser(description="Ask Tracer a question about the podcast catalogue.")
     parser.add_argument("--query", help="Single question to ask (non-interactive mode)")
+    parser.add_argument("--session-id", help="Persist/resume conversation state under this id (sessions/<id>.json)")
     parser.add_argument("--debug", action="store_true", help="Print intent + retrieval routing info")
     args = parser.parse_args()
 
-    state = ConversationState()
+    if args.session_id:
+        state = load_session(args.session_id)
+        if args.debug:
+            print(f"[session: {args.session_id!r}, {len(state.history)} prior turn(s) loaded]")
+    else:
+        state = ConversationState()
+
+    def persist():
+        if args.session_id:
+            save_session(args.session_id, state)
 
     if args.query:
         result = answer_conversational(args.query, state)
         print_result(result, debug=args.debug)
+        persist()
         return
 
     print("Tracer - ask a question about the podcast catalogue. Type 'exit' to quit.\n")
@@ -63,6 +78,7 @@ def main():
             break
         result = answer_conversational(query, state)
         print_result(result, debug=args.debug)
+        persist()
 
 
 if __name__ == "__main__":

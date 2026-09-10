@@ -22,6 +22,8 @@ VALID_QUERY_TYPES = {
     "recommendation",
     "follow_up",
     "general",
+    "chitchat",
+    "catalogue",
 }
 
 MAX_RETRIES = 2
@@ -31,7 +33,7 @@ SYSTEM_PROMPT = """You are an intent classifier for a physics podcast Q&A system
 Given the user's current query and the last few turns of conversation, output STRICT JSON
 matching exactly this schema, nothing else:
 
-{"query_type": "single_episode|named_comparison|broad_comparison|recommendation|follow_up|general", "topic": "short phrase", "episode_refs": [1, 2]}
+{"query_type": "single_episode|named_comparison|broad_comparison|recommendation|follow_up|general|chitchat|catalogue", "topic": "short phrase", "episode_refs": [1, 2], "time_range": null}
 
 query_type definitions:
 - single_episode: unambiguously names exactly one episode.
@@ -49,6 +51,22 @@ query_type definitions:
   (e.g. "walk me through it", "I didn't get that example", "what do you mean",
   "go on", "can you explain that differently").
 - general: a topic question with no episode scoping implied either way.
+- chitchat: social/meta messages that are NOT actually seeking information from the podcast
+  content - greetings ("hi", "how are you"), thanks, small talk, or generic capability
+  questions about the assistant itself ("what can you help with", "who are you"). Be
+  conservative: only use chitchat when the message has no real content question in it at
+  all, even a casually phrased one, AND is not asking for the episode list (see catalogue
+  below). "how are you" -> chitchat. "can you explain black holes real quick" ->
+  single_episode or general (it's a real content question, just casual phrasing) - NOT
+  chitchat. "thanks!" -> chitchat. "thanks, that makes sense, but what about entropy?" ->
+  general (it has a real follow-on question). When genuinely unsure, prefer NOT chitchat.
+- catalogue: asks what episodes/podcasts exist, how many there are, or to list/name them
+  - an inventory question about the collection itself, NOT about the content of any
+  topic. "what's in your podcast collection", "which episodes do you have", "how many
+  episodes are there", "list your episodes", "what podcasts do you contain" -> catalogue.
+  Contrast with content questions like "what do the episodes say about X" (general/
+  single_episode/broad_comparison, not catalogue) and capability questions like "what can
+  you help with" (chitchat, not catalogue).
 
 episode_refs: a flat list of integers, using the episode numbers from the "Known
 episodes" list provided below the query. Resolve BOTH explicit numeric references
@@ -63,6 +81,13 @@ title/topic.
 topic: a short phrase suitable for embedding-based search - strip out episode
 references and conversational framing. For a follow_up, topic may be empty.
 
+time_range: null, OR a two-element [start_seconds, end_seconds] list ONLY when the query
+explicitly names a specific time window within an episode (e.g. "between 3 and 18
+minutes" -> [180, 1080], "in the first 5 minutes" -> [0, 300], "after the 10 minute mark"
+-> [600, 999999]). Convert minutes to seconds (minutes * 60). Use 0 for an unspecified
+start and 999999 for an unspecified end - never use null inside the list. Leave the whole
+field null unless a time window is explicitly stated - do not invent one.
+
 Output ONLY the JSON object."""
 
 
@@ -76,10 +101,22 @@ def _validate(data: dict) -> dict:
     refs = data.get("episode_refs")
     if not isinstance(refs, list) or not all(isinstance(r, int) for r in refs):
         raise ValueError("episode_refs must be a list of integers")
+
+    time_range = data.get("time_range")
+    if time_range is not None:
+        if (not isinstance(time_range, list) or len(time_range) != 2
+                or not all(isinstance(x, (int, float)) and not isinstance(x, bool) for x in time_range)):
+            raise ValueError("time_range must be null or a [start_seconds, end_seconds] list of numbers")
+        start, end = float(time_range[0]), float(time_range[1])
+        if start > end:
+            start, end = end, start
+        time_range = [start, end]
+
     return {
         "query_type": data["query_type"],
         "topic": data["topic"],
         "episode_refs": refs,
+        "time_range": time_range,
     }
 
 

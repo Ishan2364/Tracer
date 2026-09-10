@@ -9,6 +9,8 @@ generate/refusal machinery - it does not replace answer_query().
 
 from __future__ import annotations
 
+import json
+
 from langsmith import traceable
 
 import config
@@ -70,12 +72,88 @@ def _build_citations(chunks: list[dict]) -> list[dict]:
     return citations
 
 
+def _run_chitchat(query: str, state) -> dict:
+    """Gate 2: even if the intent classifier (Gate 1) mis-routes a real content
+    question as chitchat, this call is explicitly forbidden from answering it from
+    its own knowledge - it can only reply warmly or admit the message actually needs
+    a search, via the needs_retrieval flag. Defaults to needs_retrieval=True (i.e.
+    falls back to a real search) if the structured output can't even be parsed -
+    the safe failure mode is "search anyway", never "trust an unparseable reply"."""
+    messages = generate.build_messages_chitchat(query, state.recent_history())
+    raw = generate.call_llm(messages, model=config.INTENT_MODEL, response_format={"type": "json_object"})
+    try:
+        data = json.loads(raw)
+        return {"reply": data["reply"], "needs_retrieval": bool(data.get("needs_retrieval", False))}
+    except (json.JSONDecodeError, KeyError, TypeError):
+        return {"reply": "", "needs_retrieval": True}
+
+
+def _handle_catalogue(query: str, state) -> dict:
+    """Inventory questions ('what episodes do you have') can never be answered
+    correctly by semantic retrieval - top-k similarity search returns whichever
+    chunks happen to score highest, not every episode, so presenting that as "the
+    collection" is a completeness claim retrieval structurally cannot back up (this
+    is exactly the bug found in practice: three different partial, mutually-
+    inconsistent episode lists across three near-identical questions in one
+    session). The manifest is the actual ground truth - read it directly, no
+    retrieval, no generation call, so the list is always complete and correct."""
+    with open(config.MANIFEST_PATH, "r", encoding="utf-8") as f:
+        manifest = json.load(f)
+    manifest = sorted(manifest, key=lambda e: e["episode_number"])
+
+    lines = [f"The collection has {len(manifest)} episode(s):"]
+    for e in manifest:
+        title = generate.derive_title(e["source_file"])
+        duration = generate.format_timestamp(e["duration_seconds"]) if e.get("duration_seconds") else "?"
+        lines.append(f"- Episode {e['episode_number']}: {title} ({duration})")
+    answer_text = "\n".join(lines)
+
+    state.record(query, "catalogue", answer_text, chunks=[])
+    return {
+        "query": query,
+        "query_type": "catalogue",
+        "episode_refs": [],
+        "retrieval_mode": "catalogue",
+        "unknown_episodes": [],
+        "retrieved_chunk_ids": [],
+        "answer": answer_text,
+        "citations": [],
+        "refused": False,
+    }
+
+
 @traceable(run_type="chain", name="answer_conversational")
 def answer_conversational(query: str, state) -> dict:
     """Phase 4 entrypoint: intent -> retrieval routing -> refusal -> generation,
     reading/writing the given ConversationState across turns."""
     intent = parse_intent(query, state.recent_history())
     query_type = intent["query_type"]
+
+    if query_type == "catalogue":
+        return _handle_catalogue(query, state)
+
+    if query_type == "chitchat":
+        chitchat = _run_chitchat(query, state)
+        if not chitchat["needs_retrieval"]:
+            answer_text = chitchat["reply"]
+            state.record(query, "chitchat", answer_text, chunks=[])
+            return {
+                "query": query,
+                "query_type": "chitchat",
+                "episode_refs": [],
+                "retrieval_mode": "chitchat",
+                "unknown_episodes": [],
+                "retrieved_chunk_ids": [],
+                "answer": answer_text,
+                "citations": [],
+                "refused": False,
+            }
+        # Gate 2 caught a Gate 1 misclassification - fall back to a normal broad
+        # search using the raw query text (not the chitchat classification's topic,
+        # which wasn't extracted carefully since it thought this wasn't a content
+        # question at all).
+        intent = {"query_type": "general", "topic": query, "episode_refs": [], "time_range": None}
+        query_type = "general"
 
     routing = retrieval_router.route(intent, state)
     chunks = routing["chunks"]
@@ -97,6 +175,18 @@ def answer_conversational(query: str, state) -> dict:
     if not chunks and unknown_episodes:
         refs = ", ".join(str(n) for n in unknown_episodes)
         answer_text = f"Episode(s) {refs} don't exist in this catalogue."
+        state.record(query, query_type, answer_text, chunks=[])
+        return {**base_result, "answer": answer_text, "citations": [], "refused": False}
+
+    # Nothing was retrieved even though every referenced episode is real - e.g. a
+    # time-range query whose window genuinely has no matching content, or a follow_up
+    # with no prior turn to build on. Say so deterministically rather than calling the
+    # generation model on empty grounding and hoping it declines on its own.
+    if not chunks and not unknown_episodes:
+        if query_type == "follow_up":
+            answer_text = "There's no earlier answer to build on yet - try asking a full question first."
+        else:
+            answer_text = "Nothing in the specified part of that episode matches this question."
         state.record(query, query_type, answer_text, chunks=[])
         return {**base_result, "answer": answer_text, "citations": [], "refused": False}
 

@@ -84,3 +84,28 @@ def retrieve_scoped(query: str, episode_id: str, n_results: int | None = None) -
     )
     QUERY_CALL_COUNT += 1
     return _chunks_from_result(result)
+
+
+@traceable(run_type="retriever", name="retrieve_chunks_scoped_timerange")
+def retrieve_scoped_timerange(
+    query: str, episode_id: str, start_seconds: float, end_seconds: float, n_results: int | None = None
+) -> list[dict]:
+    """Similarity search restricted to a single episode AND to chunks whose start
+    time falls within [start_seconds, end_seconds] - so a claimed time window is
+    actually enforced by retrieval, not just asserted in the generated text."""
+    global QUERY_CALL_COUNT
+    n_results = n_results or config.N_RESULTS
+    collection = get_collection()
+    result = collection.query(
+        query_texts=[query],
+        n_results=n_results,
+        where={
+            "$and": [
+                {"episode_id": episode_id},
+                {"start": {"$gte": start_seconds}},
+                {"start": {"$lte": end_seconds}},
+            ]
+        },
+    )
+    QUERY_CALL_COUNT += 1
+    return _chunks_from_result(result)

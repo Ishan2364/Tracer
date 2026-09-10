@@ -7,7 +7,7 @@ from pathlib import Path
 
 import config
 from episode_resolver import resolve_episodes
-from retrieve import retrieve, retrieve_scoped
+from retrieve import retrieve, retrieve_scoped, retrieve_scoped_timerange
 
 _episode_chunk_cache: dict[str, list[dict]] = {}
 
@@ -73,9 +73,15 @@ def route(intent: dict, state) -> dict:
     is_named = query_type in ("single_episode", "named_comparison")
     if is_named and episode_refs and len(episode_refs) <= config.NAMED_COMPARISON_MAX:
         resolved, unknown = resolve_episodes(episode_refs)
+        time_range = intent.get("time_range")
         chunks = []
         for ep in resolved:
-            chunks.extend(retrieve_scoped(topic or " ", ep["episode_id"], n_results=config.N_RESULTS))
+            if time_range:
+                chunks.extend(retrieve_scoped_timerange(
+                    topic or " ", ep["episode_id"], time_range[0], time_range[1], n_results=config.N_RESULTS
+                ))
+            else:
+                chunks.extend(retrieve_scoped(topic or " ", ep["episode_id"], n_results=config.N_RESULTS))
         return {
             "chunks": chunks,
             "unknown_episodes": unknown,

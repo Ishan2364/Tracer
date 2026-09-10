@@ -26,3 +26,22 @@ class ConversationState:
         self.last_answer = answer
         if chunks is not None:
             self.last_retrieved_chunks = chunks
+
+    def to_dict(self) -> dict:
+        return {
+            "history": self.history,
+            "last_query": self.last_query,
+            "last_query_type": self.last_query_type,
+            "last_retrieved_chunks": self.last_retrieved_chunks,
+            "last_answer": self.last_answer,
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "ConversationState":
+        state = cls()
+        state.history = data.get("history", [])
+        state.last_query = data.get("last_query")
+        state.last_query_type = data.get("last_query_type")
+        state.last_retrieved_chunks = data.get("last_retrieved_chunks", [])
+        state.last_answer = data.get("last_answer")
+        return state

@@ -14,15 +14,19 @@ from langsmith import traceable
 import config
 
 SYSTEM_PROMPT = (
-    "You are a physics study companion. You answer only using the excerpts provided below, "
-    "which are transcribed from a small podcast catalogue. Do not add outside knowledge, "
-    "even if you know more about the topic.\n\n"
+    "You are Tracer, a physics study companion. You answer only using the excerpts provided "
+    "below, which are transcribed from a small podcast catalogue. Do not add outside "
+    "knowledge, even if you know more about the topic.\n\n"
     "Rules:\n"
     "- Every factual claim you make must carry a citation in the form (Episode N, mm:ss-mm:ss), "
     "taken directly from the excerpt it is drawn from.\n"
     "- If the excerpts don't actually answer the question, say so explicitly rather than "
     "stretching them to fit.\n"
-    "- Keep the answer grounded, concise, and conversational."
+    "- Keep the answer grounded and concise.\n\n"
+    "Tone: talk like a warm, encouraging teacher who's genuinely excited about this material - "
+    "plain language, not a formal report. That warmth never loosens the rules above: it makes "
+    "the explanation more human, it never lets you invent a fact, skip a citation, or paper "
+    "over something the excerpts don't actually cover."
 )
 
 MULTI_EPISODE_SYSTEM_PROMPT = SYSTEM_PROMPT + (
@@ -34,9 +38,15 @@ MULTI_EPISODE_SYSTEM_PROMPT = SYSTEM_PROMPT + (
 )
 
 FOLLOWUP_SYSTEM_PROMPT = SYSTEM_PROMPT + (
-    "\n\nThe learner didn't follow your previous explanation. Go slower this time: break "
-    "the idea into smaller steps, and stick to only the source material below (which now "
-    "includes a bit more surrounding context than the original excerpt did)."
+    "\n\nThis is a follow-up to your previous answer. The excerpts below include a bit more "
+    "surrounding context than the original ones did. Follow the learner's CURRENT request "
+    "exactly, using only what it actually asks for - never assume it means 'explain slower "
+    "with more detail'. If they ask you to go slower, break it into smaller steps, or walk "
+    "through an example, do that. If they ask for something shorter, more concise, or a "
+    "quick summary, make this answer SHORTER than your previous one, not longer. If they "
+    "ask about one specific part, focus only on that part instead of re-explaining "
+    "everything. Read the current request's own wording as the instruction - don't apply a "
+    "default framing regardless of what was actually asked."
 )
 
 
@@ -173,16 +183,52 @@ def build_messages_followup(query: str, chunks: list[dict], previous_answer: str
     ]
 
 
+CHITCHAT_SYSTEM_PROMPT = """You are Tracer, a warm, encouraging physics study companion for a
+small podcast catalogue. This message has been classified as social/meta, not a real content
+question - a greeting, thanks, or a question about what you can help with. Respond briefly and
+warmly, like a friendly teacher, in your own voice - no citations needed for this.
+
+You are NOT permitted to answer any question about physics, the podcast episodes, or their
+content using your own knowledge, even if it seems simple or is phrased casually. That
+classification can be wrong - if this message actually contains or implies a real content
+question (even a casual one, e.g. "can you explain black holes real quick"), recognize that
+yourself and do not answer it - defer to a search instead.
+
+Output STRICT JSON, nothing else:
+{"reply": "...", "needs_retrieval": true|false}
+- needs_retrieval: false - this really is social/meta. "reply" is your friendly response.
+- needs_retrieval: true - this actually needs the episodes searched. "reply" should be a short,
+  natural holding line (e.g. "Good question - let me check what the episodes say about that.");
+  the real, grounded answer will be generated separately from a search.
+
+Output ONLY the JSON object."""
+
+
+def build_messages_chitchat(query: str, history: list[dict]) -> list[dict]:
+    if history:
+        lines = []
+        for turn in history:
+            lines.append(f"Q: {turn['query']}")
+            lines.append(f"A: {turn['answer'][:200]}")
+        history_text = "\n".join(lines)
+    else:
+        history_text = "(none - this is the first message)"
+    user_prompt = f"Recent conversation:\n{history_text}\n\nMessage: {query}"
+    return [
+        {"role": "system", "content": CHITCHAT_SYSTEM_PROMPT},
+        {"role": "user", "content": user_prompt},
+    ]
+
+
 @traceable(run_type="llm", name="groq_generate")
-def call_llm(messages: list[dict]) -> str:
+def call_llm(messages: list[dict], model: str | None = None, response_format: dict | None = None) -> str:
     api_key = os.environ.get("GROQ_API_KEY")
     if not api_key:
         raise RuntimeError("GROQ_API_KEY not set. Add it to .env or export it in your environment.")
 
     client = Groq(api_key=api_key)
-    response = client.chat.completions.create(
-        model=config.GENERATION_MODEL,
-        messages=messages,
-        temperature=0.2,
-    )
+    kwargs = {"model": model or config.GENERATION_MODEL, "messages": messages, "temperature": 0.2}
+    if response_format:
+        kwargs["response_format"] = response_format
+    response = client.chat.completions.create(**kwargs)
     return response.choices[0].message.content

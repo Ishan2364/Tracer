@@ -1,7 +1,7 @@
 {
-  "ceiling": 0.5083,
+  "ceiling": 0.5121,
   "margin": 0.05,
-  "threshold": 0.5583,
+  "threshold": 0.5621,
   "canaries": [
     {
       "query": "What's a good recipe for chocolate chip cookies?",
@@ -9,7 +9,7 @@
     },
     {
       "query": "Who won the Super Bowl last year?",
-      "similarity": 0.4821
+      "similarity": 0.4905
     },
     {
       "query": "What is the capital of France?",
@@ -25,11 +25,11 @@
     },
     {
       "query": "Give me tips for training a puppy not to bite.",
-      "similarity": 0.496
+      "similarity": 0.5121
     },
     {
       "query": "When is the tax filing deadline this year?",
-      "similarity": 0.4658
+      "similarity": 0.4787
     },
     {
       "query": "Recommend a good hiking trail near Denver.",

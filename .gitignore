@@ -8,11 +8,10 @@ phase1_transcription_pipeline_spec.md
 data
 transcripts
 phase2_chunking_indexing_spec.md
-index\chroma_db
 phase3_core_engine_spec.md
 phase4_multiturn_crossepisode_spec.md
 phase5_evaluation_spec.md
 hello.md
-index\chroma_db
 architecture_diagram_spec.md
 sessions/
+**/chroma_db/

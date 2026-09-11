@@ -1,0 +1,58 @@
+[
+  {
+    "query": "According to episode 7, why can no machine decide in general whether an arbitrary program halts?",
+    "query_type": "single_episode",
+    "episode_refs": [
+      7
+    ],
+    "retrieval_mode": "scoped_loop",
+    "unknown_episodes": [],
+    "retrieved_chunk_ids": [
+      "great_papers_07_on_computable_numbers_turing_1936_c0019",
+      "great_papers_07_on_computable_numbers_turing_1936_c0013",
+      "great_papers_07_on_computable_numbers_turing_1936_c0017",
+      "great_papers_07_on_computable_numbers_turing_1936_c0014",
+      "great_papers_07_on_computable_numbers_turing_1936_c0005"
+    ],
+    "answer": "Turing showed that a \u201cchecker\u201d that could look at any program\u202f+\u202finput and tell, in a finite amount of time, whether that program will eventually stop can\u2019t exist.  If we suppose such a machine did exist, we can feed it its own description and force it into a self\u2011referential contradiction\u2014just like the liar\u2019s paradox.  That contradiction proves the halting problem is undecidable, so no amount of faster hardware or clever insight can get around it.  In short, the very logic of the proof shows that no mechanical procedure can decide, for every arbitrary program, whether it halts.\u202f(Episode\u202f7,\u202f26:22\u201127:51; Episode\u202f7,\u202f23:24\u201124:54)",
+    "citations": [
+      {
+        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0019",
+        "episode_number": 7,
+        "episode_title": "On Computable Numbers, Turing 1936",
+        "start": 1581.7151,
+        "end": 1671.4299
+      },
+      {
+        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0013",
+        "episode_number": 7,
+        "episode_title": "On Computable Numbers, Turing 1936",
+        "start": 1056.26,
+        "end": 1144.51
+      },
+      {
+        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0017",
+        "episode_number": 7,
+        "episode_title": "On Computable Numbers, Turing 1936",
+        "start": 1404.085,
+        "end": 1493.845
+      },
+      {
+        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0014",
+        "episode_number": 7,
+        "episode_title": "On Computable Numbers, Turing 1936",
+        "start": 1144.91,
+        "end": 1233.9949
+      },
+      {
+        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0005",
+        "episode_number": 7,
+        "episode_title": "On Computable Numbers, Turing 1936",
+        "start": 345.9,
+        "end": 433.83002
+      }
+    ],
+    "refused": false,
+    "query_call_count_delta": 1
+  }
+]

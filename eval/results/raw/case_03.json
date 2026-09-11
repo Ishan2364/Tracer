@@ -1,0 +1,99 @@
+[
+  {
+    "query": "Compare episodes 1 and 6 - how does each one define which observers get special/privileged treatment?",
+    "query_type": "named_comparison",
+    "episode_refs": [
+      1,
+      6
+    ],
+    "retrieval_mode": "scoped_loop",
+    "unknown_episodes": [],
+    "retrieved_chunk_ids": [
+      "great_papers_01_einstein_s_special_relativity_c0011",
+      "great_papers_01_einstein_s_special_relativity_c0019",
+      "great_papers_01_einstein_s_special_relativity_c0010",
+      "great_papers_01_einstein_s_special_relativity_c0036",
+      "great_papers_01_einstein_s_special_relativity_c0001",
+      "great_papers_06_general_relativity_einstein_1915_c0003",
+      "great_papers_06_general_relativity_einstein_1915_c0017",
+      "great_papers_06_general_relativity_einstein_1915_c0001",
+      "great_papers_06_general_relativity_einstein_1915_c0004",
+      "great_papers_06_general_relativity_einstein_1915_c0022"
+    ],
+    "answer": "**Episode\u202f1 \u2013 Einstein\u2019s Special Relativity**  \nIn the train\u2011platform thought experiment the hosts stress that *both* the person on the train and the person on the platform are \u201cperfectly good inertial observers\u201d and that \u201cpostulate\u202f1 says neither has a privileged view\u201d (Episode\u202f1,\u202f14:30\u201115:56). In other words, special relativity gives **no single observer a special status** \u2013 every inertial frame gets the same rights, even though they disagree about simultaneity.  \n\n**Episode\u202f6 \u2013 General Relativity (1915)**  \nHere the discussion starts by pointing out that \u201cSpecial relativity gives a privileged status to a particular kind of observer\u2026 the ones moving at constant velocity, coasting, no acceleration. Those are called inertial observers, and the whole theory is written for them\u201d (Episode\u202f6,\u202f02:58\u201104:25). Einstein\u2019s goal with the *general* theory was to extend relativity to **all observers, accelerated or not**, so that no observer remains privileged by virtue of being inertial alone.  \n\n**Synthesis**  \n- **Special Relativity (Ep\u202f1)**: treats every inertial frame equally; there is *no* privileged observer, only a shared rule that the laws look the same in any coasting frame.  \n- **General Relativity (Ep\u202f6)**: starts from that same inertial\u2011observer privilege in SR, then deliberately *removes* it, insisting that the laws hold for **any** observer, whether inertial or accelerating.  \n\nSo the two episodes contrast a theory that limits \u201cspecial treatment\u201d to inertial frames (SR) with a later theory that abolishes that limitation altogether (GR).",
+    "citations": [
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0011",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 869.67,
+        "end": 955.97003
+      },
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0019",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 1571.635,
+        "end": 1659.805
+      },
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0010",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 780.51,
+        "end": 868.95
+      },
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0036",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 3045.6,
+        "end": 3133.81
+      },
+      {
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0001",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 0.24,
+        "end": 86.685
+      },
+      {
+        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0003",
+        "episode_number": 6,
+        "episode_title": "General Relativity, Einstein 1915",
+        "start": 178.44499,
+        "end": 265.32
+      },
+      {
+        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0017",
+        "episode_number": 6,
+        "episode_title": "General Relativity, Einstein 1915",
+        "start": 1410.6499,
+        "end": 1499.25
+      },
+      {
+        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0001",
+        "episode_number": 6,
+        "episode_title": "General Relativity, Einstein 1915",
+        "start": 0.0,
+        "end": 88.25
+      },
+      {
+        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0004",
+        "episode_number": 6,
+        "episode_title": "General Relativity, Einstein 1915",
+        "start": 265.915,
+        "end": 352.2
+      },
+      {
+        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0022",
+        "episode_number": 6,
+        "episode_title": "General Relativity, Einstein 1915",
+        "start": 1844.9601,
+        "end": 1934.26
+      }
+    ],
+    "refused": false,
+    "query_call_count_delta": 2
+  }
+]

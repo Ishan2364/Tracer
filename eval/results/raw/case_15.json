@@ -1,0 +1,64 @@
+[
+  {
+    "query": "hey real quick, what's entropy again lol",
+    "query_type": "general",
+    "episode_refs": [],
+    "retrieval_mode": "broad_rebalanced",
+    "unknown_episodes": [],
+    "retrieved_chunk_ids": [
+      "great_papers_04_shannon_and_the_birth_of_information_1948_c0008",
+      "great_papers_04_shannon_and_the_birth_of_information_1948_c0010",
+      "great_papers_02_how_black_holes_radiate_hawking_1975_c0004",
+      "great_papers_04_shannon_and_the_birth_of_information_1948_c0011",
+      "great_papers_02_how_black_holes_radiate_hawking_1975_c0023",
+      "great_papers_02_how_black_holes_radiate_hawking_1975_c0005"
+    ],
+    "answer": "**Episode\u202f2 \u2013 \u201cHow Black Holes Radiate, Hawking\u202f1975\u201d**  \nEntropy is introduced as *\u201ca measure of disorder, of the number of microscopic arrangements consistent with what you see\u201d* and it obeys the second law: *\u201cthe total entropy of a closed system never decreases\u201d* (Episode\u202f2, 04:23\u201105:53). In the black\u2011hole context the horizon area behaves just like entropy \u2013 it never goes down, so Jacob\u202fBekenstein proposed that the area *is* a kind of entropy (Episode\u202f2, 04:23\u201105:53).  \n\n**Episode\u202f4 \u2013 \u201cShannon and the Birth of Information,\u202f1948\u201d**  \nHere entropy is described in information\u2011theoretic terms: it is *\u201cthe average number of bits of information each symbol carries, the average surprise per symbol\u201d* (Episode\u202f4, 10:05\u201111:35). A fair coin flip, with heads and tails equally likely, carries exactly **one bit** of entropy because you are maximally uncertain before the flip (Episode\u202f4, 13:04\u201114:30). If the outcome is predictable (e.g., a two\u2011headed coin) the entropy drops to zero, because there is no surprise (Episode\u202f4, 13:04\u201114:30).  \n\n**Putting it together**  \nSo, in a nutshell, *entropy* is a quantitative way to talk about how disordered or unpredictable a system is:  \n- In physics, it counts the many microscopic ways a macroscopic state can be arranged (disorder).  \n- In information theory, it counts the average \u201csurprise\u201d or bits needed to describe a random source.  \n\nBoth uses share the same spirit\u2014more possibilities\u202f=\u202fhigher entropy, fewer possibilities\u202f=\u202flower entropy. (Citations: Episode\u202f2\u202f04:23\u201105:53; Episode\u202f4\u202f10:05\u201111:35; Episode\u202f4\u202f13:04\u201114:30)",
+    "citations": [
+      {
+        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0008",
+        "episode_number": 4,
+        "episode_title": "Shannon and the Birth of Information, 1948",
+        "start": 605.225,
+        "end": 694.545
+      },
+      {
+        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0010",
+        "episode_number": 4,
+        "episode_title": "Shannon and the Birth of Information, 1948",
+        "start": 784.13,
+        "end": 869.88
+      },
+      {
+        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0004",
+        "episode_number": 2,
+        "episode_title": "How Black Holes Radiate, Hawking 1975",
+        "start": 262.57498,
+        "end": 352.54498
+      },
+      {
+        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0011",
+        "episode_number": 4,
+        "episode_title": "Shannon and the Birth of Information, 1948",
+        "start": 870.36,
+        "end": 959.24
+      },
+      {
+        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0023",
+        "episode_number": 2,
+        "episode_title": "How Black Holes Radiate, Hawking 1975",
+        "start": 1936.355,
+        "end": 2025.7349
+      },
+      {
+        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0005",
+        "episode_number": 2,
+        "episode_title": "How Black Holes Radiate, Hawking 1975",
+        "start": 353.10498,
+        "end": 441.545
+      }
+    ],
+    "refused": false,
+    "query_call_count_delta": 1
+  }
+]

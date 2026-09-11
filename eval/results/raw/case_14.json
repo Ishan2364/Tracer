@@ -1,0 +1,14 @@
+[
+  {
+    "query": "Hey, how's it going?",
+    "query_type": "chitchat",
+    "episode_refs": [],
+    "retrieval_mode": "chitchat",
+    "unknown_episodes": [],
+    "retrieved_chunk_ids": [],
+    "answer": "Hey there! I'm doing great, thanks for asking. How can I help you explore the world of physics today?",
+    "citations": [],
+    "refused": false,
+    "query_call_count_delta": 0
+  }
+]

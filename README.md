@@ -36,9 +36,9 @@ into a persistent Chroma collection (cosine distance).
 intents (single-episode, multi-episode comparison, catalogue-wide, recommendation,
 follow-up, chitchat, or a catalogue/inventory question), routed to the matching
 retrieval strategy, and — for anything that's actually a content question — answered by
-a larger model that must cite `(Episode N, mm:ss–mm:ss)` for every claim. A
-[published architecture diagram](architecture_diagram_spec.md) walks through the full
-decision tree (routing, the refusal gate, the two-gate chitchat safety net) in detail.
+a larger model that must cite `(Episode N, mm:ss–mm:ss)` for every claim — the full
+decision tree (routing, the refusal gate, the two-gate chitchat safety net) is covered
+in `src/retrieval_router.py` and `src/answer.py`.
 
 <br/>
 
@@ -62,7 +62,7 @@ decision tree (routing, the refusal gate, the two-gate chitchat safety net) in d
 
 **Interfaces**
 - CLI (`src/chat.py`): interactive loop, single-shot `--query`, `--debug` routing visibility
-- FastAPI wrapper (`src/api/`): endpoints for building the index and for chat, each with a real health check — see [Running the API](#running-the-api) below
+- FastAPI wrapper (`src/api/`): endpoints for building the index and for chat, each with a real health check — see [Option B below](#option-b--fastapi-for-a-frontend)
 - Full evaluation harness with hard (deterministic) and LLM-judge checks — see [`EVAL.md`](EVAL.md)
 
 <br/>
@@ -85,18 +85,33 @@ decision tree (routing, the refusal gate, the two-gate chitchat safety net) in d
 
 <br/>
 
-## One-time setup
+## Getting started — from a fresh clone
 
-**Prerequisites:** Python 3.10+, a [Deepgram](https://deepgram.com) API key, a
-[Groq](https://groq.com) API key. A [LangSmith](https://smith.langchain.com) key is
-optional (tracing only).
+Everything below assumes you've just cloned this repo. `/data`, `/transcripts`,
+`/index`, and `/sessions` are gitignored — they're either your input or generated
+output, so a fresh clone starts with none of them.
+
+### Step 1 — Install
 
 ```bash
 pip install -r requirements.txt
-cp .env.example .env   # then fill in your keys
 ```
 
-`.env`:
+### Step 2 — Add your audio
+
+**`/data` is empty in a fresh clone — drop your podcast audio files into it before
+doing anything else.** `.mp3`, `.wav`, `.m4a`, and `.flac` are all supported; any
+number of files. This repo was built and tested against 8 files (see
+[Dataset](#dataset) above), but the pipeline enumerates whatever's actually in `/data`
+at run time — it doesn't assume a fixed count or filenames.
+
+### Step 3 — Configure API keys
+
+```bash
+cp .env.example .env
+```
+
+Then fill in `.env`:
 ```
 DEEPGRAM_API_KEY=your_deepgram_api_key_here
 GROQ_API_KEY=your_groq_api_key_here
@@ -105,10 +120,13 @@ LANGSMITH_TRACING=true
 LANGSMITH_API_KEY=            # optional - leave blank to disable tracing
 LANGSMITH_PROJECT=tracer
 ```
+A [Deepgram](https://deepgram.com) key and a [Groq](https://groq.com) key are
+required; [LangSmith](https://smith.langchain.com) is optional (tracing only).
 
-Build the index from whatever audio is in `/data` — one command per stage, all
-idempotent (safe to re-run; only new/changed episodes are processed, at zero extra
-API cost):
+### Step 4 — Build the index (run once, from the project root)
+
+Three commands, each idempotent — safe to re-run any time you add more audio to
+`/data`; already-processed episodes are skipped at zero extra API cost:
 
 ```bash
 python src/transcribe.py          # audio -> raw + structured transcripts (Deepgram)
@@ -116,14 +134,20 @@ python src/chunk_transcripts.py   # transcripts -> merged chunks + episode manif
 python src/build_index.py         # chunks -> embedded, into the Chroma index
 ```
 
-That's the whole one-time setup. Re-run all three any time you add new audio files to
-`/data` — each one skips work it's already done.
+*(Prefer to trigger this from a UI instead of the terminal? The FastAPI backend exposes
+the same pipeline as `POST /pipeline/build` — see Option B below.)*
+
+After this finishes, `/transcripts` and `/index` are populated and the system is ready
+to talk to — via the terminal or via the API, both below.
 
 <br/>
 
 ## Running it
 
-### Chat (CLI)
+There are two ways to actually use Tracer once it's set up: the terminal, or the
+FastAPI backend (for a frontend). Both call the exact same underlying engine.
+
+### Option A — Terminal (CLI)
 
 ```bash
 python src/chat.py                                  # interactive, multi-turn
@@ -133,7 +157,7 @@ python src/chat.py --session-id abc --query "..."   # persists to sessions/abc.j
 python src/chat.py --debug                           # also print intent/routing info
 ```
 
-### API (for a frontend)
+### Option B — FastAPI (for a frontend)
 
 Start the server from the project root (paths inside the app are relative to it, same
 as every CLI script):
@@ -192,14 +216,13 @@ tighten it if this is ever exposed beyond localhost.
 ### Evaluation
 
 ```bash
-python src/eval/run_eval.py --run-id baseline              # Phase 5 harness, 12 cases
-python src/eval/run_eval.py --run-id baseline --with-judge  # + LLM-judge scoring
-python src/eval/compare_runs.py --baseline baseline --candidate v2
+python src/eval/run_eval.py
 ```
 
-See [`EVAL.md`](EVAL.md) for success criteria, results, and the baseline→improvement
-comparison; `eval/eval_v2_cases.md` for a 15-case manual-review round covering every
-feature above.
+Runs all 15 cases in `eval/cases.md` through the real engine and saves raw,
+untouched output to `eval/results/raw/`. See [`EVAL.md`](EVAL.md) for success
+criteria and results, and `eval/cases.md` itself for every question, expected answer,
+and verified real answer side by side.
 
 <br/>
 
@@ -285,11 +308,8 @@ see `index/calibration.json` after a build.
 ├── index/
 ├── sessions/
 ├── eval/
-│   ├── cases.json
-│   ├── eval_v2_cases.md
-│   ├── EXPECTED_ANSWERS.md
-│   ├── results/
-│   └── results_v2/
+│   ├── cases.md              15 test cases: question, expected answer, real answer, pass/fail
+│   └── results/               raw, untouched output from the last run
 ├── src/
 │   ├── transcribe.py
 │   ├── chunk_transcripts.py
@@ -309,11 +329,7 @@ see `index/calibration.json` after a build.
 │   │   ├── pipeline_routes.py
 │   │   └── chat_routes.py
 │   └── eval/
-│       ├── run_eval.py
-│       ├── run_eval_v2.py
-│       ├── scoring_hard.py
-│       ├── scoring_judge.py
-│       └── compare_runs.py
+│       └── run_eval.py       runs eval/cases.md against the real engine
 ├── .env.example
 ├── requirements.txt
 ├── PRODUCT_NOTE.md
@@ -329,24 +345,4 @@ see `index/calibration.json` after a build.
 | `transcripts/` | Phase 1–2 output: raw/structured transcripts, chunks, episode manifest |
 | `index/` | Chroma collection + the auto-calibrated refusal threshold |
 | `sessions/` | Persisted conversation state, one file per `session_id` |
-| `eval/results/`, `eval/results_v2/` | Raw + scored output from evaluation runs |
-
-**`src/` — what each module owns:**
-
-| File | Role |
-|---|---|
-| `transcribe.py` | Phase 1 — audio → structured transcript (Deepgram) |
-| `chunk_transcripts.py` | Phase 2 — transcript → merged chunks + episode manifest |
-| `build_index.py` | Phase 2 — chunks → Chroma index, plus refusal-threshold calibration |
-| `config.py` | Shared constants: models, thresholds, paths |
-| `intent_parser.py` | Classifies each query (single-episode, comparison, chitchat, catalogue, ...) |
-| `episode_resolver.py` | Resolves `episode_refs` → `episode_id`, flags unknown episodes |
-| `retrieval_router.py` | Routes a classified intent to the matching retrieval strategy |
-| `retrieve.py` | The actual Chroma queries — scoped, broad, time-range-filtered |
-| `generate.py` | Prompt construction (all variants) + the Groq generation call |
-| `answer.py` | Orchestrator — `answer_conversational()` ties everything together |
-| `conversation_state.py` | In-memory per-turn state (history, last grounding, last answer) |
-| `session_store.py` | Persists/loads `ConversationState` by `session_id` |
-| `chat.py` | CLI entrypoint |
-| `api/` | FastAPI wrapper — `app.py` (server), `pipeline_routes.py`, `chat_routes.py` |
-| `eval/` | Evaluation harness — runners (`run_eval.py`, `run_eval_v2.py`) and scoring |
+| `eval/results/` | Raw, untouched output from the last evaluation run |

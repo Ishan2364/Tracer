@@ -1,0 +1,18 @@
+[
+  {
+    "query": "What does episode 99 say about black holes?",
+    "query_type": "single_episode",
+    "episode_refs": [
+      99
+    ],
+    "retrieval_mode": "scoped_loop",
+    "unknown_episodes": [
+      99
+    ],
+    "retrieved_chunk_ids": [],
+    "answer": "Episode(s) 99 don't exist in this catalogue.",
+    "citations": [],
+    "refused": false,
+    "query_call_count_delta": 0
+  }
+]

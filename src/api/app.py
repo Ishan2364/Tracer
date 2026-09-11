@@ -4,12 +4,14 @@ Run from the project root (relative paths in config.py/session_store.py depend o
     uvicorn src.api.app:app --reload --port 8000
 
 Then:
-    GET  /health              overall liveness
-    GET  /pipeline/health      is the ingest pipeline ready to run (keys, /data present)
-    POST /pipeline/build       kick off transcribe -> chunk -> embed in the background
-    GET  /pipeline/status      poll progress of the last/current build
-    GET  /chat/health          is the chat engine ready (keys, index populated)
-    POST /chat                 {"session_id": "...", "query": "..."} -> grounded answer
+    GET  /health                       overall liveness
+    GET  /pipeline/health               is the ingest pipeline ready to run (keys, /data present)
+    POST /pipeline/build                kick off transcribe -> chunk -> embed in the background
+    GET  /pipeline/status               poll progress of the last/current build
+    GET  /chat/health                   is the chat engine ready (keys, index populated)
+    POST /chat                          {"session_id": "...", "query": "..."} -> grounded answer
+    GET  /episodes                      list episodes (number, title, duration)
+    GET  /episodes/{episode_number}/audio   stream that episode's raw audio file
 
 Interactive API docs at /docs once running.
 """
@@ -30,6 +32,7 @@ if str(API_DIR) not in sys.path:
     sys.path.insert(0, str(API_DIR))
 
 import chat_routes  # noqa: E402
+import episodes_routes  # noqa: E402
 import pipeline_routes  # noqa: E402
 
 app = FastAPI(title="Tracer API", version="1.0.0")
@@ -47,6 +50,7 @@ app.add_middleware(
 
 app.include_router(pipeline_routes.router)
 app.include_router(chat_routes.router)
+app.include_router(episodes_routes.router)
 
 
 @app.get("/health")

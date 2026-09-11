@@ -294,9 +294,6 @@ export default function App() {
           )}
           {messages.map((msg, i) => (
             <div key={i} className={`message ${msg.role}`}>
-              {msg.role === "assistant" && msg.queryType && (
-                <span className="query-type-tag">{msg.queryType}</span>
-              )}
               {msg.role === "assistant" ? (
                 <div className="message-text markdown">
                   <ReactMarkdown>{msg.text}</ReactMarkdown>

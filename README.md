@@ -24,21 +24,25 @@ it's scoped the way it is.
 
 ## How it works
 
-<img src="assets/pipeline.svg" alt="Audio to structured transcript pipeline" width="100%" />
+<img src="assets/architecture.svg" alt="Tracer architecture: offline indexing pipeline and live query routing" width="100%" />
 
 **Offline, once per episode:** each audio file goes to Deepgram's **Nova-3** model in a
-single call with diarization enabled (diagram above). The raw response is saved
-verbatim, normalized into a per-utterance schema, and validated. Utterances are then
-merged into ~30–90s conversational chunks and embedded locally (`bge-base-en-v1.5`)
-into a persistent Chroma collection (cosine distance).
+single call with diarization enabled. The raw response is saved verbatim, normalized
+into a per-utterance schema, and validated. Utterances are then merged into ~30–90s
+conversational chunks and embedded locally (`bge-base-en-v1.5`) into a persistent Chroma
+collection (cosine distance).
 
 **Live, every turn:** a query is classified by a small model into one of several
 intents (single-episode, multi-episode comparison, catalogue-wide, recommendation,
-follow-up, chitchat, or a catalogue/inventory question), routed to the matching
-retrieval strategy, and — for anything that's actually a content question — answered by
-a larger model that must cite `(Episode N, mm:ss–mm:ss)` for every claim — the full
-decision tree (routing, the refusal gate, the two-gate chitchat safety net) is covered
-in `src/retrieval_router.py` and `src/answer.py`.
+follow-up, chitchat, or a catalogue/inventory question) using the last 2 turns of
+conversation memory, then routed to the matching retrieval strategy — scoped to named
+episode(s), broad across the catalogue (capped per episode), or reusing the prior turn's
+retrieved chunks plus their neighbors for a follow-up. Anything that's actually a
+content question then passes through a coverage/refusal gate before a larger model
+generates an answer that must cite `(Episode N, mm:ss–mm:ss)` for every claim — citations
+are built from retrieval metadata, never parsed out of free text. The full decision tree
+(routing, the refusal gate, the two-gate chitchat safety net) is covered in
+`src/retrieval_router.py` and `src/answer.py`.
 
 <br/>
 

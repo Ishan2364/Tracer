@@ -35,8 +35,19 @@ def rebalance(chunks: list[dict], cap: int = config.PER_EPISODE_CAP) -> list[dic
 
 def expand_context(chunks: list[dict], window: int = config.FOLLOWUP_CONTEXT_WINDOW) -> list[dict]:
     """For each chunk, pull in the `window` chunks immediately before/after it (by
-    position within its episode's chunk file) - no new Chroma call, just local reads."""
+    position within its episode's chunk file) - no new Chroma call, just local reads.
+
+    Returns originally-retrieved chunks first (chronologically sorted among
+    themselves), followed by the expanded neighbor-only chunks (also chronological).
+    This ordering matters downstream: generate.py's budget trim just keeps chunks in
+    the order it's given until the token budget runs out, so putting the actually-
+    retrieved chunks first guarantees they survive trimming - a follow-up is almost
+    always about something in one of those, not an incidental neighbor - instead of
+    losing whichever chunk happens to sort latest by raw timestamp."""
+    original_ids = {c["chunk_id"] for c in chunks}
     expanded: dict[str, dict] = {}
+    neighbor_ids: set[str] = set()
+
     for c in chunks:
         expanded[c["chunk_id"]] = c
         episode_chunks = _load_episode_chunks(c["episode_id"])
@@ -48,11 +59,16 @@ def expand_context(chunks: list[dict], window: int = config.FOLLOWUP_CONTEXT_WIN
             if offset == 0 or not (0 <= j < len(episode_chunks)):
                 continue
             neighbor = episode_chunks[j]
-            expanded.setdefault(neighbor["chunk_id"], neighbor)
+            if neighbor["chunk_id"] not in expanded:
+                expanded[neighbor["chunk_id"]] = neighbor
+                neighbor_ids.add(neighbor["chunk_id"])
 
-    result = list(expanded.values())
-    result.sort(key=lambda c: (c["episode_id"], c["start"]))
-    return result
+    def _chrono(c):
+        return (c["episode_id"], c["start"])
+
+    original = sorted((c for cid, c in expanded.items() if cid in original_ids), key=_chrono)
+    neighbors = sorted((c for cid, c in expanded.items() if cid in neighbor_ids), key=_chrono)
+    return original + neighbors
 
 
 def route(intent: dict, state) -> dict:

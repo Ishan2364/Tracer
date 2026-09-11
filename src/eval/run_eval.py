@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import sys
+from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # src/
@@ -63,15 +64,28 @@ def run_case(queries: list[str]) -> list[dict]:
 
 def main():
     RAW_DIR.mkdir(parents=True, exist_ok=True)
+    run_id = datetime.now().strftime("%Y-%m-%d_%H%M%S")
+    all_results = {}
+
     for case_id, queries in CASES:
         print(f"[{case_id}] running {len(queries)} turn(s)...")
         turns_raw = run_case(queries)
+        all_results[case_id] = turns_raw
         with open(RAW_DIR / f"{case_id}.json", "w", encoding="utf-8") as f:
             json.dump(turns_raw, f, indent=2)
         for i, t in enumerate(turns_raw):
             print(f"  turn {i}: type={t['query_type']} mode={t['retrieval_mode']} "
                   f"calls={t['query_call_count_delta']} refused={t['refused']} chunks={len(t['retrieved_chunk_ids'])}")
+
+    # One combined, timestamped snapshot of this specific run - so a run's results
+    # are preserved and comparable to later runs, instead of always being overwritten
+    # by the per-case files above (which only ever hold the latest run).
+    combined_path = EVAL_DIR / "results" / f"{run_id}.json"
+    with open(combined_path, "w", encoding="utf-8") as f:
+        json.dump(all_results, f, indent=2)
+
     print(f"\nAll raw results written to {RAW_DIR}")
+    print(f"Combined snapshot of this run written to {combined_path}")
 
 
 if __name__ == "__main__":

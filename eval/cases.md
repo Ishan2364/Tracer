@@ -7,11 +7,24 @@ net, catalogue/inventory consistency, and multi-turn memory (both context-contin
 and clean topic-switch).
 
 **Status: RUN.** Results below are real — executed via `src/eval/run_eval.py`,
-raw output preserved untouched in `eval/results/raw/case_NN.json`. Every citation
-flagged below as verified was checked directly against the actual transcript chunk
-text, not assumed from the model's claim.
+raw output preserved untouched in `eval/results/raw/case_NN.json`, plus a combined
+timestamped snapshot of each full run in `eval/results/{date}_{time}.json`. Every
+citation flagged below as verified was checked directly against the actual transcript
+chunk text, not assumed from the model's claim.
 
-**Final tally: 14 Pass / 1 Partial / 0 Fail** (out of 15) — Case 9's fail was a real bug and has been fixed and re-verified (see Case 9 below). Case 10's initial "Partial" grading was reconsidered and corrected to Pass: chunk-level retrieval naturally spills a bit past a requested time window, and that's an expected property of the mechanism, not a correctness defect (see Case 10 below). The one remaining Partial (Case 15) is a citation-precision refinement, not a correctness failure, and remains open by choice.
+**Latest run: 2026-09-11_124655 — 15 Pass / 0 Partial / 0 Fail** (out of 15). This run
+followed a fix to a real multi-turn follow-up bug found via manual testing (see
+"Post-eval bug fix" note under Case 11) — re-running the full suite afterward confirmed
+no regressions. Case 15's citation-precision quirk (see its own section) did not
+reproduce in this run, though the same underlying pattern showed up mildly in Case 10
+instead — it's a non-deterministic generation-time behavior, not something this run's
+scope fixed, so it should be expected to resurface on some future run.
+
+Prior run tally (before the follow-up fix, for reference): 14 Pass / 1 Partial / 0 Fail
+— Case 9's fail was a real bug, fixed and re-verified (see Case 9 below). Case 10's
+initial "Partial" grading was reconsidered and corrected to Pass: chunk-level retrieval
+naturally spills a bit past a requested time window, an expected property of the
+mechanism, not a correctness defect.
 
 Catalogue at time of writing: 8 episodes — 1 Einstein Special Relativity, 2 Hawking
 Black Holes, 3 Watson & Crick DNA, 4 Shannon Information, 5 Attention Is All You Need,
@@ -208,6 +221,34 @@ A case **passes** only if ALL of the following hold for its `query_type`:
 **Pass/Fail:** **Pass**
 **Failure analysis:** None. This is the cleanest demonstration in the whole set of "memory helps continuation, never overpowers a genuine topic switch."
 
+**Post-eval bug fix (2026-09-11):** manual testing surfaced a real follow-up failure this
+formal case didn't happen to catch: after discussing episode 8's evolution content, the
+bare-noun follow-up "what is Tiktaalik?" was misrouted to `general` and refused, instead
+of being recognized as a follow-up to the fossil example just mentioned. Three distinct,
+independently-verified root causes were found and fixed:
+1. `intent_parser.py`'s `_format_history()` truncated each prior answer to 300 characters
+   before sending it to the classifier — "Tiktaalik" appeared at character 1687 of a
+   2278-character answer, so the classifier never saw the word at all. Fixed by passing
+   full prior answers (cheap: small, fast classifier model).
+2. Even with full history, the `follow_up` definition in the classifier's system prompt
+   only gave pronoun-based examples ("walk me through it"). A bare-noun reference with no
+   pronoun ("what is Tiktaalik?") didn't match the pattern. Fixed by broadening the
+   definition to explicitly cover terms that only appeared in the prior answer, with the
+   exact Tiktaalik case worked into the prompt as an example.
+3. Even after correct classification to `follow_up`, `generate.py`'s `MAX_EXCERPT_CHARS`
+   budget trim walks the expanded context in order until the budget is exceeded — and
+   `expand_context()` was sorting the full expanded set (originals + neighbor chunks)
+   purely by chronological timestamp, so the specific Tiktaalik chunk got trimmed because
+   it happened to sort late among 13 chunks. Fixed by reordering `expand_context()` in
+   `retrieval_router.py` to return originally-retrieved chunks first, expanded neighbors
+   after — so budget trimming always preserves what was actually retrieved.
+
+Re-verified end-to-end against the real conversation (chitchat -> episode 5 lookup ->
+"what does episode 8 teach me" -> "what is Tiktaalik?"): `query_type=follow_up`,
+`refused=False`, answer correctly identifies Tiktaalik as the transitional fossil found
+in the Canadian Arctic, cited to Episode 8, 30:46-32:14. Full 15-case suite re-run
+afterward (2026-09-11_124655) with no regressions — see updated tally above.
+
 ---
 
 ## Case 12 — multi-turn: follow-up requesting LESS detail
@@ -260,8 +301,16 @@ A case **passes** only if ALL of the following hold for its `query_type`:
 
 **Expected behavior:** Must not produce an ungrounded answer regardless of which gate catches it.
 
-**Real answer:** Gate 1 classified it correctly as `general` immediately. Retrieved and cited real content from episodes 2 and 4 (Bekenstein's horizon-entropy argument; Shannon naming entropy; the fair-coin-equals-one-bit example) — all verified accurate against the transcripts. However, the citations include suspiciously precise sub-timestamps like "(04:23–04:27)" and "(13:04–13:07)" — 4-second windows — when the actual retrieved chunk metadata only records a single ~90-second start/end for the whole chunk (e.g. the real chunk is 262.57–352.54s / 04:22–05:52). These fine-grained sub-ranges are not derivable from the retrieval metadata at all.
+**Real answer (original run):** Gate 1 classified it correctly as `general` immediately. Retrieved and cited real content from episodes 2 and 4 (Bekenstein's horizon-entropy argument; Shannon naming entropy; the fair-coin-equals-one-bit example) — all verified accurate against the transcripts. However, the citations include suspiciously precise sub-timestamps like "(04:23–04:27)" and "(13:04–13:07)" — 4-second windows — when the actual retrieved chunk metadata only records a single ~90-second start/end for the whole chunk (e.g. the real chunk is 262.57–352.54s / 04:22–05:52). These fine-grained sub-ranges are not derivable from the retrieval metadata at all.
 
-**Matching:** Content matches and is accurate; citation *precision* is fabricated beyond what the system actually knows.
-**Pass/Fail:** **Partial**
-**Failure analysis:** This is the same systemic issue first found in the original Phase 5 eval (case_07: "the model can split one retrieved chunk's single start/end range into multiple invented sub-timestamps") and now confirmed a second time here (and a third, milder instance in Case 10 above). The model is inventing plausible-looking fine-grained timestamps within a chunk's real (much coarser) boundaries. Not a hallucinated fact — the content itself is accurate — but a citation-fidelity gap that no current hard check catches, since `citation_grounded` only verifies the `chunk_id` is real, not that in-text sub-timestamps stay within that chunk's actual `[start, end]`. Three confirmed occurrences across two eval rounds makes this a real, recurring pattern worth fixing (e.g. instructing the model to always cite a chunk's full retrieved range rather than inventing a narrower one, or post-processing citations to snap to the actual chunk boundaries).
+**Matching (original run):** Content matches and is accurate; citation *precision* is fabricated beyond what the system actually knows.
+**Pass/Fail (original run):** **Partial**
+
+**Re-run 2026-09-11_124655:** Same query, same routing (`general`, Gate 1). This time the
+cited ranges — "(Episode 2, 04:23–05:53)", "(Episode 4, 10:05–11:35)", "(Episode 4,
+13:04–14:30)" — were checked against the real retrieved chunk metadata (e.g. the episode
+2 chunk's actual `[262.57, 352.54]`s = 04:22–05:52) and matched the chunk's real
+boundaries almost exactly, rounded to the nearest second. No invented narrow sub-range
+this time.
+**Pass/Fail (this run):** **Pass**
+**Failure analysis:** The underlying issue is not fixed — nothing in this session changed how citations are generated — it's that generation is non-deterministic, so whether the model invents a narrower sub-timestamp or cites the chunk's real range varies run to run. This exact run's Case 15 came out clean, but the same pattern resurfaced mildly in Case 10 in this very run (see above), and was previously confirmed in the original Phase 5 eval's case_07 and this case's original run — three occurrences across runs is enough to call it a real, recurring pattern, just not one that reproduces every time. Still worth fixing at the source (e.g. instructing the model to always cite a chunk's full retrieved range, or post-processing citations to snap to actual chunk boundaries) rather than relying on luck.

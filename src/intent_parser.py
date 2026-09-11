@@ -47,9 +47,17 @@ query_type definitions:
 - broad_comparison: asks to compare/cover "all episodes", or names no specific episodes
   but implies more than a handful.
 - recommendation: asks which episode to listen to for a topic.
-- follow_up: introduces no new topic and refers back to what was just discussed
-  (e.g. "walk me through it", "I didn't get that example", "what do you mean",
-  "go on", "can you explain that differently").
+- follow_up: introduces no new topic and refers back to what was just discussed.
+  This includes BOTH explicit backward-referring phrasing ("walk me through it",
+  "I didn't get that example", "what do you mean", "go on", "can you explain that
+  differently") AND queries with no pronoun at all that simply name something -
+  a term, person, example, or detail - that only appeared in the previous answer
+  and has no other context to be understood from. Check the conversation history
+  for this: if a specific name/term the query asks about shows up in the previous
+  answer, treat it as a follow_up even without "it"/"that"/"this" wording. Example:
+  previous answer mentions "...researchers found Tiktaalik in the Canadian
+  Arctic...", next query is "what is Tiktaalik?" -> follow_up, NOT general, because
+  "Tiktaalik" only means anything in light of that prior answer.
 - general: a topic question with no episode scoping implied either way.
 - chitchat: social/meta messages that are NOT actually seeking information from the podcast
   content - greetings ("hi", "how are you"), thanks, small talk, or generic capability
@@ -133,12 +141,18 @@ def _episode_list_text() -> str:
 
 
 def _format_history(history: list[dict]) -> str:
+    """Pass full prior answers, not a short prefix - a follow-up can reference
+    something mentioned anywhere in the previous answer (a detail near the end of a
+    long, multi-point breakdown is just as valid a follow-up target as the opening
+    line), and truncating hides exactly the content a follow-up needs to be
+    recognized against. This call is cheap and fast (small model) - correctness
+    here matters far more than trimming a few hundred tokens."""
     if not history:
         return "(none - this is the first turn)"
     lines = []
     for turn in history:
         lines.append(f"Q: {turn['query']}")
-        lines.append(f"A: {turn['answer'][:300]}")
+        lines.append(f"A: {turn['answer']}")
     return "\n".join(lines)
 
 

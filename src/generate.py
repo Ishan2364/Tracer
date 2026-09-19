@@ -37,6 +37,15 @@ MULTI_EPISODE_SYSTEM_PROMPT = SYSTEM_PROMPT + (
     "comparing them - but do not blend episodes into one undifferentiated answer."
 )
 
+RECOMMENDATION_SYSTEM_PROMPT = SYSTEM_PROMPT + (
+    "\n\nThe learner is asking WHICH episode(s) to listen to for a topic - they want a "
+    "recommendation, not a summary of the topic itself. Explicitly recommend one specific "
+    "episode (by number and title) as the best fit, and justify the choice using what's "
+    "actually in the excerpts. If more than one episode genuinely covers the topic, name a "
+    "primary recommendation first and mention the others as secondary options - don't just "
+    "describe every episode's content evenly as if this were an open-ended question."
+)
+
 FOLLOWUP_SYSTEM_PROMPT = SYSTEM_PROMPT + (
     "\n\nThis is a follow-up to your previous answer. The excerpts below include a bit more "
     "surrounding context than the original ones did. Follow the learner's CURRENT request "
@@ -109,15 +118,35 @@ def _unknown_episodes_note(unknown_episodes: list[int] | None) -> str:
     )
 
 
-def build_messages(query: str, chunks: list[dict], unknown_episodes: list[int] | None = None) -> list[dict]:
+def build_messages(
+    query: str, chunks: list[dict], unknown_episodes: list[int] | None = None
+) -> tuple[list[dict], list[dict]]:
+    """Returns (messages, chunks_sent) - chunks_sent is the post-budget-trim list that
+    actually made it into the prompt, so callers can build citations from exactly what
+    the model saw, not from the pre-trim set that may include chunks it never received."""
     chunks = _fit_chunks_to_budget(chunks)
     excerpts = "\n\n".join(format_chunk(c) for c in chunks)
     note = _unknown_episodes_note(unknown_episodes)
     user_prompt = f"Excerpts:\n\n{excerpts}{note}\n\nQuestion: {query}"
-    return [
+    messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user_prompt},
     ]
+    return messages, chunks
+
+
+def build_messages_recommendation(
+    query: str, chunks: list[dict], unknown_episodes: list[int] | None = None
+) -> tuple[list[dict], list[dict]]:
+    chunks = _fit_chunks_to_budget(chunks)
+    excerpts = "\n\n".join(format_chunk(c) for c in chunks)
+    note = _unknown_episodes_note(unknown_episodes)
+    user_prompt = f"Excerpts:\n\n{excerpts}{note}\n\nQuestion: {query}"
+    messages = [
+        {"role": "system", "content": RECOMMENDATION_SYSTEM_PROMPT},
+        {"role": "user", "content": user_prompt},
+    ]
+    return messages, chunks
 
 
 def _group_chunks_by_episode(chunks: list[dict]) -> list[tuple[str, list[dict]]]:
@@ -161,26 +190,30 @@ def _fit_multi_episode_to_budget(chunks: list[dict], max_chars: int = config.MAX
 
 def build_messages_multi_episode(
     query: str, chunks: list[dict], unknown_episodes: list[int] | None = None
-) -> list[dict]:
+) -> tuple[list[dict], list[dict]]:
     chunks = _fit_multi_episode_to_budget(chunks)
     excerpts = format_excerpts_multi_episode(chunks)
     note = _unknown_episodes_note(unknown_episodes)
     user_prompt = f"Excerpts (grouped by episode):\n\n{excerpts}{note}\n\nQuestion: {query}"
-    return [
+    messages = [
         {"role": "system", "content": MULTI_EPISODE_SYSTEM_PROMPT},
         {"role": "user", "content": user_prompt},
     ]
+    return messages, chunks
 
 
-def build_messages_followup(query: str, chunks: list[dict], previous_answer: str | None = None) -> list[dict]:
+def build_messages_followup(
+    query: str, chunks: list[dict], previous_answer: str | None = None
+) -> tuple[list[dict], list[dict]]:
     chunks = _fit_chunks_to_budget(chunks)
     excerpts = "\n\n".join(format_chunk(c) for c in chunks)
     prior = f"Your previous answer was:\n{previous_answer}\n\n" if previous_answer else ""
     user_prompt = f"{prior}Excerpts (expanded with surrounding context):\n\n{excerpts}\n\nFollow-up: {query}"
-    return [
+    messages = [
         {"role": "system", "content": FOLLOWUP_SYSTEM_PROMPT},
         {"role": "user", "content": user_prompt},
     ]
+    return messages, chunks
 
 
 CHITCHAT_SYSTEM_PROMPT = """You are Tracer, a warm, encouraging physics study companion for a

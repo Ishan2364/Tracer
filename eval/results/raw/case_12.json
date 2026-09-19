@@ -9,12 +9,12 @@
     "unknown_episodes": [],
     "retrieved_chunk_ids": [
       "great_papers_04_shannon_and_the_birth_of_information_1948_c0011",
-      "great_papers_04_shannon_and_the_birth_of_information_1948_c0012",
       "great_papers_04_shannon_and_the_birth_of_information_1948_c0019",
-      "great_papers_04_shannon_and_the_birth_of_information_1948_c0015",
-      "great_papers_04_shannon_and_the_birth_of_information_1948_c0016"
+      "great_papers_04_shannon_and_the_birth_of_information_1948_c0012",
+      "great_papers_04_shannon_and_the_birth_of_information_1948_c0016",
+      "great_papers_04_shannon_and_the_birth_of_information_1948_c0015"
     ],
-    "answer": "Episode\u202f4 explains Shannon\u2019s source\u2011coding theorem as the statement that **the entropy of a source is the exact, unbeatable lower bound on how much you can compress its messages without losing information**. In other words, you can design coding schemes that squeeze a message down to its entropy and get arbitrarily close to that limit, but you can never push below it (unless you\u2019re willing to discard information)\u202f\u2014\u202fthe \u201cfloor\u201d of compression\u202f\u3010Episode\u202f4, 14:30\u201115:59\u3011.  \n\nThe podcast then illustrates the idea with everyday examples: a text file zips dramatically because language is highly redundant, while a file that\u2019s already compressed or pure random noise (already near its entropy) barely shrinks at all\u202f\u3010Episode\u202f4, 16:00\u201117:24\u3011.  \n\nSo, according to episode\u202f4, Shannon\u2019s source\u2011coding theorem tells us that **entropy measures the true amount of \u201csurprise\u201d per symbol, and lossless compression can approach\u2014but never beat\u2014that amount**.",
+    "answer": "Shannon\u2019s **source\u2011coding theorem** is presented as the \u201cfloor\u201d for lossless compression.  \n\n* He defines the entropy of a source (the weighted average surprise of its symbols) and then says that **entropy is the exact lower bound on how much you can squeeze a message**\u202f\u2014\u202fthe \u201cfloor of compression\u201d (Episode\u202f4, 14:30\u201115:59).  \n\n* He follows up by stating the theorem more concretely: **any source can be compressed down to its entropy, and you can get arbitrarily close to that limit**, but you can never go below it without losing information (Episode\u202f4, 16:00\u201117:24).  \n\nIn short, the episode tells us that Shannon proved you can strip out all the predictable redundancy in a message until you reach the entropy rate, and that this rate is the best possible compression you can achieve.",
     "citations": [
       {
         "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0011",
@@ -24,13 +24,6 @@
         "end": 959.24
       },
       {
-        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0012",
-        "episode_number": 4,
-        "episode_title": "Shannon and the Birth of Information, 1948",
-        "start": 959.64,
-        "end": 1043.88
-      },
-      {
         "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0019",
         "episode_number": 4,
         "episode_title": "Shannon and the Birth of Information, 1948",
@@ -38,11 +31,11 @@
         "end": 1658.5851
       },
       {
-        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0015",
+        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0012",
         "episode_number": 4,
         "episode_title": "Shannon and the Birth of Information, 1948",
-        "start": 1215.935,
-        "end": 1301.9149
+        "start": 959.64,
+        "end": 1043.88
       },
       {
         "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0016",
@@ -50,6 +43,13 @@
         "episode_title": "Shannon and the Birth of Information, 1948",
         "start": 1302.395,
         "end": 1391.595
+      },
+      {
+        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0015",
+        "episode_number": 4,
+        "episode_title": "Shannon and the Birth of Information, 1948",
+        "start": 1215.935,
+        "end": 1301.9149
       }
     ],
     "refused": false,
@@ -71,12 +71,12 @@
       "great_papers_04_shannon_and_the_birth_of_information_1948_c0012",
       "great_papers_04_shannon_and_the_birth_of_information_1948_c0013",
       "great_papers_04_shannon_and_the_birth_of_information_1948_c0014",
-      "great_papers_04_shannon_and_the_birth_of_information_1948_c0016",
+      "great_papers_04_shannon_and_the_birth_of_information_1948_c0015",
       "great_papers_04_shannon_and_the_birth_of_information_1948_c0017",
       "great_papers_04_shannon_and_the_birth_of_information_1948_c0018",
       "great_papers_04_shannon_and_the_birth_of_information_1948_c0020"
     ],
-    "answer": "Shannon\u2019s source\u2011coding theorem says that the entropy of a source is the exact, unbeatable floor for loss\u2011less compression\u202f\u2014\u202fyou can squeeze a message down to its entropy and get arbitrarily close, but you can never push below it without losing information (Episode\u202f4, 14:30\u201115:59).  \n\nBecause natural language is full of predictable patterns, its raw text is far above that floor, so zip\u2011style compression can shrink it a lot. By contrast, a file that\u2019s already compressed or pure random noise is already near its entropy, so it barely gets smaller (Episode\u202f4, 16:00\u201117:24).",
+    "answer": "Shannon showed that the **entropy** of a source\u2014computed by averaging\u202f\\(p\\log\\frac1p\\) over all symbols\u2014is the precise \u201cfloor\u201d for lossless compression (Episode\u202f4, 14:30\u201115:59). His source\u2011coding theorem then says **any** source can be squeezed down to that entropy value, and you can get arbitrarily close to it, but you can never go below without losing information (Episode\u202f4, 16:00\u201117:24). In other words, once you\u2019ve stripped out every predictable pattern, the remaining bits are the true information and can\u2019t be compressed further.",
     "citations": [
       {
         "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0011",
@@ -112,62 +112,6 @@
         "episode_title": "Shannon and the Birth of Information, 1948",
         "start": 1570.615,
         "end": 1658.5851
-      },
-      {
-        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0010",
-        "episode_number": 4,
-        "episode_title": "Shannon and the Birth of Information, 1948",
-        "start": 784.13,
-        "end": 869.88
-      },
-      {
-        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0012",
-        "episode_number": 4,
-        "episode_title": "Shannon and the Birth of Information, 1948",
-        "start": 959.64,
-        "end": 1043.88
-      },
-      {
-        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0013",
-        "episode_number": 4,
-        "episode_title": "Shannon and the Birth of Information, 1948",
-        "start": 1044.36,
-        "end": 1133.2849
-      },
-      {
-        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0014",
-        "episode_number": 4,
-        "episode_title": "Shannon and the Birth of Information, 1948",
-        "start": 1133.445,
-        "end": 1215.695
-      },
-      {
-        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0016",
-        "episode_number": 4,
-        "episode_title": "Shannon and the Birth of Information, 1948",
-        "start": 1302.395,
-        "end": 1391.595
-      },
-      {
-        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0017",
-        "episode_number": 4,
-        "episode_title": "Shannon and the Birth of Information, 1948",
-        "start": 1391.595,
-        "end": 1481.495
-      },
-      {
-        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0018",
-        "episode_number": 4,
-        "episode_title": "Shannon and the Birth of Information, 1948",
-        "start": 1481.655,
-        "end": 1570.0549
-      },
-      {
-        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0020",
-        "episode_number": 4,
-        "episode_title": "Shannon and the Birth of Information, 1948",
-        "start": 1659.0199,
-        "end": 1748.2599
       }
     ],
     "refused": false,

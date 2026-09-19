@@ -1,0 +1,23 @@
+<string>:9: DeprecationWarning: list_runs() is deprecated and will be removed after Jan 31, 2027. Use client.runs.query() instead. See https://docs.langchain.com/langsmith/smithdb-sdk-migration#runs-query for the migration guide.
+total runs found in project: 25
+
+2026-09-19 11:49:03.522152+00:00 | name='ChatGroq' | run_type=llm | parent_run_id=01a0b97f-9da1-7262-b971-5c444218da7f | id=01a0b97f-9da2-7713-b6d3-c1034ce40cc1
+2026-09-19 11:49:03.521313+00:00 | name='model' | run_type=chain | parent_run_id=01a0b97f-6d7b-7892-94e1-8426966e593c | id=01a0b97f-9da1-7262-b971-5c444218da7f
+2026-09-19 11:48:52.204491+00:00 | name='retrieve_chunks_scoped' | run_type=retriever | parent_run_id=01a0b97f-7162-75e2-8d55-86ff7afb9c68 | id=01a0b97f-716c-7242-88d2-1a08a52c11a7
+2026-09-19 11:48:52.194839+00:00 | name='search_episode' | run_type=tool | parent_run_id=01a0b97f-7160-7bb2-9335-656519e66214 | id=01a0b97f-7162-75e2-8d55-86ff7afb9c68
+2026-09-19 11:48:52.192406+00:00 | name='tools' | run_type=chain | parent_run_id=01a0b97f-6d7b-7892-94e1-8426966e593c | id=01a0b97f-7160-7bb2-9335-656519e66214
+2026-09-19 11:48:51.372658+00:00 | name='ChatGroq' | run_type=llm | parent_run_id=01a0b97f-6e29-75e0-82c1-decfd3341b68 | id=01a0b97f-6e2c-7ed0-aa4a-cda755ffa6f1
+2026-09-19 11:48:51.369023+00:00 | name='model' | run_type=chain | parent_run_id=01a0b97f-6d7b-7892-94e1-8426966e593c | id=01a0b97f-6e29-75e0-82c1-decfd3341b68
+2026-09-19 11:48:51.195478+00:00 | name='LangGraph' | run_type=chain | parent_run_id=None | id=01a0b97f-6d7b-7892-94e1-8426966e593c
+2026-09-19 11:43:08.967817+00:00 | name='ChatGroq' | run_type=llm | parent_run_id=01a0b97a-34a6-7220-b974-eb2c99f7fa8d | id=01a0b97a-34a7-74d2-b347-06cc8e4a29e2
+2026-09-19 11:43:08.966874+00:00 | name='model' | run_type=chain | parent_run_id=01a0b97a-00e1-7ba3-bdc0-22cec047fcd4 | id=01a0b97a-34a6-7220-b974-eb2c99f7fa8d
+2026-09-19 11:42:56.578481+00:00 | name='retrieve_chunks_scoped' | run_type=retriever | parent_run_id=01a0b97a-043e-7dd3-a180-b211b2605d59 | id=01a0b97a-0442-78b1-9c1a-c90839f331d6
+2026-09-19 11:42:56.574205+00:00 | name='search_episode' | run_type=tool | parent_run_id=01a0b97a-043c-7cd2-9ef7-efedabfa6bf1 | id=01a0b97a-043e-7dd3-a180-b211b2605d59
+2026-09-19 11:42:56.572361+00:00 | name='tools' | run_type=chain | parent_run_id=01a0b97a-00e1-7ba3-bdc0-22cec047fcd4 | id=01a0b97a-043c-7cd2-9ef7-efedabfa6bf1
+2026-09-19 11:42:55.868726+00:00 | name='ChatGroq' | run_type=llm | parent_run_id=01a0b97a-0178-7493-ba1b-43976c20ba92 | id=01a0b97a-017c-7a41-9920-eefa088053c0
+2026-09-19 11:42:55.864099+00:00 | name='model' | run_type=chain | parent_run_id=01a0b97a-00e1-7ba3-bdc0-22cec047fcd4 | id=01a0b97a-0178-7493-ba1b-43976c20ba92
+2026-09-19 11:42:55.713026+00:00 | name='LangGraph' | run_type=chain | parent_run_id=None | id=01a0b97a-00e1-7ba3-bdc0-22cec047fcd4
+2026-09-19 11:42:35.925474+00:00 | name='parse_intent' | run_type=llm | parent_run_id=None | id=01a0b979-b395-7920-9c3b-9c4b467e999c
+2026-09-19 11:02:01.751403+00:00 | name='groq_generate' | run_type=llm | parent_run_id=01a0b954-8bfd-71a2-a6ff-093757eba2f1 | id=01a0b954-8f17-78f3-9b3d-03e6bdf30d46
+2026-09-19 11:02:01.708169+00:00 | name='retrieve_chunks' | run_type=retriever | parent_run_id=01a0b954-8bfd-71a2-a6ff-093757eba2f1 | id=01a0b954-8eec-7ab2-9e38-8f7355eb1ad5
+2026-09-19 11:02:00.957763+00:00 | name='parse_intent' | run_type=llm | parent_run_id=01a0b954-8bfd-71a2-a6ff-093757eba2f1 | id=01a0b954-8bfd-7990-9da7-5d5c732003b3

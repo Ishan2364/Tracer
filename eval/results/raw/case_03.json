@@ -9,26 +9,19 @@
     "retrieval_mode": "scoped_loop",
     "unknown_episodes": [],
     "retrieved_chunk_ids": [
-      "great_papers_01_einstein_s_special_relativity_c0010",
       "great_papers_01_einstein_s_special_relativity_c0011",
-      "great_papers_01_einstein_s_special_relativity_c0028",
+      "great_papers_01_einstein_s_special_relativity_c0019",
+      "great_papers_01_einstein_s_special_relativity_c0010",
+      "great_papers_01_einstein_s_special_relativity_c0036",
       "great_papers_01_einstein_s_special_relativity_c0001",
-      "great_papers_01_einstein_s_special_relativity_c0007",
-      "great_papers_06_general_relativity_einstein_1915_c0017",
       "great_papers_06_general_relativity_einstein_1915_c0003",
-      "great_papers_06_general_relativity_einstein_1915_c0018",
-      "great_papers_06_general_relativity_einstein_1915_c0022",
-      "great_papers_06_general_relativity_einstein_1915_c0019"
+      "great_papers_06_general_relativity_einstein_1915_c0017",
+      "great_papers_06_general_relativity_einstein_1915_c0001",
+      "great_papers_06_general_relativity_einstein_1915_c0004",
+      "great_papers_06_general_relativity_einstein_1915_c0022"
     ],
-    "answer": "**Episode\u202f1 \u2013 \u201cEinstein\u2019s Special Relativity\u201d**  \nIn this discussion the two observers (the train rider and the platform watcher) are both treated as *perfectly good inertial observers* who each follow the same light\u2011synchronisation procedure.  The podcast stresses that neither view is \u201cmore right\u201d and that there is *no universal \u201cnow\u201d* that all observers share \u2013 simultaneity simply depends on the observer\u2019s state of motion.  \n\n- \u201cEach is a perfectly good inertial observer\u2026\u201d (Episode\u202f1, 13:01\u201114:29)  \n- \u201cThere is no universal\u202fnow\u2026 Your now and mine tilt relative to each other once we\u2019re moving.\u201d (Episode\u202f1, 14:30\u201115:56)\n\n**Episode\u202f6 \u2013 \u201cGeneral Relativity, Einstein\u202f1915\u201d**  \nHere the hosts point out that *special* relativity *does* give a privileged status to a specific class of observers: those moving at constant velocity with no acceleration (the inertial observers).  General relativity was Einstein\u2019s answer to extend the theory so that *accelerated* observers are no longer excluded.  \n\n- \u201cSpecial relativity gives a privileged status to a particular kind of observer\u2026 those moving at constant velocity, coasting, no acceleration. Those are called inertial observers\u2026\u201d (Episode\u202f6, 02:58\u201104:25)\n\n---\n\n### Quick Comparison  \n\n| Aspect | Episode\u202f1 | Episode\u202f6 |\n|--------|-----------|-----------|\n| **Who is \u201cprivileged\u201d?** | No single observer is privileged; all inertial observers are equally valid. | Special relativity privileges *only* inertial (non\u2011accelerating) observers. |\n| **What changes in GR?** | Not addressed directly; the focus is on relativity of simultaneity among inertial frames. | General relativity removes the privilege, making the laws work for *any* observer, accelerated or not. |\n\nSo, Episode\u202f1 tells us that simultaneity is observer\u2011dependent but gives no special rank to any inertial frame, while Episode\u202f6 explicitly states that special relativity does grant a privileged role to inertial observers\u2014and that general relativity was invented to lift that restriction.",
+    "answer": "**Episode\u202f1 \u2013 \u201cEinstein\u2019s Special Relativity\u201d**  \nIn this discussion the two observers (the person on the train and the person on the platform) are both treated as *perfectly good inertial observers* and *neither is given a privileged viewpoint* (Episode\u202f1, 14:30\u201115:56).  The authors stress that the first postulate of special relativity says \u201cneither has a privileged view,\u201d and the whole \u201cstrange\u201d physics comes from the fact that they simply *disagree about simultaneity* rather than one being \u201cmore right\u201d than the other (Episode\u202f1, 14:30\u201115:56).\n\n**Episode\u202f6 \u2013 \u201cGeneral Relativity, Einstein\u202f1915\u201d**  \nHere the podcast spells out that *special relativity* itself *does* grant a special status to a particular class of observers: those who move at constant velocity with no acceleration\u2014*the inertial observers* (Episode\u202f6, 02:58\u201104:25).  As soon as you \u201caccelerate\u2026 you\u2019re outside the club\u201d and the original theory \u201chas nothing to say about you\u201d (Episode\u202f6, 02:58\u201104:25).  Einstein\u2019s goal with the *general* theory was to remove that privilege so that *all* observers, accelerated or not, are treated on an equal footing (Episode\u202f6, 02:58\u201104:25).\n\n---\n\n### Putting the two together  \n\n- **Episode\u202f1** tells us that, within the framework of special relativity, *both* inertial frames are equally valid\u2014there is *no* privileged observer; the apparent paradoxes (e.g., each seeing the other\u2019s clock run slow) are resolved by the relativity of simultaneity.  \n- **Episode\u202f6** reminds us that the *original* special theory *does* privilege inertial observers, leaving accelerated observers without a description, and that Einstein\u2019s general relativity was motivated precisely to give *every* observer (accelerated or not) the same rights.\n\nSo the two episodes complement each other: Episode\u202f1 emphasizes the *equality* of inertial observers once you accept relativity of simultaneity, while Episode\u202f6 points out that *only* inertial observers enjoyed that privileged status in the *special* theory, and that general relativity was the step that finally removed the privilege altogether.",
     "citations": [
-      {
-        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0010",
-        "episode_number": 1,
-        "episode_title": "Einstein's Special Relativity",
-        "start": 780.51,
-        "end": 868.95
-      },
       {
         "chunk_id": "great_papers_01_einstein_s_special_relativity_c0011",
         "episode_number": 1,
@@ -37,32 +30,11 @@
         "end": 955.97003
       },
       {
-        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0028",
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0019",
         "episode_number": 1,
         "episode_title": "Einstein's Special Relativity",
-        "start": 2354.4849,
-        "end": 2437.155
-      },
-      {
-        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0001",
-        "episode_number": 1,
-        "episode_title": "Einstein's Special Relativity",
-        "start": 0.24,
-        "end": 86.685
-      },
-      {
-        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0007",
-        "episode_number": 1,
-        "episode_title": "Einstein's Special Relativity",
-        "start": 521.86,
-        "end": 610.4
-      },
-      {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0017",
-        "episode_number": 6,
-        "episode_title": "General Relativity, Einstein 1915",
-        "start": 1410.6499,
-        "end": 1499.25
+        "start": 1571.635,
+        "end": 1659.805
       },
       {
         "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0003",
@@ -72,25 +44,11 @@
         "end": 265.32
       },
       {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0018",
+        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0017",
         "episode_number": 6,
         "episode_title": "General Relativity, Einstein 1915",
-        "start": 1499.49,
-        "end": 1588.765
-      },
-      {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0022",
-        "episode_number": 6,
-        "episode_title": "General Relativity, Einstein 1915",
-        "start": 1844.9601,
-        "end": 1934.26
-      },
-      {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0019",
-        "episode_number": 6,
-        "episode_title": "General Relativity, Einstein 1915",
-        "start": 1589.5651,
-        "end": 1672.1649
+        "start": 1410.6499,
+        "end": 1499.25
       }
     ],
     "refused": false,

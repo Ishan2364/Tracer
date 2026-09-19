@@ -18,7 +18,7 @@
       "great_papers_05_attention_is_all_you_need_2017_c0023",
       "great_papers_04_shannon_and_the_birth_of_information_1948_c0020"
     ],
-    "answer": "**Episode\u202f7 \u2013 \u201cOn Computable Numbers, Turing\u202f1936\u201d** is the one that talks directly about the limits of what computers (or any mechanical procedure) can decide. In the excerpt the speaker shows Turing\u2019s diagonal argument and explains that there are far more real numbers than there are machines to compute them, so \u201calmost every real number must be uncomputable\u201d and \u201cthere are more numbers than there are machines to compute them\u201d \u2013 a clear statement of the fundamental limits of computation (Episode\u202f7, 16:05\u201117:35).\n\n---\n\n### What the other episodes cover  \n\n- **Episode\u202f3 (\u201cThe Double Helix, Watson and Crick\u202f1953\u201d)** discusses model\u2011building in biology and the risks of publishing a wrong structure, but it doesn\u2019t address computational limits.  \n- **Episode\u202f4 (\u201cShannon and the Birth of Information,\u202f1948\u201d)** explains Shannon\u2019s existence proof for good codes and why it doesn\u2019t give a construction, which is about information theory, not about what computers can or cannot decide.  \n- **Episode\u202f5 (\u201cAttention Is All You Need,\u202f2017\u201d)** focuses on memory and parallelism problems in neural networks, again unrelated to the theoretical limits of computation.\n\n---\n\n### Quick synthesis  \n\nIf you\u2019re curious about the theoretical boundary of decidability\u2014why some problems can never be solved by any algorithm\u2014head straight to Episode\u202f7. The other episodes are fascinating, but they explore different domains (biology, coding theory, and deep\u2011learning architecture) and won\u2019t give you the answer you\u2019re looking for. Happy listening!",
+    "answer": "If you want to hear a clear, focused discussion of the fundamental limits of what any computer (or Turing machine) can decide, start with **Episode\u202f7 \u2013 \u201cOn Computable Numbers, Turing\u202f1936.\u201d**  \n\n- The hosts walk through Cantor\u2019s diagonal trick and show how Turing uses the same idea to prove that there are far more real numbers than there are machines that could generate them, so most reals are **uncomputable** and can never be decided by any algorithm (16:05\u201117:35)\u3010Episode\u202f7, 16:05\u201117:35\u3011.  \n- Earlier in the same episode they spell out the counting argument: machines can be listed (they\u2019re countable), but the real numbers between\u202f0 and\u202f1 cannot be put on any such list, giving the classic \u201cmore reals than machines\u201d result (14:36\u201116:05)\u3010Episode\u202f7, 14:36\u201116:05\u3011.  \n\nTogether these sections give you the core insight into the theoretical ceiling on computability\u2014exactly the \u201climits of what computers can decide\u201d you\u2019re after.\n\n*Secondary options*: The other episodes in the catalogue (the attention\u2011mechanism talk in Episode\u202f5 or Shannon\u2019s coding discussion in Episode\u202f4) are fascinating, but they don\u2019t address computability limits directly. So Episode\u202f7 is the best single listen for your question.",
     "citations": [
       {
         "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0012",
@@ -54,34 +54,6 @@
         "episode_title": "Shannon and the Birth of Information, 1948",
         "start": 1570.615,
         "end": 1658.5851
-      },
-      {
-        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0016",
-        "episode_number": 4,
-        "episode_title": "Shannon and the Birth of Information, 1948",
-        "start": 1302.395,
-        "end": 1391.595
-      },
-      {
-        "chunk_id": "great_papers_03_the_double_helix_watson_and_crick_1953_c0011",
-        "episode_number": 3,
-        "episode_title": "The Double Helix, Watson and Crick 1953",
-        "start": 867.65,
-        "end": 954.23004
-      },
-      {
-        "chunk_id": "great_papers_05_attention_is_all_you_need_2017_c0023",
-        "episode_number": 5,
-        "episode_title": "Attention Is All You Need, 2017",
-        "start": 1930.1901,
-        "end": 2017.1699
-      },
-      {
-        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0020",
-        "episode_number": 4,
-        "episode_title": "Shannon and the Birth of Information, 1948",
-        "start": 1659.0199,
-        "end": 1748.2599
       }
     ],
     "refused": false,

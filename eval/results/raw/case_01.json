@@ -10,11 +10,11 @@
     "retrieved_chunk_ids": [
       "great_papers_07_on_computable_numbers_turing_1936_c0019",
       "great_papers_07_on_computable_numbers_turing_1936_c0013",
+      "great_papers_07_on_computable_numbers_turing_1936_c0018",
       "great_papers_07_on_computable_numbers_turing_1936_c0017",
-      "great_papers_07_on_computable_numbers_turing_1936_c0014",
-      "great_papers_07_on_computable_numbers_turing_1936_c0005"
+      "great_papers_07_on_computable_numbers_turing_1936_c0014"
     ],
-    "answer": "Turing showed that the idea of a \u201cchecker\u201d \u2013 a machine that could take any program (and its input) and always tell, in finite time, whether that program will eventually stop \u2013 leads to a logical contradiction. By assuming such a checker existed and then using it in a self\u2011referential construction (the same trick as the liar\u2019s paradox), he proved the assumption collapses. Because that contradiction is airtight, no mechanical procedure can ever work for every possible program. In other words, the halting problem is undecidable: no machine can decide in general whether an arbitrary program halts.\u202f(Episode\u202f7, 26:22\u201127:51; also see the description of the checker and the proof\u2011by\u2011contradiction argument in Episode\u202f7, 23:24\u201124:54.)",
+    "answer": "Turing shows that a \u201cuniversal halt\u2011detector\u201d can\u2019t exist because its very existence leads to a self\u2011contradiction.  \n\nFirst we imagine a machine\u202f\u2014\u202fthe **checker**\u202f\u2014\u202fthat, given any other machine\u2019s description and its input, always tells us correctly whether that machine will eventually stop or run forever (the halting problem).  Turing then builds a second machine, the **troublemaker**, that uses the checker as a sub\u2011routine: it feeds the description of a machine to the checker and then does the opposite of whatever answer it receives (if the checker says \u201chalts\u201d, the troublemaker loops forever; if the checker says \u201cruns forever\u201d, the troublemaker halts)\u202f(24:54\u201126:21).  \n\nNow feed the troublemaker its own description.  Whatever the checker predicts about the troublemaker, the troublemaker will do the opposite, so the checker\u2019s answer must be wrong.  This contradiction shows that no such checker can exist, and therefore no machine can decide in general whether an arbitrary program halts\u202f(26:22\u201127:51).  \n\nIn short, the halting problem is undecidable because assuming a universal halting procedure leads to a self\u2011referential paradox that makes the procedure inevitably give a false answer.\u202f(23:24\u201124:54 also frames the question and the proof strategy).",
     "citations": [
       {
         "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0019",
@@ -31,6 +31,13 @@
         "end": 1144.51
       },
       {
+        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0018",
+        "episode_number": 7,
+        "episode_title": "On Computable Numbers, Turing 1936",
+        "start": 1494.165,
+        "end": 1581.315
+      },
+      {
         "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0017",
         "episode_number": 7,
         "episode_title": "On Computable Numbers, Turing 1936",
@@ -43,13 +50,6 @@
         "episode_title": "On Computable Numbers, Turing 1936",
         "start": 1144.91,
         "end": 1233.9949
-      },
-      {
-        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0005",
-        "episode_number": 7,
-        "episode_title": "On Computable Numbers, Turing 1936",
-        "start": 345.9,
-        "end": 433.83002
       }
     ],
     "refused": false,

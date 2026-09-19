@@ -20,7 +20,7 @@
       "great_papers_06_general_relativity_einstein_1915_c0005",
       "great_papers_06_general_relativity_einstein_1915_c0023"
     ],
-    "answer": "**Episode\u202f1 \u2013 \u201cEinstein\u2019s Special Relativity\u201d**  \n- The hosts walk through the core idea that observers disagree about *separate* measurements of space and time, but they all agree on a single combined quantity: the **space\u2011time interval** (time\u2011squared\u202fminus\u202fspace\u2011squared, with\u202fc setting the scale). This invariant is the \u201creal object\u201d behind the \u201cshadows\u201d of space and time.\u202f(Episode\u202f1,\u202f47:55\u201149:24)  \n- They point out that moving clocks really run slower \u2013 a tiny but measurable effect \u2013 and that Earth\u2019s gravity adds a second, opposite\u2011direction shift.\u202f(Episode\u202f1,\u202f50:46\u201152:14)  \n- Because of those shifts, modern technology (e.g., GPS) would drift by kilometres each day if we didn\u2019t correct for relativity; every time a phone finds its location it is silently confirming Einstein\u2019s 1905 paper.\u202f(Episode\u202f1,\u202f50:46\u201152:14)  \n- The two postulates (the constancy of the speed of light and the equivalence of inertial frames) are highlighted, and the hosts stress that while space \u201cstretches\u201d and time \u201cslows,\u201d the **speed of light** is the only thing that stays the same for every observer.\u202f(Episode\u202f1,\u202f50:46\u201152:14)\n\n**Episode\u202f6 \u2013 \u201cGeneral Relativity, Einstein\u202f1915\u201d**  \n- The episode begins by reminding us that special relativity fuses space and time but still leaves a \u201cloose thread\u201d \u2013 it does **not** explain gravity.\u202f(Episode\u202f6,\u202f00:00\u201101:28)  \n- Einstein\u2019s \u201chappiest thought\u201d is introduced: a freely falling person feels **no gravity** (the equivalence principle). This simple insight leads to predictions of light bending, clock slowing, and the ultimate conclusion that gravity is **the shape of space\u2011time**, not a force.\u202f(Episode\u202f6,\u202f00:00\u201101:28)  \n- The hosts explain that special relativity only works for **inertial** (non\u2011accelerating) observers; once you accelerate you\u2019re \u201coutside the club\u201d and the theory says nothing about you. General relativity was Einstein\u2019s answer \u2013 a relativity that works for **all** observers, accelerated or not.\u202f(Episode\u202f6,\u202f02:58\u201104:25)  \n- They emphasize that the two \u201cloose threads\u201d (gravity and acceleration) are actually the same thread, and recognizing that is the key move to the general theory.\u202f(Episode\u202f6,\u202f02:58\u201104:25)\n\n---\n\n### Quick comparison  \n\n- **What they agree on:** Both episodes stress that a single invariant (the space\u2011time interval in special relativity; the geometry of space\u2011time in general relativity) underlies all observations.  \n- **What changes:** Episode\u202f1 focuses on how *relative motion* and *weak gravity* affect clocks and measurements, while Episode\u202f6 expands the picture to *any* acceleration and shows gravity emerging from curved space\u2011time itself.  \n\nIf you\u2019re looking for a deeper dive into any of these points, just let me know which part sparks your curiosity!",
+    "answer": "**Episode\u202f1 \u2013 \u201cEinstein\u2019s Special Relativity\u201d**  \n\n- The core idea that *all* inertial observers agree on a single quantity is the **space\u2011time interval**.  Even though different observers slice space and time differently, the combination \u201ctime\u202f\u00b2\u202f\u2013\u202f(space\u202f/\u202fc)\u202f\u00b2\u201d comes out the same for everyone (Episode\u202f1,\u202f47:55\u201149:24).  \n- Because moving clocks run slow, the tiny relativistic shift in a satellite\u2019s clock (both the special\u2011relativistic \u201cmoving\u2011fast\u201d part and the general\u2011relativistic \u201chigher\u2011up\u2011in\u2011gravity\u201d part) would make a phone\u2019s GPS position drift by kilometres in a day if we didn\u2019t correct for it (Episode\u202f1,\u202f50:46\u201152:14).  \n- The two postulates Einstein wrote on a desk\u2014*the speed of light is the same for all observers* and *the laws of physics look the same in any inertial frame*\u2014lead to the picture of space stretching, time slowing, and the only invariant being a beam of light (Episode\u202f1,\u202f50:46\u201152:14).  \n\n**Episode\u202f6 \u2013 \u201cGeneral Relativity, Einstein\u202f1915\u201d**  \n\n- Special relativity works beautifully for **inertial** (non\u2011accelerating) observers, but it says nothing about what happens when you accelerate.  That gap was the \u201cloose thread\u201d Einstein wanted to tie up (Episode\u202f6,\u202f02:58\u201104:25).  \n- The \u201chappiest thought\u201d that solved the problem was the **equivalence principle**: a person in free fall feels no gravity.  This simple insight leads to the predictions of bending light, slowing clocks, and finally the idea that gravity is not a force but the curvature of space\u2011time itself (Episode\u202f6,\u202f00:00\u201101:28).  \n- The episode emphasizes that the same thread\u2014how acceleration and gravity relate\u2014unifies the whole move from \u201cspecial\u201d to \u201cgeneral\u201d relativity (Episode\u202f6,\u202f02:58\u201104:25).  \n\n---\n\n### Quick Comparison  \n\n- **What they agree on:** Both episodes stress that a single invariant (the spacetime interval in special relativity, the curvature of spacetime in general relativity) underlies all observers\u2019 measurements.  \n- **What they add:** Episode\u202f1 shows how that invariant keeps clocks and distances consistent enough for everyday tech like GPS.  Episode\u202f6 shows why we need to go beyond inertial frames, using the equivalence principle to turn gravity into geometry.  \n\nSo, the \u201crelativity episode\u201d package gives you the invariant interval that saves special relativity, then expands the story to accelerated frames and gravity by treating spacetime itself as a dynamic, curved stage.",
     "citations": [
       {
         "chunk_id": "great_papers_01_einstein_s_special_relativity_c0036",
@@ -37,27 +37,6 @@
         "end": 2963.71
       },
       {
-        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0033",
-        "episode_number": 1,
-        "episode_title": "Einstein's Special Relativity",
-        "start": 2787.6099,
-        "end": 2874.6902
-      },
-      {
-        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0023",
-        "episode_number": 1,
-        "episode_title": "Einstein's Special Relativity",
-        "start": 1922.5199,
-        "end": 2008.56
-      },
-      {
-        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0018",
-        "episode_number": 1,
-        "episode_title": "Einstein's Special Relativity",
-        "start": 1484.6951,
-        "end": 1571.475
-      },
-      {
         "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0001",
         "episode_number": 6,
         "episode_title": "General Relativity, Einstein 1915",
@@ -70,27 +49,6 @@
         "episode_title": "General Relativity, Einstein 1915",
         "start": 178.44499,
         "end": 265.32
-      },
-      {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0015",
-        "episode_number": 6,
-        "episode_title": "General Relativity, Einstein 1915",
-        "start": 1231.765,
-        "end": 1319.465
-      },
-      {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0005",
-        "episode_number": 6,
-        "episode_title": "General Relativity, Einstein 1915",
-        "start": 352.52,
-        "end": 442.47
-      },
-      {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0023",
-        "episode_number": 6,
-        "episode_title": "General Relativity, Einstein 1915",
-        "start": 1934.98,
-        "end": 2024.4174
       }
     ],
     "refused": false,

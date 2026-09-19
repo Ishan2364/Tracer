@@ -166,6 +166,33 @@ A case **passes** only if ALL of the following hold for its `query_type`:
 **Pass/Fail:** **Pass**
 **Failure analysis:** None.
 
+**Post-eval enhancement (2026-09-19):** manual review found that `recommendation` and
+`broad_comparison` were classified into their own `query_type` labels but had **zero
+distinguishing behavior** downstream — both fell through the exact same retrieval
+(`broad_rebalanced`) and the exact same generic generation prompt as `general`, with the
+prompt-selection branch in `answer.py` keying only on a `multi_episode` boolean (whether
+retrieval happened to span >1 episode), never on `query_type` itself. `recommendation`
+answering well (as it did in this case) was incidental good instruction-following, not a
+designed guarantee.
+
+**Fix applied:** added `RECOMMENDATION_SYSTEM_PROMPT` + `build_messages_recommendation()`
+in `generate.py`, which explicitly instructs the model to commit to one specific episode
+and justify the choice, rather than describing the topic evenly. Wired into `answer.py`'s
+branch ahead of the generic fallback. Separately, `broad_comparison` now always routes to
+the per-episode comparative prompt (`build_messages_multi_episode`) regardless of whether
+this specific query's retrieval happened to span multiple episodes — the user explicitly
+asked for a cross-episode comparison, so "only episode 6 actually covers this" is itself
+a valid comparison answer, not a reason to silently fall back to the plain prompt.
+
+**Re-verified:** re-ran this exact query after the fix — still recommends Episode 7 with
+the same grounded Cantor's-diagonal-argument citation, now explicitly framed as "start
+with Episode 7 — why this one?" instead of a flatter description. Full 15-case suite
+re-run afterward (`2026-09-19_154934`) — every other case's `query_type`/`retrieval_mode`/
+chunk count is byte-identical to the pre-fix run; only this case's answer *shape* changed,
+and only because it's the one case whose branch condition actually changed.
+`general` was deliberately left untouched — it's the no-special-framing default by
+definition, not a category with a behavior gap to close.
+
 ---
 
 ## Case 9 — named/single reference to a nonexistent episode

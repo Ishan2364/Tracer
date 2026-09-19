@@ -15,6 +15,7 @@ SRC_DIR = Path(__file__).resolve().parent.parent  # src/api/ -> src/
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
+import agent as agent_module  # noqa: E402
 import config  # noqa: E402
 from answer import answer_conversational  # noqa: E402
 from retrieve import get_collection  # noqa: E402
@@ -26,6 +27,13 @@ router = APIRouter(prefix="/chat", tags=["chat"])
 class ChatRequest(BaseModel):
     session_id: str
     query: str
+    # "fixed" = the existing intent-classifier + router pipeline (default, unchanged).
+    # "agent" = the experimental ReAct agent (REACT_AGENT_DESIGN.md) - same session_id
+    # is reused as the agent's thread_id, but the two architectures keep entirely
+    # separate conversation history (ConversationState/session_store.py vs. the
+    # agent's own LangGraph checkpointer) - switching mid-conversation does not carry
+    # context across from one to the other.
+    architecture: str = "fixed"
 
 
 class Citation(BaseModel):
@@ -40,10 +48,10 @@ class ChatResponse(BaseModel):
     query: str
     answer: str
     citations: list[Citation]
-    query_type: str
-    retrieval_mode: str
+    query_type: str | None = None
+    retrieval_mode: str | None = None
     refused: bool
-    unknown_episodes: list[int]
+    unknown_episodes: list[int] = []
 
 
 @router.post("", response_model=ChatResponse)
@@ -52,6 +60,18 @@ def chat(req: ChatRequest):
         raise HTTPException(status_code=400, detail="query must not be empty")
     if not req.session_id.strip():
         raise HTTPException(status_code=400, detail="session_id must not be empty")
+
+    if req.architecture == "agent":
+        result = agent_module.run_agent(req.query, thread_id=req.session_id)
+        return ChatResponse(
+            query=result["query"],
+            answer=result["answer"],
+            citations=result["citations"],
+            query_type="agent",
+            retrieval_mode=f"{result['tool_calls_this_turn']} chunk(s) via tool calls",
+            refused=result["refused"],
+            unknown_episodes=[],
+        )
 
     state = load_session(req.session_id)
     result = answer_conversational(req.query, state)

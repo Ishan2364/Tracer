@@ -1,0 +1,9 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  26%|##6       | 52/199 [00:00<00:00, 492.00it/s]Loading weights:  51%|#####1    | 102/199 [00:00<00:00, 368.07it/s]Loading weights:  84%|########3 | 167/199 [00:00<00:00, 433.43it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 504.39it/s]
+query_type: recommendation | retrieval_mode: recommendation_no_topic | refused: False
+Happy to point you to something - what are you interested in? For example: relativity, black holes, DNA, information theory, neural networks, computability, or evolution.
+
+Or browse the full collection (8 episodes):
+- Episode 1: Einstein's Special Relativity
+- Episode 2: How Black Holes Radiate, Hawking 1975
+- Episode 3: The Double Helix, Watson and Crick 1953
+- Episode 4: Shannon and the Birth of

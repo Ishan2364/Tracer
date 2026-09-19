@@ -1,0 +1,4 @@
+Running query, thread_id= 91744ee7-1177-475e-aeae-50b8ce6ba5ee
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:   9%|9         | 18/199 [00:00<00:01, 175.08it/s]Loading weights:  23%|##2       | 45/199 [00:00<00:00, 219.40it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 773.02it/s]
+Answer produced, len= 2029
+Waiting for traces to flush...

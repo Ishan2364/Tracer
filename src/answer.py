@@ -194,12 +194,26 @@ def answer_conversational(query: str, state) -> dict:
                 "citations": [],
                 "refused": False,
             }
-        # Gate 2 caught a Gate 1 misclassification - fall back to a normal broad
-        # search using the raw query text (not the chitchat classification's topic,
-        # which wasn't extracted carefully since it thought this wasn't a content
-        # question at all).
-        intent = {"query_type": "general", "topic": query, "episode_refs": [], "time_range": None}
-        query_type = "general"
+        # Gate 2 caught a Gate 1 misclassification - re-run classification on the raw
+        # query now that we know it's a real content question, so episode_refs/topic/
+        # time_range get properly extracted instead of falling back to a bare unscoped
+        # search. Gate 1's own first-pass fields aren't trustworthy here even though
+        # parse_intent always returns them - they "weren't extracted carefully since it
+        # thought this wasn't a content question at all" (see below), same reason a
+        # generic fallback was used originally.
+        #
+        # Guarded against looping: classification isn't perfectly deterministic
+        # (observed directly - repeated identical calls to the same query have
+        # returned different results), so if this second pass also says chitchat,
+        # don't call _run_chitchat again - fall back to the safe generic search
+        # instead, exactly as before.
+        reclassified = parse_intent(query, state.recent_history())
+        if reclassified["query_type"] != "chitchat":
+            intent = reclassified
+            query_type = reclassified["query_type"]
+        else:
+            intent = {"query_type": "general", "topic": query, "episode_refs": [], "time_range": None}
+            query_type = "general"
 
     routing = retrieval_router.route(intent, state)
     chunks = routing["chunks"]

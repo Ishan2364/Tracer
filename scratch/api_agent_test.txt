@@ -1,8 +1,0 @@
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  16%|#5        | 31/199 [00:00<00:00, 307.26it/s]Loading weights:  31%|###1      | 62/199 [00:00<00:00, 256.76it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 752.17it/s]
-query_type: agent
-retrieval_mode: 0 chunk(s) via tool calls
-refused: True
-num citations: 0
-answer (first 300 chars): Episode 5 dives deep into what “attention” really means for language models and why it became the star of the show.
-
-* **Attention as selective looking‑back** – The hosts explain that attention lets a model “look back over the entire English sentence and pay attention to the word keys, largely ignor

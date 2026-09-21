@@ -1,18 +1,0 @@
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:   9%|9         | 18/199 [00:00<00:01, 169.10it/s]Loading weights:  24%|##4       | 48/199 [00:00<00:00, 223.32it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 704.64it/s]
-ANSWER:
-Episode 6 (the “General Relativity, Einstein 1915” episode) treats the equivalence principle as the **central, almost magical insight that lets Einstein turn gravity from a mysterious force into the geometry of spacetime**.  
-
-- It first introduces the principle in everyday language: a uniform gravitational field is *exactly* the same as being in an accelerating rocket, so every mechanical experiment (including weighing yourself) gives the same result in both situations【great_papers_06_general_relativity_einstein_1915_c0005】.  
-- The hosts then use the classic “sealed box” thought‑experiment: shine a laser across a rocket that is accelerating upward. Because the rocket moves while the light is in flight, the beam hits the opposite wall a little lower, appearing to bend. By the equivalence principle the same bending must occur in a stationary box sitting in a uniform gravitational field, leading Einstein to predict that **gravity bends light**【great_papers_06_general_relativity_einstein_1915_c0006】.  
-- They also point out the limitation: the “falling cancels gravity” idea works only **locally** in a sufficiently small region; over larger distances freely‑falling observers’ paths begin to converge, hinting at spacetime curvature【great_papers_06_general_relativity_einstein_1915_c0011】.  
-
-In short, Episode 6 explains the equivalence principle as the statement that *a uniform gravitational field and an accelerating frame are indistinguishable*, and shows how this simple equivalence immediately yields two profound predictions—light bending and time dilation—while also foreshadowing the need for a curved‑spacetime description of gravity.
-
-CITATIONS: 5
- - {'chunk_id': 'great_papers_06_general_relativity_einstein_1915_c0008', 'episode_number': 6, 'episode_title': 'General Relativity, Einstein 1915', 'start': 615.185, 'end': 704.88495}
- - {'chunk_id': 'great_papers_06_general_relativity_einstein_1915_c0005', 'episode_number': 6, 'episode_title': 'General Relativity, Einstein 1915', 'start': 352.52, 'end': 442.47}
- - {'chunk_id': 'great_papers_06_general_relativity_einstein_1915_c0006', 'episode_number': 6, 'episode_title': 'General Relativity, Einstein 1915', 'start': 443.45502, 'end': 530.465}
- - {'chunk_id': 'great_papers_06_general_relativity_einstein_1915_c0011', 'episode_number': 6, 'episode_title': 'General Relativity, Einstein 1915', 'start': 877.18, 'end': 966.57}
- - {'chunk_id': 'great_papers_06_general_relativity_einstein_1915_c0001', 'episode_number': 6, 'episode_title': 'General Relativity, Einstein 1915', 'start': 0.0, 'end': 88.25}
-
-refused: False

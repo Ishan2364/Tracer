@@ -1,27 +1,0 @@
-Q: Recommend me an episode to watch ?
-query_type: recommendation | retrieval_mode: recommendation_no_topic | refused: False
-Happy to point you to something - what are you interested in? For example: relativity, black holes, DNA, information theory, neural networks, computability, or evolution.
-
-Or browse the full collection (8 episodes):
-- Episode 1: Einstein's Special Relativity
-- Episode 2: How Black Holes Radiate, Hawking 1975
-- Episode 3: The Double Helix, Watson and Crick 1953
-- Episode 4: Shannon and the Birth of Information, 1948
-- Episode 5: Attention Is All You Need, 2017
-- Episode 6: General Relativity, Ein
----
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  24%|##4       | 48/199 [00:00<00:00, 398.41it/s]Loading weights:  44%|####4     | 88/199 [00:00<00:00, 267.94it/s]Loading weights:  59%|#####8    | 117/199 [00:00<00:00, 224.43it/s]Loading weights:  71%|#######   | 141/199 [00:00<00:00, 209.18it/s]Loading weights:  82%|########1 | 163/199 [00:00<00:00, 207.87it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 246.46it/s]
-Q: what episode should I watch next ?
-query_type: recommendation | retrieval_mode: broad_rebalanced | refused: False
-If you’re looking for the next episode that will give you a big “aha!” moment, I’d point you to **Episode 4 – “Shannon and the Birth of Information”**.  
-
-Why this one?  
-
-* It starts by turning the old intuition about noisy channels on its head – showing that every real communication line (phone, radio, disc) is noisy, but that noise isn’t an unbeatable curse (Episode 4, 20:16‑21:42).  
-* Then it reveals Shannon’s breakthrough: every noisy channel has a definite capacity, a maximum bits‑per‑sec
----
-Q: Is there a episode that should I listen and it will help understand relativity
-query_type: recommendation | retrieval_mode: broad_rebalanced | refused: False
-Absolutely! If you want a solid, friendly walk‑through of what relativity is all about, start with **Episode 1 – “Einstein’s Special Relativity.”**  
-In this episode the hosts lay out the two postulates, explain how moving clocks run slow and rulers shrink, and even introduce the invariant space‑time interval that every observer agrees on (46:28‑47:55 and 47:55‑49:24). That gives you the core ideas of special relativity in plain language, plus a glimpse of how it leads to the next step—gravity a
----

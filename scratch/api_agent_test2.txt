@@ -1,14 +1,0 @@
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  15%|#5        | 30/199 [00:00<00:00, 290.74it/s]Loading weights:  34%|###3      | 67/199 [00:00<00:00, 333.26it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 867.62it/s]
-query_type: agent
-retrieval_mode: 5 chunk(s) via tool calls
-refused: False
-num citations: 5
- - 5 Attention Is All You Need, 2017 446.81 535.24
- - 5 Attention Is All You Need, 2017 968.935 1055.82
- - 5 Attention Is All You Need, 2017 90.329994 178.63501
- - 5 Attention Is All You Need, 2017 1236.1849 1321.335
- - 5 Attention Is All You Need, 2017 1146.065 1235.865
-
-answer (first 300 chars): Episode 5 dives deep into what “attention” actually means for language models and why it became the star of the Transformer architecture.
-
-* **Attention as selective looking‑back** – The hosts explain that attention lets a model “look back over the entire English sentence and pay attention to the wo

@@ -1,19 +1,0 @@
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  15%|#5        | 30/199 [00:00<00:00, 264.45it/s]Loading weights:  35%|###5      | 70/199 [00:00<00:00, 339.69it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 766.71it/s]
-ANSWER:
-In this episode the hosts walk us through the big ideas that make General Relativity (GR) tick:
-
-* **Gravity isn’t a force – it’s the shape of spacetime.**  They stress that mass and energy “warp the space‑time around them” and that objects in free fall simply follow the straightest possible paths (geodesics) in that curved geometry, rather than being pulled by an invisible rope (Episode 6, 11:46‑13:06).
-
-* **The metric is the local ruler and clock.**  The episode explains that the “metric” tells you how to measure real distances and times at each point, and that its variation from place to place is what we experience as gravity (Episode 6, 14:37‑16:07).
-
-* **GR has passed every test we’ve thrown at it.**  Over a hundred years of experiments—from Mercury’s perihelion shift to LIGO’s detection of gravitational waves—have never “cracked” the theory (Episode 6, 32:15‑33:44).  One concrete historic test they highlight is the extra 43 arc‑seconds‑per‑century precession of Mercury’s orbit that Newtonian gravity couldn’t explain (Episode 6, 20:32‑21:59).
-
-* **It still has a missing piece.**  The hosts point out that GR works beautifully except where gravity becomes extreme (inside black‑hole singularities and the first instant of the universe).  There the equations “start spitting out infinities,” signalling the need for a quantum theory of gravity—a problem Einstein never solved (Episode 6, 32:15‑33:44).
-
-So the episode teaches that GR replaces the Newtonian force picture with curved spacetime, uses the metric and geodesics to describe motion, has been spectacularly confirmed by observations, but still awaits a quantum‑gravity completion.
-
-CITATIONS SHOWN: 4
- - {'chunk_id': 'great_papers_06_general_relativity_einstein_1915_c0023', 'episode_number': 6, 'episode_title': 'General Relativity, Einstein 1915', 'start': 1934.98, 'end': 2024.4174}
- - {'chunk_id': 'great_papers_06_general_relativity_einstein_1915_c0009', 'episode_number': 6, 'episode_title': 'General Relativity, Einstein 1915', 'start': 705.68, 'end': 786.45496}
- - {'chunk_id': 'great_papers_06_general_relativity_einstein_1915_c0015', 'episode_number': 6, 'episode_title': 'General Relativity, Einstein 1915', 'start': 1231.765, 'end': 1319.465}
- - {'chunk_id': 'great_papers_06_general_relativity_einstein_1915_c0011', 'episode_number': 6, 'episode_title': 'General Relativity, Einstein 1915', 'start': 877.18, 'end': 966.57}

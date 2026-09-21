@@ -1,17 +1,0 @@
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  16%|#6        | 32/199 [00:00<00:00, 308.13it/s]Loading weights:  33%|###2      | 65/199 [00:00<00:00, 313.88it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 817.99it/s]
-tool_calls_this_turn (registry size): 5
-citations: 5
- - {'chunk_id': 'great_papers_05_attention_is_all_you_need_2017_c0017', 'episode_number': 5, 'episode_title': 'Attention Is All You Need, 2017', 'start': 1410.335, 'end': 1499.9751}
- - {'chunk_id': 'great_papers_05_attention_is_all_you_need_2017_c0012', 'episode_number': 5, 'episode_title': 'Attention Is All You Need, 2017', 'start': 968.935, 'end': 1055.82}
- - {'chunk_id': 'great_papers_05_attention_is_all_you_need_2017_c0016', 'episode_number': 5, 'episode_title': 'Attention Is All You Need, 2017', 'start': 1321.5751, 'end': 1409.6149}
- - {'chunk_id': 'great_papers_05_attention_is_all_you_need_2017_c0013', 'episode_number': 5, 'episode_title': 'Attention Is All You Need, 2017', 'start': 1056.665, 'end': 1145.5049}
- - {'chunk_id': 'great_papers_05_attention_is_all_you_need_2017_c0021', 'episode_number': 5, 'episode_title': 'Attention Is All You Need, 2017', 'start': 1759.61, 'end': 1841.585}
-
-ANSWER:
-In episode 5 the hosts explain that the original **Transformer** is built as two separate “halves”:
-
-* **Encoder –** a stack that *reads* the whole input all at once and creates a rich, bidirectional representation of it.  It’s the part you’d keep when you only need to **understand** text (e.g., answering questions, sentiment analysis, or filling‑in‑missing words).  The early BERT models followed exactly this route, training the encoder by masking random words and forcing it to predict them, which gives the model a deep two‑directional grasp of language (23:30‑25:00)【great_papers_05_attention_is_all_you_need_2017_c0017】.
-
-* The episode also notes that the paper’s architecture pairs this encoder with a **decoder** that generates output one token at a time (used for translation).  The encoder‑decoder layout is described as “one stack to read and understand the English sentence, another to generate the German one” (22:02‑23:30)【great_papers_05_attention_is_all_you_need_2017_c0016】.
-
-So, the encoder is presented as the “reading half” of the Transformer, responsible for building a comprehensive understanding of the input, and it can be used on its own for many downstream language‑understanding tasks.

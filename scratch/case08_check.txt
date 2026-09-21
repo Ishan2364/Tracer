@@ -1,4 +1,0 @@
-If you want a clear, focused look at *what computers can’t decide or compute*, start with **Episode 7 – “On Computable Numbers, Turing 1936.”**  
-
-- In the latter part of the episode the hosts walk through Cantor’s diagonal trick and show how Turing uses the same idea to prove that **there are far more real numbers than there are machines that could generate them**, so “almost every real number must be uncomputable” (Episode 7, 16:05‑17:35).  
-- Earlier in the same episode they spell out the counting argument: we can list every possible Turing‑machine (so the machines are countable), but the reals between 0 and 1 cannot be listed, proving the existence of numbers that no machine can ever pro

@@ -1,19 +1,0 @@
-=== TEST 1: recommendation ===
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  18%|#7        | 35/199 [00:00<00:00, 329.43it/s]Loading weights:  34%|###4      | 68/199 [00:00<00:00, 301.75it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 880.64it/s]
-query_type: recommendation | retrieval_mode: broad_rebalanced
-If you want a clear, focused look at **what computers can *never* decide or compute**, start with  
-
-**Episode 7 – “On Computable Numbers, Turing 1936.”**  
-
-Why this one?  
-
-* The hosts walk through Cantor’s diagonal trick and show how Turing uses the same idea to prove that **there are far more real numbers than there are machines that could generate them** – meaning many numbers are fundamentally uncomputable (Episode 7, 16:05‑17:35).  
-* They also spell out the counting argument: every machine can be listed, but the reals between 0 and 1 cannot, so **no machine can decide every possible re
-
-=== TEST 2: broad_comparison ===
-query_type: broad_comparison | retrieval_mode: broad_rebalanced
-**Episode 3 – “The Double Helix, Watson and Crick 1953”**  
-The discussion zeroes in on the *speed‑versus‑accuracy* limit that model‑building imposes on scientific discovery. Watson and Crick’s rapid, three‑dimensional guess had to satisfy *every* experimental constraint, because a wrong model would be exposed publicly and give rivals a foothold (Episode 3, 14:28‑15:54). In other words, the fundamental limit here is that you can leap ahead only if you can meet all known constraints instantly; being fast but wrong is punished.
-
-**Episode 4 – “Shannon and the Birth of Information 1948”**  
-Shannon’s work reveals a *capacity limit* for communication channels. Good codes can exist only when you encode *large blocks* of data, not single bits, and the proof is non‑constructive—showing that the *average* random code is good enough that at least one specific code must meet the limit (Episode 4, 

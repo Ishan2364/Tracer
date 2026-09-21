@@ -1,4 +1,0 @@
-LANGSMITH_TRACING env value: 'true'
-LANGSMITH_PROJECT env value: 'tracer'
-LANGSMITH_API_KEY set: True
-langsmith.utils.tracing_is_enabled(): True

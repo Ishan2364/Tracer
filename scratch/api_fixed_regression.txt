@@ -1,5 +1,0 @@
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  17%|#6        | 33/199 [00:00<00:00, 322.97it/s]Loading weights:  33%|###3      | 66/199 [00:00<00:00, 324.04it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 961.42it/s]
-query_type: single_episode
-retrieval_mode: scoped_loop
-refused: False
-num citations: 5

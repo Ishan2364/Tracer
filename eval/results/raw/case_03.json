@@ -12,15 +12,15 @@
       "great_papers_01_einstein_s_special_relativity_c0011",
       "great_papers_01_einstein_s_special_relativity_c0019",
       "great_papers_01_einstein_s_special_relativity_c0010",
-      "great_papers_01_einstein_s_special_relativity_c0036",
+      "great_papers_01_einstein_s_special_relativity_c0007",
       "great_papers_01_einstein_s_special_relativity_c0001",
       "great_papers_06_general_relativity_einstein_1915_c0003",
       "great_papers_06_general_relativity_einstein_1915_c0017",
-      "great_papers_06_general_relativity_einstein_1915_c0001",
-      "great_papers_06_general_relativity_einstein_1915_c0004",
-      "great_papers_06_general_relativity_einstein_1915_c0022"
+      "great_papers_06_general_relativity_einstein_1915_c0016",
+      "great_papers_06_general_relativity_einstein_1915_c0018",
+      "great_papers_06_general_relativity_einstein_1915_c0004"
     ],
-    "answer": "**Episode\u202f1 \u2013 \u201cEinstein\u2019s Special Relativity\u201d**  \nIn this discussion the two observers (the person on the train and the person on the platform) are both treated as *perfectly good inertial observers* and *neither is given a privileged viewpoint* (Episode\u202f1, 14:30\u201115:56).  The authors stress that the first postulate of special relativity says \u201cneither has a privileged view,\u201d and the whole \u201cstrange\u201d physics comes from the fact that they simply *disagree about simultaneity* rather than one being \u201cmore right\u201d than the other (Episode\u202f1, 14:30\u201115:56).\n\n**Episode\u202f6 \u2013 \u201cGeneral Relativity, Einstein\u202f1915\u201d**  \nHere the podcast spells out that *special relativity* itself *does* grant a special status to a particular class of observers: those who move at constant velocity with no acceleration\u2014*the inertial observers* (Episode\u202f6, 02:58\u201104:25).  As soon as you \u201caccelerate\u2026 you\u2019re outside the club\u201d and the original theory \u201chas nothing to say about you\u201d (Episode\u202f6, 02:58\u201104:25).  Einstein\u2019s goal with the *general* theory was to remove that privilege so that *all* observers, accelerated or not, are treated on an equal footing (Episode\u202f6, 02:58\u201104:25).\n\n---\n\n### Putting the two together  \n\n- **Episode\u202f1** tells us that, within the framework of special relativity, *both* inertial frames are equally valid\u2014there is *no* privileged observer; the apparent paradoxes (e.g., each seeing the other\u2019s clock run slow) are resolved by the relativity of simultaneity.  \n- **Episode\u202f6** reminds us that the *original* special theory *does* privilege inertial observers, leaving accelerated observers without a description, and that Einstein\u2019s general relativity was motivated precisely to give *every* observer (accelerated or not) the same rights.\n\nSo the two episodes complement each other: Episode\u202f1 emphasizes the *equality* of inertial observers once you accept relativity of simultaneity, while Episode\u202f6 points out that *only* inertial observers enjoyed that privileged status in the *special* theory, and that general relativity was the step that finally removed the privilege altogether.",
+    "answer": "**Episode\u202f1 \u2013 \u201cEinstein\u2019s Special Relativity\u201d**  \n- The discussion makes it clear that *both* the person on the train and the person on the platform are \u201cperfectly good inertial observers\u201d and that \u201cneither has a privileged view\u201d (Episode\u202f1, 14:30\u201115:56).  \n- Because simultaneity depends on the observer\u2019s motion, the episode stresses that there is **no universal \u201cnow\u201d** that would give one inertial frame a special status over another (Episode\u202f1, 14:30\u201115:56).  \n\n**Episode\u202f6 \u2013 \u201cGeneral Relativity, Einstein\u202f1915\u201d**  \n- Here the podcast explicitly says that \u201cSpecial relativity gives a privileged status to a particular kind of observer\u2026 the ones moving at constant velocity, coasting, no acceleration. Those are called inertial observers\u201d (Episode\u202f6, 02:58\u201104:25).  \n- It then points out that Einstein wanted a theory that works for *all* observers, accelerated or not, removing that privileged treatment (Episode\u202f6, 02:58\u201104:25).  \n\n**Side\u2011by\u2011side comparison**  \n- **Episode\u202f1** treats all inertial observers as equally valid and stresses that none is \u201cmore right\u201d than another; the only difference is how each slices spacetime into \u201cnow\u201d and \u201cthen.\u201d  \n- **Episode\u202f6** starts by stating that SR *does* give inertial observers a special role, but it also explains that GR was invented precisely to eliminate that privilege and make the laws of physics the same for *any* observer, whether inertial or accelerated.  \n\nSo, Episode\u202f1 highlights the **equivalence** of inertial observers (no privileged view), while Episode\u202f6 first notes the **privileged status** of inertial observers in special relativity and then shows how general relativity removes that privilege.",
     "citations": [
       {
         "chunk_id": "great_papers_01_einstein_s_special_relativity_c0011",
@@ -30,25 +30,11 @@
         "end": 955.97003
       },
       {
-        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0019",
-        "episode_number": 1,
-        "episode_title": "Einstein's Special Relativity",
-        "start": 1571.635,
-        "end": 1659.805
-      },
-      {
         "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0003",
         "episode_number": 6,
         "episode_title": "General Relativity, Einstein 1915",
         "start": 178.44499,
         "end": 265.32
-      },
-      {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0017",
-        "episode_number": 6,
-        "episode_title": "General Relativity, Einstein 1915",
-        "start": 1410.6499,
-        "end": 1499.25
       }
     ],
     "refused": false,

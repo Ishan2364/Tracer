@@ -288,12 +288,16 @@ def answer_conversational(query: str, state) -> dict:
         messages, chunks_sent = generate.build_messages(query, chunks, unknown_episodes)
 
     answer_text = generate.call_llm(messages)
-    # Citations must reflect exactly what was in the prompt, not everything retrieval
-    # routed here - budget trimming (generate._fit_chunks_to_budget) can drop chunks
-    # before they ever reach the model, and a dropped chunk showing up as a citation
-    # would mean citing something the model never saw. chunks_sent is the post-trim
-    # list the builder function actually used.
-    citations = _build_citations(chunks_sent)
+    # First narrow chunks_sent (everything actually in the prompt - see below) down to
+    # used_chunks (only what the answer's own inline citations actually point to), then
+    # build the displayed citations from that narrower set. Two separate corrections
+    # stacked here: chunks_sent fixes "retrieved but never sent" (budget trimming can
+    # drop chunks before they reach the model), filter_citations_to_used fixes "sent but
+    # never actually cited" (the model was shown it but didn't end up using it). Neither
+    # step ever trusts a new model claim - both only narrow down which subset of
+    # already-verified real chunk metadata gets displayed.
+    used_chunks = generate.filter_citations_to_used(answer_text, chunks_sent)
+    citations = _build_citations(used_chunks)
 
     state.record(query, query_type, answer_text, chunks=chunks)
 

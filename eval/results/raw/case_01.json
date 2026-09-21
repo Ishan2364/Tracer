@@ -14,7 +14,7 @@
       "great_papers_07_on_computable_numbers_turing_1936_c0017",
       "great_papers_07_on_computable_numbers_turing_1936_c0014"
     ],
-    "answer": "Turing shows that a \u201cuniversal halt\u2011detector\u201d can\u2019t exist because its very existence leads to a self\u2011contradiction.  \n\nFirst we imagine a machine\u202f\u2014\u202fthe **checker**\u202f\u2014\u202fthat, given any other machine\u2019s description and its input, always tells us correctly whether that machine will eventually stop or run forever (the halting problem).  Turing then builds a second machine, the **troublemaker**, that uses the checker as a sub\u2011routine: it feeds the description of a machine to the checker and then does the opposite of whatever answer it receives (if the checker says \u201chalts\u201d, the troublemaker loops forever; if the checker says \u201cruns forever\u201d, the troublemaker halts)\u202f(24:54\u201126:21).  \n\nNow feed the troublemaker its own description.  Whatever the checker predicts about the troublemaker, the troublemaker will do the opposite, so the checker\u2019s answer must be wrong.  This contradiction shows that no such checker can exist, and therefore no machine can decide in general whether an arbitrary program halts\u202f(26:22\u201127:51).  \n\nIn short, the halting problem is undecidable because assuming a universal halting procedure leads to a self\u2011referential paradox that makes the procedure inevitably give a false answer.\u202f(23:24\u201124:54 also frames the question and the proof strategy).",
+    "answer": "Turing shows that a \u201cchecker\u201d that could tell, for any machine\u202f+\u202finput, whether it will eventually halt cannot exist. He starts by **assuming** such a checker exists and then builds a new machine (the \u201ctroublemaker\u201d) that uses the checker as a sub\u2011routine. The troublemaker feeds its own description to the checker and then does the opposite of whatever answer it receives: if the checker says the machine halts, the troublemaker loops forever; if the checker says it runs forever, the troublemaker halts. When we give the troublemaker its own description, whichever answer the checker gives leads to a contradiction\u2014its prediction is always wrong. Because this self\u2011referential construction forces the checker to give a false answer, no consistent halting\u2011decision procedure can exist. Hence **no machine can decide in general whether an arbitrary program halts**. \n\n- \u201cNo machine can decide in general whether an arbitrary machine halts. The halting problem is undecidable\u2026 impossible in the strongest sense, a theorem proven\u201d (Episode\u202f7, 26:22\u201127:51).  \n- The proof proceeds by assuming a checker, building a troublemaker that \u201cdeliberately does the opposite of the answer,\u201d and showing that feeding the troublemaker its own description makes the checker wrong in either case (Episode\u202f7, 24:54\u201126:21).  \n- The contradiction is set up by \u201csuppose the checker exists\u2026 the same flavor as the old liar\u2019s paradox\u201d (Episode\u202f7, 23:24\u201124:54).",
     "citations": [
       {
         "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0019",
@@ -22,13 +22,6 @@
         "episode_title": "On Computable Numbers, Turing 1936",
         "start": 1581.7151,
         "end": 1671.4299
-      },
-      {
-        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0013",
-        "episode_number": 7,
-        "episode_title": "On Computable Numbers, Turing 1936",
-        "start": 1056.26,
-        "end": 1144.51
       },
       {
         "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0018",
@@ -43,13 +36,6 @@
         "episode_title": "On Computable Numbers, Turing 1936",
         "start": 1404.085,
         "end": 1493.845
-      },
-      {
-        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0014",
-        "episode_number": 7,
-        "episode_title": "On Computable Numbers, Turing 1936",
-        "start": 1144.91,
-        "end": 1233.9949
       }
     ],
     "refused": false,

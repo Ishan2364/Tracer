@@ -34,12 +34,12 @@ def answer_query(query: str) -> dict:
             "retrieved_chunk_ids": retrieved_chunk_ids,
         }
 
-    messages = generate.build_messages(query, chunks)
+    messages, chunks_sent = generate.build_messages(query, chunks)
     answer_text = generate.call_llm(messages)
 
     manifest = generate.load_manifest()
     citations = []
-    for c in chunks:
+    for c in chunks_sent:
         info = manifest.get(c["episode_id"], {})
         citations.append({
             "episode_number": info.get("episode_number", c["episode_number"]),
@@ -88,6 +88,49 @@ def _run_chitchat(query: str, state) -> dict:
         return {"reply": "", "needs_retrieval": True}
 
 
+def _handle_recommendation_no_topic(query: str, state) -> dict:
+    """A recommendation request with no identifiable topic ('recommend me an episode',
+    'what should I watch next') has nothing to run similarity search against - embedding
+    an empty topic string produces a near-arbitrary vector, which then fails the broad-
+    retrieval refusal-gate's similarity check and gets reported as 'not covered'. That's
+    wrong: there's no topic to be uncovered, the user simply hasn't said what they're
+    interested in yet - a completely different situation from a real off-topic query.
+
+    Handled the same way catalogue is - deterministically from the manifest, no
+    retrieval, no generation call - and asks them to name an interest rather than
+    silently refusing, or guessing a "best" episode with nothing to ground that claim in
+    (there's no difficulty/quality metadata to base such a pick on - inventing one would
+    be exactly the kind of ungrounded claim this product is built to avoid elsewhere)."""
+    with open(config.MANIFEST_PATH, "r", encoding="utf-8") as f:
+        manifest = json.load(f)
+    manifest = sorted(manifest, key=lambda e: e["episode_number"])
+
+    lines = [
+        "Happy to point you to something - what are you interested in? For example: "
+        "relativity, black holes, DNA, information theory, neural networks, "
+        "computability, or evolution.",
+        "",
+        f"Or browse the full collection ({len(manifest)} episodes):",
+    ]
+    for e in manifest:
+        title = generate.derive_title(e["source_file"])
+        lines.append(f"- Episode {e['episode_number']}: {title}")
+    answer_text = "\n".join(lines)
+
+    state.record(query, "recommendation", answer_text, chunks=[])
+    return {
+        "query": query,
+        "query_type": "recommendation",
+        "episode_refs": [],
+        "retrieval_mode": "recommendation_no_topic",
+        "unknown_episodes": [],
+        "retrieved_chunk_ids": [],
+        "answer": answer_text,
+        "citations": [],
+        "refused": False,
+    }
+
+
 def _handle_catalogue(query: str, state) -> dict:
     """Inventory questions ('what episodes do you have') can never be answered
     correctly by semantic retrieval - top-k similarity search returns whichever
@@ -132,6 +175,9 @@ def answer_conversational(query: str, state) -> dict:
     if query_type == "catalogue":
         return _handle_catalogue(query, state)
 
+    if query_type == "recommendation" and not intent.get("topic", "").strip():
+        return _handle_recommendation_no_topic(query, state)
+
     if query_type == "chitchat":
         chitchat = _run_chitchat(query, state)
         if not chitchat["needs_retrieval"]:
@@ -148,12 +194,26 @@ def answer_conversational(query: str, state) -> dict:
                 "citations": [],
                 "refused": False,
             }
-        # Gate 2 caught a Gate 1 misclassification - fall back to a normal broad
-        # search using the raw query text (not the chitchat classification's topic,
-        # which wasn't extracted carefully since it thought this wasn't a content
-        # question at all).
-        intent = {"query_type": "general", "topic": query, "episode_refs": [], "time_range": None}
-        query_type = "general"
+        # Gate 2 caught a Gate 1 misclassification - re-run classification on the raw
+        # query now that we know it's a real content question, so episode_refs/topic/
+        # time_range get properly extracted instead of falling back to a bare unscoped
+        # search. Gate 1's own first-pass fields aren't trustworthy here even though
+        # parse_intent always returns them - they "weren't extracted carefully since it
+        # thought this wasn't a content question at all" (see below), same reason a
+        # generic fallback was used originally.
+        #
+        # Guarded against looping: classification isn't perfectly deterministic
+        # (observed directly - repeated identical calls to the same query have
+        # returned different results), so if this second pass also says chitchat,
+        # don't call _run_chitchat again - fall back to the safe generic search
+        # instead, exactly as before.
+        reclassified = parse_intent(query, state.recent_history())
+        if reclassified["query_type"] != "chitchat":
+            intent = reclassified
+            query_type = reclassified["query_type"]
+        else:
+            intent = {"query_type": "general", "topic": query, "episode_refs": [], "time_range": None}
+            query_type = "general"
 
     routing = retrieval_router.route(intent, state)
     chunks = routing["chunks"]
@@ -199,18 +259,45 @@ def answer_conversational(query: str, state) -> dict:
     # handles per-episode irrelevance with more nuance than a hard binary refusal would).
     best_similarity = max((c.get("similarity", 1.0) for c in chunks), default=0.0)
     if retrieval_mode == "broad_rebalanced" and (not chunks or best_similarity < config.SIMILARITY_THRESHOLD):
+        # For `recommendation` specifically, weak similarity across the board almost
+        # always means "no real topic was given" (e.g. "what should I watch next"),
+        # not "this topic isn't covered" - a recommendation request has no off-topic
+        # canary equivalent the way a content question does. The intent classifier's
+        # `topic` extraction for a genuinely topic-less request isn't perfectly stable
+        # across calls even at temperature=0 (confirmed: 5 identical calls to "what
+        # episode should I watch next?" returned topic="" three times and "next
+        # episode" twice) - checking the actual retrieval outcome here catches the
+        # vacuous-topic case regardless of which non-empty-but-meaningless string the
+        # classifier happened to extract, instead of only catching the literal "" case.
+        if query_type == "recommendation":
+            return _handle_recommendation_no_topic(query, state)
         state.record(query, query_type, config.REFUSAL_MESSAGE, chunks=chunks)
         return {**base_result, "answer": config.REFUSAL_MESSAGE, "citations": [], "refused": True}
 
     if query_type == "follow_up":
-        messages = generate.build_messages_followup(query, chunks, previous_answer=state.last_answer)
-    elif multi_episode:
-        messages = generate.build_messages_multi_episode(query, chunks, unknown_episodes)
+        messages, chunks_sent = generate.build_messages_followup(query, chunks, previous_answer=state.last_answer)
+    elif query_type == "recommendation":
+        messages, chunks_sent = generate.build_messages_recommendation(query, chunks, unknown_episodes)
+    elif query_type == "broad_comparison" or multi_episode:
+        # broad_comparison always gets the per-episode comparative framing, even if this
+        # particular query's retrieval happened to land on just one episode - the user
+        # explicitly asked for a cross-episode comparison, so "only episode 6 covers this"
+        # is itself the comparison answer, not a reason to fall back to the plain prompt.
+        messages, chunks_sent = generate.build_messages_multi_episode(query, chunks, unknown_episodes)
     else:
-        messages = generate.build_messages(query, chunks, unknown_episodes)
+        messages, chunks_sent = generate.build_messages(query, chunks, unknown_episodes)
 
     answer_text = generate.call_llm(messages)
-    citations = _build_citations(chunks)
+    # First narrow chunks_sent (everything actually in the prompt - see below) down to
+    # used_chunks (only what the answer's own inline citations actually point to), then
+    # build the displayed citations from that narrower set. Two separate corrections
+    # stacked here: chunks_sent fixes "retrieved but never sent" (budget trimming can
+    # drop chunks before they reach the model), filter_citations_to_used fixes "sent but
+    # never actually cited" (the model was shown it but didn't end up using it). Neither
+    # step ever trusts a new model claim - both only narrow down which subset of
+    # already-verified real chunk metadata gets displayed.
+    used_chunks = generate.filter_citations_to_used(answer_text, chunks_sent)
+    citations = _build_citations(used_chunks)
 
     state.record(query, query_type, answer_text, chunks=chunks)
 

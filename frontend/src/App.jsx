@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import "./App.css";
 
 const API_BASE = "http://localhost:8000";
@@ -38,6 +39,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [chatError, setChatError] = useState(null);
   const [phraseIndex, setPhraseIndex] = useState(0);
+  const [architecture, setArchitecture] = useState("fixed"); // "fixed" | "agent" - see ChatRequest in chat_routes.py
 
   const [chatHealth, setChatHealth] = useState(null);
   const [buildStatus, setBuildStatus] = useState(null);
@@ -176,7 +178,7 @@ export default function App() {
       const res = await fetch(`${API_BASE}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ session_id: sessionIdRef.current, query }),
+        body: JSON.stringify({ session_id: sessionIdRef.current, query, architecture }),
       });
       if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
       const data = await res.json();
@@ -188,6 +190,8 @@ export default function App() {
           citations: data.citations || [],
           refused: data.refused,
           queryType: data.query_type,
+          retrievalMode: data.retrieval_mode,
+          architecture,
         },
       ]);
     } catch (err) {
@@ -288,15 +292,42 @@ export default function App() {
       </aside>
 
       <main className="chat-panel">
+        <div className="architecture-toggle">
+          <span className="architecture-label">Architecture:</span>
+          <div className="architecture-switch" role="group" aria-label="Choose retrieval architecture">
+            <button
+              type="button"
+              className={architecture === "fixed" ? "arch-option active" : "arch-option"}
+              onClick={() => setArchitecture("fixed")}
+              title="The original intent-classifier + fixed router pipeline"
+            >
+              Fixed pipeline
+            </button>
+            <button
+              type="button"
+              className={architecture === "agent" ? "arch-option active" : "arch-option"}
+              onClick={() => setArchitecture("agent")}
+              title="Experimental ReAct agent (create_agent + LangGraph) - see REACT_AGENT_DESIGN.md"
+            >
+              ReAct agent (experimental)
+            </button>
+          </div>
+        </div>
+
         <div className="messages">
           {messages.length === 0 && (
             <p className="empty-state">Ask a question about the podcast episodes to get started.</p>
           )}
           {messages.map((msg, i) => (
             <div key={i} className={`message ${msg.role}`}>
+              {msg.role === "assistant" && msg.architecture && (
+                <span className={`arch-badge arch-badge-${msg.architecture}`}>
+                  {msg.architecture === "agent" ? "ReAct agent" : "Fixed pipeline"}
+                </span>
+              )}
               {msg.role === "assistant" ? (
                 <div className="message-text markdown">
-                  <ReactMarkdown>{msg.text}</ReactMarkdown>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
                 </div>
               ) : (
                 <div className="message-text plain">{msg.text}</div>

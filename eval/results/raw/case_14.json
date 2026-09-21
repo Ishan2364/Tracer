@@ -6,7 +6,7 @@
     "retrieval_mode": "chitchat",
     "unknown_episodes": [],
     "retrieved_chunk_ids": [],
-    "answer": "Hey there! I'm doing great, thanks for asking. How can I help you today?",
+    "answer": "Hey there! I'm doing great, thanks for asking. How can I help you with your physics studies today?",
     "citations": [],
     "refused": false,
     "query_call_count_delta": 0

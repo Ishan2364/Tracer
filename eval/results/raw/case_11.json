@@ -14,7 +14,7 @@
       "great_papers_06_general_relativity_einstein_1915_c0011",
       "great_papers_06_general_relativity_einstein_1915_c0001"
     ],
-    "answer": "Episode\u202f6 treats the equivalence principle as the cornerstone that lets Einstein turn \u201cgravity\u202f=\u202fforce\u201d into \u201cgravity\u202f=\u202fgeometry.\u201d  He explains it in three linked ways:\n\n* **What it is:**  A uniform gravitational field is indistinguishable from a uniformly accelerating laboratory.  Inside either a falling\u2011ball experiment or an accelerating rocket, every mechanical test\u2014dropping a ball, weighing yourself on a scale\u2014gives exactly the same result.  (Episode\u202f6, 05:53\u201107:22)\n\n* **Why it matters:**  Because the principle must hold for *any* experiment, Einstein can replace the accelerating rocket with a room sitting in a real gravitational field.  If light bends in the rocket (the beam hits a little lower on the opposite wall), it must bend by the same amount in a gravitational field.  This reasoning gives the first prediction that gravity bends light.  (Episode\u202f6, 07:23\u201108:50)\n\n* **What it forces us to conclude:**  Since all objects\u2014heavy, light, photons\u2014follow the same free\u2011fall paths, the \u201cforce\u201d can\u2019t be acting on each object individually.  Instead, the equivalence of free fall and weightlessness tells us that gravity is a property of spacetime itself, not a conventional force.  (Episode\u202f6, 10:15\u201111:45)\n\n* **A subtlety:**  The equivalence holds only locally, in a region small enough that tidal differences (the slight convergence of distant free\u2011fall paths) can be ignored.  (Episode\u202f6, 14:37\u201116:07)\n\nTogether, these passages show that episode\u202f6 presents the equivalence principle as the exact statement that a uniform gravitational field and an accelerating frame are experimentally indistinguishable, and that this insight leads directly to the geometric view of gravity.",
+    "answer": "Episode\u202f6 treats the equivalence principle as the cornerstone that lets Einstein turn \u201cgravity\u202f=\u202fforce\u201d on its head.  He explains that a uniform gravitational field is **exactly the same** as being in a constantly accelerating laboratory: everything you drop, every scale you step on, and every mechanical experiment you perform gives the same result whether the \u201cforce\u201d comes from the Earth\u2019s gravity or from the floor pushing up on you in an accelerating rocket (Episode\u202f6,\u202f05:53\u201107:22).  \n\nBecause the falling observer feels no gravity, Einstein argues that locally\u2014within a small enough region\u2014gravity can be \u201ccanceled\u201d and the physics looks just like special relativity.  That local cancellation is what lets him predict new effects: if light bends in an accelerating box, it must bend the same way in a gravitational field (Episode\u202f6,\u202f07:23\u201108:50), and the same reasoning leads to the idea that clocks run at different rates in gravity.  \n\nLater in the episode he emphasizes that the principle only holds **locally**; over larger distances the paths of two freely\u2011falling objects will start to converge because spacetime is curved (Episode\u202f6,\u202f14:37\u201116:07).  This local equivalence is what pushes him to view gravity not as a force but as a property of the spacetime arena itself (Episode\u202f6,\u202f10:15\u201111:45).",
     "citations": [
       {
         "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0008",
@@ -75,7 +75,7 @@
       "great_papers_06_general_relativity_einstein_1915_c0010",
       "great_papers_06_general_relativity_einstein_1915_c0012"
     ],
-    "answer": "Sure thing! Let\u2019s unpack the whole argument the way the podcast does, one bite\u2011size step at a time. I\u2019ll keep each piece tied to the exact moments in Episode\u202f6 so you can see where the ideas come from.\n\n---\n\n### 1.\u202fWhat the equivalence principle *actually says*  \n**Step\u202f1:** Imagine two situations that look completely different at first glance:  \n\n* **A uniform gravitational field** (standing on Earth, a ball falls straight down).  \n* **A uniformly accelerating laboratory** (a rocket whose floor pushes upward).  \n\nInside either setting, every *mechanical* test you can think of\u2014dropping a ball, weighing yourself on a scale\u2014gives exactly the same result. The ball hits the floor at the same speed, the scale reads the same weight because the floor pushes on your feet in the same way.  \n\n> *(Episode\u202f6,\u202f05:53\u201107:22)*  \n\nThat identity of outcomes is what Einstein called the **equivalence principle**.\n\n---\n\n### 2.\u202fWhy this matters: turning a \u201cthought experiment\u201d into a real prediction  \n**Step\u202f2:** Take a sealed box (the classic \u201celevator\u201d idea). Instead of dropping a ball, shine a flashlight horizontally across the box.  \n\n*In the accelerating rocket* the light takes a tiny amount of time to travel from the left wall to the right. While the light is in flight the rocket\u2019s floor (and the walls) have moved upward a little, so the beam lands a bit lower on the opposite wall. To an observer inside, the light **appears to bend downward**.  \n\n> *(Episode\u202f6,\u202f07:23\u201108:50)*  \n\n**Step\u202f3:** By the equivalence principle, you cannot tell whether you\u2019re in the accelerating rocket or in a room that\u2019s simply sitting in a real gravitational field. Therefore the same bending must happen for light traveling in a uniform gravitational field. That gives Einstein his **first prediction**: gravity bends light.  \n\n> *(Episode\u202f6,\u202f07:23\u201108:50)*  \n\n---\n\n### 3.\u202fWhat this forces us to conclude about gravity  \n**Step\u202f4:** Notice that *all* objects\u2014heavy, light, even photons\u2014follow the same free\u2011fall paths. The podcast points out that this universality is unlike other forces (e.g., electric forces, which depend on charge). Because the \u201cforce\u201d treats every object identically, Einstein realized it isn\u2019t a force acting on objects at all; it\u2019s a property of the *arena*\u2014spacetime itself.  \n\n> *(Episode\u202f6,\u202f10:15\u201111:45)*  \n\nSo gravity becomes **geometry**: the curvature of spacetime tells everything how to move, rather than a force pushing on them.\n\n---\n\n### 4.\u202fA subtle but crucial caveat: locality  \n**Step\u202f5:** The equivalence only holds **locally**\u2014in a region small enough that tidal effects (tiny differences in the gravitational field from point to point) can be ignored. If you compare two free\u2011fallers far apart, their paths start to converge toward Earth\u2019s center, revealing that the field isn\u2019t perfectly uniform.  \n\n> *(Episode\u202f6,\u202f14:37\u201116:07)*  \n\nThat\u2019s why the \u201csealed box\u201d thought experiment works: the box must be small enough that those tidal differences don\u2019t show up.\n\n---\n\n### 5.\u202fPutting it all together (the big picture)  \n\n| Step | What happens | Why it matters |\n|------|--------------|----------------|\n| 1 | Uniform gravity \u2194 accelerating frame give identical mechanical results. | Defines the equivalence principle. |\n| 2 | Light in an accelerating box bends because the box moves while the light travels. | Shows a concrete, observable effect. |\n| 3 | By equivalence, light must bend in a real gravitational field. | First prediction of General Relativity. |\n| 4 | All objects share the same free\u2011fall trajectories \u2192 gravity isn\u2019t a force but spacetime curvature. | Leads to the geometric view of gravity. |\n| 5 | The principle works only locally, otherwise tidal differences appear. | Sets the limits of the thought experiment. |\n\n---\n\n**Takeaway:** By insisting that *any* experiment inside a small, sealed laboratory cannot distinguish between \u201cgravity\u201d and \u201cacceleration,\u201d Einstein turned a simple equivalence into a powerful bridge\u2014from the familiar force picture to the elegant geometry of General Relativity. \ud83c\udf1f\n\nIf any of those steps still feel fuzzy, let me know which part you\u2019d like to dive into deeper!",
+    "answer": "Sure thing! Let\u2019s break the whole \u201cequivalence\u202f=\u202fgravity\u202f\u2194\u202facceleration\u201d chain into bite\u2011size steps, exactly the way the podcast lays it out. I\u2019ll point to the time\u2011stamps so you can hear the original wording yourself.\n\n---\n\n### 1.\u202fThe \u201chappy thought\u201d: a falling person feels no gravity  \n- **What Einstein imagined:** \u201cA person falling off a roof feels no gravity.\u201d (Episode\u202f6,\u202f00:00\u201100:30)  \n- **Why it matters:** In free\u2011fall the usual \u201cforce of gravity\u201d disappears for the observer; locally everything looks weightless.\n\n### 2.\u202fUniform gravity \u2194 constantly accelerating lab  \n- **Key claim:** \u201cA uniform gravitational field is completely equivalent to an accelerating frame.\u201d (Episode\u202f6,\u202f05:53\u201107:22)  \n- **Illustration:** Drop a ball on Earth \u2192 it falls because Earth pulls it down.  \n  Drop the same ball in a rocket whose floor accelerates upward \u2192 the floor meets the ball in exactly the same way, so the ball \u201cfalls\u201d to the floor just as on Earth.  \n- **Result:** All mechanical experiments (scales, pendulums, etc.) give identical answers in the two situations. That is the **equivalence principle**.\n\n### 3.\u202fTurn the box into a light\u2011experiment  \n- **Set\u2011up:** Shine a laser horizontally across a sealed box (the \u201celevator\u201d). (Episode\u202f6,\u202f05:53\u201107:22)  \n- **In the accelerating rocket:** While the light crosses, the rocket speeds up a tiny bit, so the right wall moves upward a hair. The beam hits a point **lower** than where it left. (Episode\u202f6,\u202f07:23\u201108:50)  \n- **Interpretation:** Inside the box you *see* the light bend downward.\n\n### 4.\u202fBy equivalence, light must bend in a real gravitational field  \n- **Logic:** \u201cThe equivalence principle says you cannot tell the rocket from a room sitting in gravity\u2026 So if light bends in the rocket, light must bend in gravity too \u2026 by exactly the same amount.\u201d (Episode\u202f6,\u202f07:23\u201108:50)  \n- **Consequence:** Einstein predicts that starlight grazing the Sun will be deflected\u2014a testable, later\u2011confirmed result.\n\n### 5.\u202fClocks run at different rates in a gravitational field  \n- **Same box, now with clocks:** The podcast says \u201cthere\u2019s a second one hiding in the same box about time. Let\u2019s do clocks.\u201d (Episode\u202f6,\u202f07:23\u201108:50)  \n- **Idea:** Because the accelerating box makes light take a slightly longer (or shorter) path, the rate at which a light\u2011based clock ticks changes. By equivalence, a clock deeper in a gravitational field ticks slower than one higher up.\n\n### 6.\u202fWhy the principle is only *local*  \n- **Limitation:** \u201cThat local cancellation is what lets him predict new effects\u2026 The principle only holds locally; over larger distances the paths of two freely\u2011falling objects will start to converge because spacetime is curved.\u201d (Episode\u202f6,\u202f14:37\u201116:07)  \n- **Why:** If two observers start far apart and both fall toward Earth, their trajectories slowly converge toward the planet\u2019s centre\u2014showing that the \u201cno\u2011gravity\u201d picture breaks down when you look at a region that\u2019s too big.\n\n### 7.\u202fFrom local equivalence to curved spacetime  \n- **Metric as ruler:** \u201cThe metric \u2026 is the local ruler and clock \u2026 In curved spacetime it varies, and that variation is the gravity.\u201d (Episode\u202f6,\u202f14:37\u201116:07)  \n- **Putting it together:** Because the equivalence principle works only in tiny patches, we need a field (the metric) that tells us how distances and times change from point to point. The way the metric changes\u2014its **curvature**\u2014is what we finally call gravity.\n\n---\n\n**Putting the steps together:**  \n1. Free\u2011fall \u2192 no gravity locally.  \n2. Uniform gravity = constant acceleration \u2192 identical experiments.  \n3. Light in an accelerating box bends.  \n4. By equivalence, light bends in a gravitational field.  \n5. The same reasoning gives gravitational time dilation.  \n6. The effect is exact only in a small region; over larger scales curvature shows up.  \n7. Curvature of the metric is the geometric description of gravity.\n\nHope that clears it up! If any particular step still feels fuzzy, let me know and we can zoom in on that piece. \ud83c\udf1f",
     "citations": [
       {
         "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0001",
@@ -111,55 +111,6 @@
         "episode_title": "General Relativity, Einstein 1915",
         "start": 877.18,
         "end": 966.57
-      },
-      {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0002",
-        "episode_number": 6,
-        "episode_title": "General Relativity, Einstein 1915",
-        "start": 88.89,
-        "end": 177.73001
-      },
-      {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0004",
-        "episode_number": 6,
-        "episode_title": "General Relativity, Einstein 1915",
-        "start": 265.915,
-        "end": 352.2
-      },
-      {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0006",
-        "episode_number": 6,
-        "episode_title": "General Relativity, Einstein 1915",
-        "start": 443.45502,
-        "end": 530.465
-      },
-      {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0007",
-        "episode_number": 6,
-        "episode_title": "General Relativity, Einstein 1915",
-        "start": 530.78503,
-        "end": 614.78503
-      },
-      {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0009",
-        "episode_number": 6,
-        "episode_title": "General Relativity, Einstein 1915",
-        "start": 705.68,
-        "end": 786.45496
-      },
-      {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0010",
-        "episode_number": 6,
-        "episode_title": "General Relativity, Einstein 1915",
-        "start": 786.855,
-        "end": 876.46
-      },
-      {
-        "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0012",
-        "episode_number": 6,
-        "episode_title": "General Relativity, Einstein 1915",
-        "start": 967.13,
-        "end": 1054.5599
       }
     ],
     "refused": false,
@@ -180,7 +131,7 @@
       "great_papers_08_natural_selection_darwin_and_wallace_1858_c0005",
       "great_papers_08_natural_selection_darwin_and_wallace_1858_c0021"
     ],
-    "answer": "Episode\u202f8 tells us that while Wallace was roaming the Malay Archipelago he kept asking, \u201cWhy does one island carry creatures completely different from a near\u2011identical island just across a narrow strait?\u201d\u202fHe ended up spotting a very sharp break in the distribution of animals that runs right through the islands\u2014a place where the fauna \u201cabruptly changes character.\u201d\u202fThat boundary is what we now call the **Wallace line**, and the episode notes it still bears his name today (Episode\u202f8, 04:21\u201105:48).",
+    "answer": "Episode\u202f8 tells us that while Wallace was exploring the Malay Archipelago he kept asking why one island could be packed with animals that were totally different from those on a neighboring island just across a narrow strait.  He ended up spotting a very sharp boundary running through the islands where the character of the animal life suddenly flips\u202f\u2014\u202fa biogeographic break that is still called the **Wallace line** today (Episode\u202f8, 04:21\u201105:48).",
     "citations": [
       {
         "chunk_id": "great_papers_08_natural_selection_darwin_and_wallace_1858_c0004",

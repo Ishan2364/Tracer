@@ -10,11 +10,11 @@
     "retrieved_chunk_ids": [
       "great_papers_07_on_computable_numbers_turing_1936_c0019",
       "great_papers_07_on_computable_numbers_turing_1936_c0013",
+      "great_papers_07_on_computable_numbers_turing_1936_c0018",
       "great_papers_07_on_computable_numbers_turing_1936_c0017",
-      "great_papers_07_on_computable_numbers_turing_1936_c0014",
-      "great_papers_07_on_computable_numbers_turing_1936_c0005"
+      "great_papers_07_on_computable_numbers_turing_1936_c0014"
     ],
-    "answer": "Turing showed that the idea of a \u201cchecker\u201d \u2013 a machine that could take any program (and its input) and always tell, in finite time, whether that program will eventually stop \u2013 leads to a logical contradiction. By assuming such a checker existed and then using it in a self\u2011referential construction (the same trick as the liar\u2019s paradox), he proved the assumption collapses. Because that contradiction is airtight, no mechanical procedure can ever work for every possible program. In other words, the halting problem is undecidable: no machine can decide in general whether an arbitrary program halts.\u202f(Episode\u202f7, 26:22\u201127:51; also see the description of the checker and the proof\u2011by\u2011contradiction argument in Episode\u202f7, 23:24\u201124:54.)",
+    "answer": "Turing shows that a \u201cchecker\u201d that could tell, for any machine\u202f+\u202finput, whether it will eventually halt cannot exist. He starts by **assuming** such a checker exists and then builds a new machine (the \u201ctroublemaker\u201d) that uses the checker as a sub\u2011routine. The troublemaker feeds its own description to the checker and then does the opposite of whatever answer it receives: if the checker says the machine halts, the troublemaker loops forever; if the checker says it runs forever, the troublemaker halts. When we give the troublemaker its own description, whichever answer the checker gives leads to a contradiction\u2014its prediction is always wrong. Because this self\u2011referential construction forces the checker to give a false answer, no consistent halting\u2011decision procedure can exist. Hence **no machine can decide in general whether an arbitrary program halts**. \n\n- \u201cNo machine can decide in general whether an arbitrary machine halts. The halting problem is undecidable\u2026 impossible in the strongest sense, a theorem proven\u201d (Episode\u202f7, 26:22\u201127:51).  \n- The proof proceeds by assuming a checker, building a troublemaker that \u201cdeliberately does the opposite of the answer,\u201d and showing that feeding the troublemaker its own description makes the checker wrong in either case (Episode\u202f7, 24:54\u201126:21).  \n- The contradiction is set up by \u201csuppose the checker exists\u2026 the same flavor as the old liar\u2019s paradox\u201d (Episode\u202f7, 23:24\u201124:54).",
     "citations": [
       {
         "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0019",
@@ -24,11 +24,11 @@
         "end": 1671.4299
       },
       {
-        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0013",
+        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0018",
         "episode_number": 7,
         "episode_title": "On Computable Numbers, Turing 1936",
-        "start": 1056.26,
-        "end": 1144.51
+        "start": 1494.165,
+        "end": 1581.315
       },
       {
         "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0017",
@@ -36,20 +36,6 @@
         "episode_title": "On Computable Numbers, Turing 1936",
         "start": 1404.085,
         "end": 1493.845
-      },
-      {
-        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0014",
-        "episode_number": 7,
-        "episode_title": "On Computable Numbers, Turing 1936",
-        "start": 1144.91,
-        "end": 1233.9949
-      },
-      {
-        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0005",
-        "episode_number": 7,
-        "episode_title": "On Computable Numbers, Turing 1936",
-        "start": 345.9,
-        "end": 433.83002
       }
     ],
     "refused": false,

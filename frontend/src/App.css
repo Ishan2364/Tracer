@@ -283,6 +283,73 @@
   background: var(--surface);
 }
 
+.architecture-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.architecture-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.architecture-switch {
+  display: flex;
+  gap: 4px;
+  background: var(--surface-3);
+  border-radius: 8px;
+  padding: 3px;
+}
+
+.arch-option {
+  padding: 5px 12px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.arch-option:hover {
+  color: var(--ink);
+}
+
+.arch-option.active {
+  background: var(--cyan);
+  color: #fff;
+}
+
+.arch-badge {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding: 2px 7px;
+  border-radius: 5px;
+  margin-bottom: 6px;
+}
+
+.arch-badge-fixed {
+  background: var(--cyan-tint);
+  color: var(--cyan);
+}
+
+.arch-badge-agent {
+  background: #fef3e2;
+  color: var(--amber);
+}
+
 .messages {
   flex: 1;
   overflow-y: auto;

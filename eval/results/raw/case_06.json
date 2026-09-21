@@ -21,28 +21,21 @@
       "great_papers_02_how_black_holes_radiate_hawking_1975_c0006",
       "great_papers_01_einstein_s_special_relativity_c0019"
     ],
-    "answer": "**Episode\u202f1 \u2013 Einstein\u2019s Special Relativity**  \nThe podcast makes it crystal\u2011clear that a massive object can never be accelerated to the speed of light. As the ship\u2019s speed approaches\u202fc the energy required \u201cdiverges\u2026to infinite energy,\u201d and because the universe doesn\u2019t contain that much energy the feat is impossible. (Episode\u202f1,\u202f36:19\u201137:48)  \n\n**Episode\u202f2 \u2013 How Black Holes Radiate, Hawking\u202f1975**  \nHere the \u201cblack\u2011hole information paradox\u201d is presented as a clash of two impossibility statements:  \n* Hawking\u2019s original calculation says the radiation is perfectly thermal, meaning all details of what fell in are erased \u2013 i.e. information is destroyed.  \n* Quantum mechanics, however, has a bedrock rule that \u201cinformation is never truly lost.\u201d  \nBoth can\u2019t be true, so the episode highlights the fundamental impossibility of reconciling a perfectly thermal (information\u2011free) Hawking radiation with the quantum\u2011mechanical demand that information must survive. (Episode\u202f2,\u202f39:38\u201141:06)  \n\n**Episode\u202f3 \u2013 The Double Helix, Watson and Crick\u202f1953**  \nThe discussion focuses on the high\u2011stakes nature of model\u2011building and on a specific early mistake (backbones inside\u2011out). It does **not** raise a general physical or mathematical impossibility; the limits mentioned are more about scientific risk than a fundamental law. (Episode\u202f3,\u202f14:28\u201115:54)  \n\n**Episode\u202f4 \u2013 Shannon and the Birth of Information,\u202f1948**  \nShannon\u2019s entropy story gives a clear quantitative ceiling: a fair binary source can carry at most **one bit** of information per flip, while a completely predictable source carries **zero** bits. The entropy therefore sets an upper bound on how much information any symbol can convey. (Episode\u202f4,\u202f13:04\u201114:30)  \n\n**Episode\u202f6 \u2013 General Relativity, Einstein\u202f1915**  \nThe excerpt explains how Einstein\u2019s field equations correctly reproduced Mercury\u2019s anomalous precession. It celebrates a successful prediction but does not point out any fundamental impossibility or limit. (Episode\u202f6,\u202f22:00\u201123:30)  \n\n**Episode\u202f7 \u2013 On Computable Numbers, Turing\u202f1936**  \nTuring tackles the **undecidability** of the decision problem: there is no mechanical (algorithmic) procedure that can decide, for every mathematical statement, whether it is provable. This is an explicit impossibility result about the limits of computation. (Episode\u202f7,\u202f05:46\u201107:14)  \n\n---\n\n### Quick synthesis  \nAcross the episodes we see several different \u201chard walls\u201d:\n\n* **Physics:** massive objects can\u2019t reach\u202fc (Episode\u202f1); black\u2011hole evaporation seems to threaten quantum\u2011mechanical information conservation (Episode\u202f2).  \n* **Information theory:** entropy caps the bits a symbol can hold (Episode\u202f4).  \n* **Computation:** no universal algorithm can decide all mathematical truths (Episode\u202f7).  \n\nEpisodes\u202f3 and\u202f6, while fascinating, don\u2019t introduce a new fundamental impossibility. Together, these snippets remind us that nature and logic each have built\u2011in boundaries\u2014some energy\u2011based, some informational, some logical\u2014that shape what we can (and cannot) achieve. Keep exploring; every limit also points the way to deeper insight!",
+    "answer": "**Episode\u202f1 \u2013 Einstein\u2019s Special Relativity**  \nThe podcast makes it crystal\u2011clear that a massive object can never actually reach the speed of light. As the speakers explain, the energy required \u201cdiverges as you approach the speed of light\u201d and would have to be infinite, which the universe simply doesn\u2019t contain. The velocity\u2011addition rule also forbids adding speeds past\u202fc, so both kinematics and dynamics agree on this hard ceiling.\u202f*(Episode\u202f1, 36:19\u201137:48)*  \n\n**Episode\u202f2 \u2013 How Black Holes Radiate (Hawking\u202f1975)**  \nHere the \u201cblack\u2011hole information paradox\u201d is presented as a clash of two impossibility statements. Quantum mechanics insists that information can never be truly lost (it must be retained in principle), while Hawking\u2019s original calculation predicts perfectly thermal radiation that carries no information, implying that the information is destroyed when the hole evaporates. The paradox itself is a statement that the two \u201ccannot both be right.\u201d\u202f*(Episode\u202f2, 39:38\u201141:06)*  \n\n**Episode\u202f3 \u2013 The Double Helix (Watson & Crick\u202f1953)**  \nThe excerpt talks about the high\u2011stakes gamble of proposing a structural model, but it does **not** articulate a fundamental physical or mathematical limit or impossibility.\u202f*(Episode\u202f3, 14:28\u201115:54 \u2013 no limit discussed)*  \n\n**Episode\u202f4 \u2013 Shannon and the Birth of Information (1948)**  \nShannon\u2019s entropy is bounded: a fair binary source carries exactly one bit of information, while a completely predictable source carries zero. The discussion shows the *maximum* amount of information a two\u2011outcome symbol can convey and that it can never exceed that one\u2011bit ceiling.\u202f*(Episode\u202f4, 13:04\u201114:30)*  \n\n**Episode\u202f6 \u2013 General Relativity (Einstein\u202f1915)**  \nThe passage describes the successful retrodiction of Mercury\u2019s perihelion precession, but it does not present any fundamental impossibility or limit.\u202f*(Episode\u202f6, 22:00\u201123:30 \u2013 no limit discussed)*  \n\n**Episode\u202f7 \u2013 On Computable Numbers (Turing\u202f1936)**  \nTuring tackles the \u201cdecision problem\u201d: is there a mechanical procedure that can decide every mathematical statement? The episode explains that Turing proved **no such mechanical procedure can exist**\u2014an explicit impossibility result about algorithmic decidability.\u202f*(Episode\u202f7, 05:46\u201107:14)*  \n\n---\n\n### Quick synthesis  \n\nAcross the series we see several different kinds of hard boundaries:\n\n* **Physical energy limits** (Special Relativity) \u2013 you can get arbitrarily close to\u202fc, but infinite energy is required to actually reach it.  \n* **Information\u2011theoretic limits** (Shannon) \u2013 a binary symbol can never convey more than one bit, and a completely certain source conveys none.  \n* **Quantum\u2011mechanical consistency limits** (Black\u2011hole paradox) \u2013 the universe seems to forbid true loss of information, yet Hawking\u2019s early calculation suggested otherwise, creating a paradox that forces us to reconcile the two.  \n* **Computational limits** (Turing) \u2013 there is no universal algorithm that can decide every mathematical proposition.\n\nEpisodes\u202f3 and\u202f6, while fascinating, don\u2019t raise a specific impossibility in the excerpts provided. Keep these limits in mind\u2014they\u2019re the \u201cspeed limits,\u201d \u201cinformation caps,\u201d and \u201cundecidable walls\u201d that shape how we think about physics, information, and computation. \ud83c\udf1f",
     "citations": [
       {
-        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0005",
-        "episode_number": 7,
-        "episode_title": "On Computable Numbers, Turing 1936",
-        "start": 345.9,
-        "end": 433.83002
+        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0026",
+        "episode_number": 1,
+        "episode_title": "Einstein's Special Relativity",
+        "start": 2178.855,
+        "end": 2268.485
       },
       {
-        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0019",
-        "episode_number": 7,
-        "episode_title": "On Computable Numbers, Turing 1936",
-        "start": 1581.7151,
-        "end": 1671.4299
-      },
-      {
-        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0012",
-        "episode_number": 7,
-        "episode_title": "On Computable Numbers, Turing 1936",
-        "start": 965.495,
-        "end": 1055.485
+        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0028",
+        "episode_number": 2,
+        "episode_title": "How Black Holes Radiate, Hawking 1975",
+        "start": 2378.495,
+        "end": 2466.475
       },
       {
         "chunk_id": "great_papers_03_the_double_helix_watson_and_crick_1953_c0011",
@@ -59,41 +52,6 @@
         "end": 869.88
       },
       {
-        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0027",
-        "episode_number": 4,
-        "episode_title": "Shannon and the Birth of Information, 1948",
-        "start": 2278.4,
-        "end": 2367.52
-      },
-      {
-        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0026",
-        "episode_number": 1,
-        "episode_title": "Einstein's Special Relativity",
-        "start": 2178.855,
-        "end": 2268.485
-      },
-      {
-        "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0016",
-        "episode_number": 4,
-        "episode_title": "Shannon and the Birth of Information, 1948",
-        "start": 1302.395,
-        "end": 1391.595
-      },
-      {
-        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0028",
-        "episode_number": 2,
-        "episode_title": "How Black Holes Radiate, Hawking 1975",
-        "start": 2378.495,
-        "end": 2466.475
-      },
-      {
-        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0025",
-        "episode_number": 1,
-        "episode_title": "Einstein's Special Relativity",
-        "start": 2096.375,
-        "end": 2178.56
-      },
-      {
         "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0016",
         "episode_number": 6,
         "episode_title": "General Relativity, Einstein 1915",
@@ -101,25 +59,11 @@
         "end": 1409.9299
       },
       {
-        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0004",
-        "episode_number": 2,
-        "episode_title": "How Black Holes Radiate, Hawking 1975",
-        "start": 262.57498,
-        "end": 352.54498
-      },
-      {
-        "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0006",
-        "episode_number": 2,
-        "episode_title": "How Black Holes Radiate, Hawking 1975",
-        "start": 441.545,
-        "end": 531.03
-      },
-      {
-        "chunk_id": "great_papers_01_einstein_s_special_relativity_c0019",
-        "episode_number": 1,
-        "episode_title": "Einstein's Special Relativity",
-        "start": 1571.635,
-        "end": 1659.805
+        "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0005",
+        "episode_number": 7,
+        "episode_title": "On Computable Numbers, Turing 1936",
+        "start": 345.9,
+        "end": 433.83002
       }
     ],
     "refused": false,

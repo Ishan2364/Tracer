@@ -37,6 +37,15 @@ MULTI_EPISODE_SYSTEM_PROMPT = SYSTEM_PROMPT + (
     "comparing them - but do not blend episodes into one undifferentiated answer."
 )
 
+RECOMMENDATION_SYSTEM_PROMPT = SYSTEM_PROMPT + (
+    "\n\nThe learner is asking WHICH episode(s) to listen to for a topic - they want a "
+    "recommendation, not a summary of the topic itself. Explicitly recommend one specific "
+    "episode (by number and title) as the best fit, and justify the choice using what's "
+    "actually in the excerpts. If more than one episode genuinely covers the topic, name a "
+    "primary recommendation first and mention the others as secondary options - don't just "
+    "describe every episode's content evenly as if this were an open-ended question."
+)
+
 FOLLOWUP_SYSTEM_PROMPT = SYSTEM_PROMPT + (
     "\n\nThis is a follow-up to your previous answer. The excerpts below include a bit more "
     "surrounding context than the original ones did. Follow the learner's CURRENT request "
@@ -75,6 +84,61 @@ def format_timestamp(seconds: float) -> str:
     return f"{total // 60:02d}:{total % 60:02d}"
 
 
+# Matches "(Episode N, mm:ss-mm:ss)"-shaped citations the system prompt instructs the
+# model to write - tolerant of the various dash-like characters actually observed in
+# real outputs (plain hyphen, en dash, em dash, and the narrow non-breaking hyphen the
+# model has been seen to use), and of a comma or colon after the episode number.
+_CITATION_RE = re.compile(
+    r"Episode\s+(\d+)[,:]?\s*(\d{1,3}):(\d{2})\s*[-‐‑‒–—]\s*(\d{1,3}):(\d{2})"
+)
+
+CITATION_MATCH_TOLERANCE_SECONDS = 3.0
+
+
+def _parse_cited_ranges(answer_text: str) -> list[tuple[int, int, int]]:
+    """Returns (episode_number, start_seconds, end_seconds) for every citation-shaped
+    substring actually found in the model's answer text."""
+    ranges = []
+    for m in _CITATION_RE.finditer(answer_text):
+        episode_number = int(m.group(1))
+        start_seconds = int(m.group(2)) * 60 + int(m.group(3))
+        end_seconds = int(m.group(4)) * 60 + int(m.group(5))
+        ranges.append((episode_number, start_seconds, end_seconds))
+    return ranges
+
+
+def filter_citations_to_used(answer_text: str, chunks: list[dict]) -> list[dict]:
+    """Narrows `chunks` (everything actually sent to the model - or, for the agent,
+    everything any tool call returned this turn) down to only the ones the model's own
+    answer text actually cites inline. Never trusts a new claim from the model - it only
+    decides which subset of already-verified real chunk metadata to display, by matching
+    the timestamps the model wrote against each chunk's real [start, end] range (with a
+    small tolerance, since a citation naming a narrower sub-range within a chunk's true
+    boundaries is a legitimate match, not a mismatch - see eval/cases.md's documented
+    citation-precision quirk).
+
+    Safety fallback: if zero citations can be parsed from the text at all (e.g. the
+    model didn't follow the format), returns `chunks` unfiltered rather than an empty
+    list - this can only ever narrow the result when there's real textual evidence to
+    narrow it by, never produce a worse outcome than showing everything sent."""
+    cited_ranges = _parse_cited_ranges(answer_text)
+    if not cited_ranges:
+        return chunks
+
+    manifest = load_manifest()
+    used = []
+    for c in chunks:
+        info = manifest.get(c["episode_id"], {})
+        episode_number = info.get("episode_number", c.get("episode_number"))
+        for cited_episode, cited_start, cited_end in cited_ranges:
+            if cited_episode != episode_number:
+                continue
+            if c["start"] - CITATION_MATCH_TOLERANCE_SECONDS <= cited_start <= c["end"] + CITATION_MATCH_TOLERANCE_SECONDS:
+                used.append(c)
+                break
+    return used
+
+
 def format_chunk(chunk: dict) -> str:
     manifest = load_manifest()
     info = manifest.get(chunk["episode_id"], {"episode_number": "?", "title": chunk["episode_id"]})
@@ -109,15 +173,35 @@ def _unknown_episodes_note(unknown_episodes: list[int] | None) -> str:
     )
 
 
-def build_messages(query: str, chunks: list[dict], unknown_episodes: list[int] | None = None) -> list[dict]:
+def build_messages(
+    query: str, chunks: list[dict], unknown_episodes: list[int] | None = None
+) -> tuple[list[dict], list[dict]]:
+    """Returns (messages, chunks_sent) - chunks_sent is the post-budget-trim list that
+    actually made it into the prompt, so callers can build citations from exactly what
+    the model saw, not from the pre-trim set that may include chunks it never received."""
     chunks = _fit_chunks_to_budget(chunks)
     excerpts = "\n\n".join(format_chunk(c) for c in chunks)
     note = _unknown_episodes_note(unknown_episodes)
     user_prompt = f"Excerpts:\n\n{excerpts}{note}\n\nQuestion: {query}"
-    return [
+    messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user_prompt},
     ]
+    return messages, chunks
+
+
+def build_messages_recommendation(
+    query: str, chunks: list[dict], unknown_episodes: list[int] | None = None
+) -> tuple[list[dict], list[dict]]:
+    chunks = _fit_chunks_to_budget(chunks)
+    excerpts = "\n\n".join(format_chunk(c) for c in chunks)
+    note = _unknown_episodes_note(unknown_episodes)
+    user_prompt = f"Excerpts:\n\n{excerpts}{note}\n\nQuestion: {query}"
+    messages = [
+        {"role": "system", "content": RECOMMENDATION_SYSTEM_PROMPT},
+        {"role": "user", "content": user_prompt},
+    ]
+    return messages, chunks
 
 
 def _group_chunks_by_episode(chunks: list[dict]) -> list[tuple[str, list[dict]]]:
@@ -161,26 +245,30 @@ def _fit_multi_episode_to_budget(chunks: list[dict], max_chars: int = config.MAX
 
 def build_messages_multi_episode(
     query: str, chunks: list[dict], unknown_episodes: list[int] | None = None
-) -> list[dict]:
+) -> tuple[list[dict], list[dict]]:
     chunks = _fit_multi_episode_to_budget(chunks)
     excerpts = format_excerpts_multi_episode(chunks)
     note = _unknown_episodes_note(unknown_episodes)
     user_prompt = f"Excerpts (grouped by episode):\n\n{excerpts}{note}\n\nQuestion: {query}"
-    return [
+    messages = [
         {"role": "system", "content": MULTI_EPISODE_SYSTEM_PROMPT},
         {"role": "user", "content": user_prompt},
     ]
+    return messages, chunks
 
 
-def build_messages_followup(query: str, chunks: list[dict], previous_answer: str | None = None) -> list[dict]:
+def build_messages_followup(
+    query: str, chunks: list[dict], previous_answer: str | None = None
+) -> tuple[list[dict], list[dict]]:
     chunks = _fit_chunks_to_budget(chunks)
     excerpts = "\n\n".join(format_chunk(c) for c in chunks)
     prior = f"Your previous answer was:\n{previous_answer}\n\n" if previous_answer else ""
     user_prompt = f"{prior}Excerpts (expanded with surrounding context):\n\n{excerpts}\n\nFollow-up: {query}"
-    return [
+    messages = [
         {"role": "system", "content": FOLLOWUP_SYSTEM_PROMPT},
         {"role": "user", "content": user_prompt},
     ]
+    return messages, chunks
 
 
 CHITCHAT_SYSTEM_PROMPT = """You are Tracer, a warm, encouraging physics study companion for a

@@ -1,0 +1,900 @@
+{
+  "case_01": [
+    {
+      "query": "According to episode 7, why can no machine decide in general whether an arbitrary program halts?",
+      "query_type": "single_episode",
+      "episode_refs": [
+        7
+      ],
+      "retrieval_mode": "scoped_loop",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_07_on_computable_numbers_turing_1936_c0019",
+        "great_papers_07_on_computable_numbers_turing_1936_c0013",
+        "great_papers_07_on_computable_numbers_turing_1936_c0018",
+        "great_papers_07_on_computable_numbers_turing_1936_c0017",
+        "great_papers_07_on_computable_numbers_turing_1936_c0014"
+      ],
+      "answer": "Turing shows that a \u201cuniversal halt\u2011detector\u201d can\u2019t exist because its very existence leads to a self\u2011contradiction.  \n\nFirst we imagine a machine\u202f\u2014\u202fthe **checker**\u202f\u2014\u202fthat, given any other machine\u2019s description and its input, always tells us correctly whether that machine will eventually stop or run forever (the halting problem).  Turing then builds a second machine, the **troublemaker**, that uses the checker as a sub\u2011routine: it feeds the description of a machine to the checker and then does the opposite of whatever answer it receives (if the checker says \u201chalts\u201d, the troublemaker loops forever; if the checker says \u201cruns forever\u201d, the troublemaker halts)\u202f(24:54\u201126:21).  \n\nNow feed the troublemaker its own description.  Whatever the checker predicts about the troublemaker, the troublemaker will do the opposite, so the checker\u2019s answer must be wrong.  This contradiction shows that no such checker can exist, and therefore no machine can decide in general whether an arbitrary program halts\u202f(26:22\u201127:51).  \n\nIn short, the halting problem is undecidable because assuming a universal halting procedure leads to a self\u2011referential paradox that makes the procedure inevitably give a false answer.\u202f(23:24\u201124:54 also frames the question and the proof strategy).",
+      "citations": [
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0019",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 1581.7151,
+          "end": 1671.4299
+        },
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0013",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 1056.26,
+          "end": 1144.51
+        },
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0018",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 1494.165,
+          "end": 1581.315
+        },
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0017",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 1404.085,
+          "end": 1493.845
+        },
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0014",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 1144.91,
+          "end": 1233.9949
+        }
+      ],
+      "refused": false,
+      "query_call_count_delta": 1
+    }
+  ],
+  "case_02": [
+    {
+      "query": "According to episode 7, what is the equivalence principle?",
+      "query_type": "single_episode",
+      "episode_refs": [
+        7
+      ],
+      "retrieval_mode": "scoped_loop",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_07_on_computable_numbers_turing_1936_c0001",
+        "great_papers_07_on_computable_numbers_turing_1936_c0005",
+        "great_papers_07_on_computable_numbers_turing_1936_c0023",
+        "great_papers_07_on_computable_numbers_turing_1936_c0006",
+        "great_papers_07_on_computable_numbers_turing_1936_c0022"
+      ],
+      "answer": "I\u2019m sorry, but the excerpts you provided from Episode\u202f7 don\u2019t actually define or describe anything called \u201cthe equivalence principle.\u201d The discussion focuses on Turing\u2019s universal machine, the decision problem, and the limits of computation, but it never uses that specific term or gives a definition for it. So I can\u2019t give you an answer based on the material you shared.",
+      "citations": [
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0001",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 0.0,
+          "end": 82.115
+        },
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0005",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 345.9,
+          "end": 433.83002
+        },
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0023",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 1937.41,
+          "end": 1982.275
+        },
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0006",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 434.22998,
+          "end": 522.145
+        },
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0022",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 1847.88,
+          "end": 1937.33
+        }
+      ],
+      "refused": false,
+      "query_call_count_delta": 1
+    }
+  ],
+  "case_03": [
+    {
+      "query": "Compare episodes 1 and 6 - how does each one define which observers get special/privileged treatment?",
+      "query_type": "named_comparison",
+      "episode_refs": [
+        1,
+        6
+      ],
+      "retrieval_mode": "scoped_loop",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_01_einstein_s_special_relativity_c0011",
+        "great_papers_01_einstein_s_special_relativity_c0019",
+        "great_papers_01_einstein_s_special_relativity_c0010",
+        "great_papers_01_einstein_s_special_relativity_c0036",
+        "great_papers_01_einstein_s_special_relativity_c0001",
+        "great_papers_06_general_relativity_einstein_1915_c0003",
+        "great_papers_06_general_relativity_einstein_1915_c0017",
+        "great_papers_06_general_relativity_einstein_1915_c0001",
+        "great_papers_06_general_relativity_einstein_1915_c0004",
+        "great_papers_06_general_relativity_einstein_1915_c0022"
+      ],
+      "answer": "**Episode\u202f1 \u2013 \u201cEinstein\u2019s Special Relativity\u201d**  \nIn this discussion the two observers (the person on the train and the person on the platform) are both treated as *perfectly good inertial observers* and *neither is given a privileged viewpoint* (Episode\u202f1, 14:30\u201115:56).  The authors stress that the first postulate of special relativity says \u201cneither has a privileged view,\u201d and the whole \u201cstrange\u201d physics comes from the fact that they simply *disagree about simultaneity* rather than one being \u201cmore right\u201d than the other (Episode\u202f1, 14:30\u201115:56).\n\n**Episode\u202f6 \u2013 \u201cGeneral Relativity, Einstein\u202f1915\u201d**  \nHere the podcast spells out that *special relativity* itself *does* grant a special status to a particular class of observers: those who move at constant velocity with no acceleration\u2014*the inertial observers* (Episode\u202f6, 02:58\u201104:25).  As soon as you \u201caccelerate\u2026 you\u2019re outside the club\u201d and the original theory \u201chas nothing to say about you\u201d (Episode\u202f6, 02:58\u201104:25).  Einstein\u2019s goal with the *general* theory was to remove that privilege so that *all* observers, accelerated or not, are treated on an equal footing (Episode\u202f6, 02:58\u201104:25).\n\n---\n\n### Putting the two together  \n\n- **Episode\u202f1** tells us that, within the framework of special relativity, *both* inertial frames are equally valid\u2014there is *no* privileged observer; the apparent paradoxes (e.g., each seeing the other\u2019s clock run slow) are resolved by the relativity of simultaneity.  \n- **Episode\u202f6** reminds us that the *original* special theory *does* privilege inertial observers, leaving accelerated observers without a description, and that Einstein\u2019s general relativity was motivated precisely to give *every* observer (accelerated or not) the same rights.\n\nSo the two episodes complement each other: Episode\u202f1 emphasizes the *equality* of inertial observers once you accept relativity of simultaneity, while Episode\u202f6 points out that *only* inertial observers enjoyed that privileged status in the *special* theory, and that general relativity was the step that finally removed the privilege altogether.",
+      "citations": [
+        {
+          "chunk_id": "great_papers_01_einstein_s_special_relativity_c0011",
+          "episode_number": 1,
+          "episode_title": "Einstein's Special Relativity",
+          "start": 869.67,
+          "end": 955.97003
+        },
+        {
+          "chunk_id": "great_papers_01_einstein_s_special_relativity_c0019",
+          "episode_number": 1,
+          "episode_title": "Einstein's Special Relativity",
+          "start": 1571.635,
+          "end": 1659.805
+        },
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0003",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 178.44499,
+          "end": 265.32
+        },
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0017",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 1410.6499,
+          "end": 1499.25
+        }
+      ],
+      "refused": false,
+      "query_call_count_delta": 2
+    }
+  ],
+  "case_04": [
+    {
+      "query": "What do episodes 7 and 8 say about biological evolution?",
+      "query_type": "named_comparison",
+      "episode_refs": [
+        7,
+        8
+      ],
+      "retrieval_mode": "scoped_loop",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_07_on_computable_numbers_turing_1936_c0001",
+        "great_papers_07_on_computable_numbers_turing_1936_c0006",
+        "great_papers_07_on_computable_numbers_turing_1936_c0023",
+        "great_papers_07_on_computable_numbers_turing_1936_c0022",
+        "great_papers_07_on_computable_numbers_turing_1936_c0016",
+        "great_papers_08_natural_selection_darwin_and_wallace_1858_c0022",
+        "great_papers_08_natural_selection_darwin_and_wallace_1858_c0017",
+        "great_papers_08_natural_selection_darwin_and_wallace_1858_c0009",
+        "great_papers_08_natural_selection_darwin_and_wallace_1858_c0013",
+        "great_papers_08_natural_selection_darwin_and_wallace_1858_c0020"
+      ],
+      "answer": "**Episode\u202f7 \u2013 \u201cOn Computable Numbers,\u202fTuring\u202f1936\u201d**  \nThe excerpts from Episode\u202f7 are all about Turing\u2019s abstract machine, the origins of computer science, and the limits of formal calculation.\u202fThey never mention biology, evolution, or natural selection.\u202fSo, for this episode there is simply **no discussion of biological evolution**.  \n\n**Episode\u202f8 \u2013 \u201cNatural Selection,\u202fDarwin\u202fand\u202fWallace\u202f1858\u201d**  \nEpisode\u202f8 is all about how life changes over time. Here are the key points the speakers make, each backed by the transcript:\n\n1. **Life is a branching tree, not a ladder.**  \n   - \u201cThe right picture isn\u2019t a ladder at all. It\u2019s a tree\u2026 a single trunk of early life, branching and branching\u2026 every living thing today sitting at the tip of one twig\u201d (Episode\u202f8,\u202f23:24\u201124:53).  \n\n2. **All organisms share a common ancestor.**  \n   - \u201cYou and an oak tree and a mushroom and a bacterium share a common ancestor if you go back far enough\u2026 Common descent, the whole of life as one enormous family tree with a single root\u201d (Episode\u202f8,\u202f23:24\u201124:53).  \n\n3. **Speciation usually happens gradually via geographic separation.**  \n   - \u201cThere usually isn\u2019t a moment\u2026 The commonest route is geography\u2026 cut its range in two with a barrier\u2026 now you have two populations that can no longer interbreed\u2026 selection pushes each one its own way\u2026 and they drift apart\u201d (Episode\u202f8,\u202f23:24\u201124:53).  \n\n4. **The theory makes concrete, testable predictions.**  \n   - \u201cBiologists reason that the transition from fish to land animal should sit in rocks of a particular age\u2026 went to rocks of exactly that age\u2026 pulled out *Tiktaalik*, a fish with the beginnings of a neck and sturdy, limb\u2011like fins\u201d (Episode\u202f8,\u202f30:46\u201132:14).  \n\n5. **Independent lines of evidence converge on the same tree of life.**  \n   - \u201cWhen we finally learned to read DNA directly\u2026 the family tree the molecules draw matched the tree already drawn from bones and fossils\u201d (Episode\u202f8,\u202f30:46\u201132:14).  \n\n6. **We can observe natural selection in action today.**  \n   - \u201cBacteria evolving resistance to antibiotics is natural selection in a hospital over weeks\u2026 the drug is the environment, it kills the susceptible bacteria, the few with a resistant variation survive and multiply, and soon the whole population is resistant\u201d (Episode\u202f8,\u202f30:46\u201132:14).  \n\n### Quick Synthesis  \n- **Episode\u202f7** doesn\u2019t touch on evolution at all; it\u2019s focused on computation.  \n- **Episode\u202f8** paints a vivid picture of biological evolution as a branching, tree\u2011like process driven by common descent, geographic isolation, and natural selection, and it highlights how the theory is both predictive and observable in modern contexts.  \n\nSo, when it comes to biological evolution, the podcast\u2019s insights come entirely from Episode\u202f8, which emphasizes the tree of life, gradual speciation, testable predictions, and real\u2011time examples like antibiotic resistance.",
+      "citations": [
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0001",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 0.0,
+          "end": 82.115
+        },
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0006",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 434.22998,
+          "end": 522.145
+        },
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0023",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 1937.41,
+          "end": 1982.275
+        },
+        {
+          "chunk_id": "great_papers_08_natural_selection_darwin_and_wallace_1858_c0022",
+          "episode_number": 8,
+          "episode_title": "Natural Selection, Darwin and Wallace 1858",
+          "start": 1846.065,
+          "end": 1933.505
+        },
+        {
+          "chunk_id": "great_papers_08_natural_selection_darwin_and_wallace_1858_c0017",
+          "episode_number": 8,
+          "episode_title": "Natural Selection, Darwin and Wallace 1858",
+          "start": 1404.36,
+          "end": 1492.5399
+        }
+      ],
+      "refused": false,
+      "query_call_count_delta": 2
+    }
+  ],
+  "case_05": [
+    {
+      "query": "What's in the relativity episode?",
+      "query_type": "named_comparison",
+      "episode_refs": [
+        1,
+        6
+      ],
+      "retrieval_mode": "scoped_loop",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_01_einstein_s_special_relativity_c0036",
+        "great_papers_01_einstein_s_special_relativity_c0034",
+        "great_papers_01_einstein_s_special_relativity_c0033",
+        "great_papers_01_einstein_s_special_relativity_c0023",
+        "great_papers_01_einstein_s_special_relativity_c0018",
+        "great_papers_06_general_relativity_einstein_1915_c0001",
+        "great_papers_06_general_relativity_einstein_1915_c0003",
+        "great_papers_06_general_relativity_einstein_1915_c0015",
+        "great_papers_06_general_relativity_einstein_1915_c0005",
+        "great_papers_06_general_relativity_einstein_1915_c0023"
+      ],
+      "answer": "**Episode\u202f1 \u2013 \u201cEinstein\u2019s Special Relativity\u201d**  \n\n- The core idea that *all* inertial observers agree on a single quantity is the **space\u2011time interval**.  Even though different observers slice space and time differently, the combination \u201ctime\u202f\u00b2\u202f\u2013\u202f(space\u202f/\u202fc)\u202f\u00b2\u201d comes out the same for everyone (Episode\u202f1,\u202f47:55\u201149:24).  \n- Because moving clocks run slow, the tiny relativistic shift in a satellite\u2019s clock (both the special\u2011relativistic \u201cmoving\u2011fast\u201d part and the general\u2011relativistic \u201chigher\u2011up\u2011in\u2011gravity\u201d part) would make a phone\u2019s GPS position drift by kilometres in a day if we didn\u2019t correct for it (Episode\u202f1,\u202f50:46\u201152:14).  \n- The two postulates Einstein wrote on a desk\u2014*the speed of light is the same for all observers* and *the laws of physics look the same in any inertial frame*\u2014lead to the picture of space stretching, time slowing, and the only invariant being a beam of light (Episode\u202f1,\u202f50:46\u201152:14).  \n\n**Episode\u202f6 \u2013 \u201cGeneral Relativity, Einstein\u202f1915\u201d**  \n\n- Special relativity works beautifully for **inertial** (non\u2011accelerating) observers, but it says nothing about what happens when you accelerate.  That gap was the \u201cloose thread\u201d Einstein wanted to tie up (Episode\u202f6,\u202f02:58\u201104:25).  \n- The \u201chappiest thought\u201d that solved the problem was the **equivalence principle**: a person in free fall feels no gravity.  This simple insight leads to the predictions of bending light, slowing clocks, and finally the idea that gravity is not a force but the curvature of space\u2011time itself (Episode\u202f6,\u202f00:00\u201101:28).  \n- The episode emphasizes that the same thread\u2014how acceleration and gravity relate\u2014unifies the whole move from \u201cspecial\u201d to \u201cgeneral\u201d relativity (Episode\u202f6,\u202f02:58\u201104:25).  \n\n---\n\n### Quick Comparison  \n\n- **What they agree on:** Both episodes stress that a single invariant (the spacetime interval in special relativity, the curvature of spacetime in general relativity) underlies all observers\u2019 measurements.  \n- **What they add:** Episode\u202f1 shows how that invariant keeps clocks and distances consistent enough for everyday tech like GPS.  Episode\u202f6 shows why we need to go beyond inertial frames, using the equivalence principle to turn gravity into geometry.  \n\nSo, the \u201crelativity episode\u201d package gives you the invariant interval that saves special relativity, then expands the story to accelerated frames and gravity by treating spacetime itself as a dynamic, curved stage.",
+      "citations": [
+        {
+          "chunk_id": "great_papers_01_einstein_s_special_relativity_c0036",
+          "episode_number": 1,
+          "episode_title": "Einstein's Special Relativity",
+          "start": 3045.6,
+          "end": 3133.81
+        },
+        {
+          "chunk_id": "great_papers_01_einstein_s_special_relativity_c0034",
+          "episode_number": 1,
+          "episode_title": "Einstein's Special Relativity",
+          "start": 2875.25,
+          "end": 2963.71
+        },
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0001",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 0.0,
+          "end": 88.25
+        },
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0003",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 178.44499,
+          "end": 265.32
+        }
+      ],
+      "refused": false,
+      "query_call_count_delta": 2
+    }
+  ],
+  "case_06": [
+    {
+      "query": "What fundamental limits or impossibility results come up across the episodes?",
+      "query_type": "general",
+      "episode_refs": [],
+      "retrieval_mode": "broad_rebalanced",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_07_on_computable_numbers_turing_1936_c0005",
+        "great_papers_07_on_computable_numbers_turing_1936_c0019",
+        "great_papers_07_on_computable_numbers_turing_1936_c0012",
+        "great_papers_03_the_double_helix_watson_and_crick_1953_c0011",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0010",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0027",
+        "great_papers_01_einstein_s_special_relativity_c0026",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0016",
+        "great_papers_02_how_black_holes_radiate_hawking_1975_c0028",
+        "great_papers_01_einstein_s_special_relativity_c0025",
+        "great_papers_06_general_relativity_einstein_1915_c0016",
+        "great_papers_02_how_black_holes_radiate_hawking_1975_c0004",
+        "great_papers_02_how_black_holes_radiate_hawking_1975_c0006",
+        "great_papers_01_einstein_s_special_relativity_c0019"
+      ],
+      "answer": "**Episode\u202f1 \u2013 Einstein\u2019s Special Relativity**  \nThe podcast tells us that a massive ship would need *infinite* energy to hit the speed of light, so \u201cit simply cannot be done\u201d (Episode\u202f1, 36:19\u201137:48). In other words, the universe imposes a hard speed limit: anything with mass can only *approach*\u202fc, never reach it.\n\n**Episode\u202f2 \u2013 How Black Holes Radiate (Hawking\u202f1975)**  \nHere the speakers point out a clash between two core principles: quantum mechanics says \u201cinformation is never truly lost\u201d (Episode\u202f2, 39:38\u201141:06), while Hawking\u2019s original calculation makes the radiation perfectly thermal and apparently erases the details of what fell in. The resulting *black\u2011hole information paradox* is an impossibility result \u2013 a situation where two trusted theories seem to forbid the same thing (loss of information).\n\n**Episode\u202f3 \u2013 The Double Helix**  \nThe excerpt focuses on the scientific \u201crace\u201d and model\u2011building strategy, but it does **not** discuss any fundamental physical or mathematical limits. So there\u2019s nothing here that answers the question.\n\n**Episode\u202f4 \u2013 Shannon and the Birth of Information (1948)**  \nShannon\u2019s entropy story gives a clear bound on how much information a single symbol can carry. A fair coin flip carries *exactly one bit* of information, and any bias reduces that amount (Episode\u202f4, 13:04\u201114:30). The \u201climit\u201d is the maximum of one bit per unbiased binary event; you can never get more than that from a single toss.\n\n**Episode\u202f6 \u2013 General Relativity (Einstein\u202f1915)**  \nThe passage explains how Einstein\u2019s equations accounted for Mercury\u2019s perihelion precession, but it does not present any impossibility or fundamental limit. No relevant limit is mentioned in this excerpt.\n\n**Episode\u202f7 \u2013 On Computable Numbers (Turing\u202f1936)**  \nTuring\u2019s work tackles the *decision problem*: \u201cIs there a mechanical procedure that can decide any mathematical statement?\u201d The conclusion is that **no such universal mechanical procedure exists** (Episode\u202f7, 05:46\u201107:14). This is a classic impossibility result in computability theory.\n\n---\n\n### Quick synthesis  \n\n- **Physics limits**: Special relativity forbids massive objects from reaching\u202fc (Episode\u202f1); quantum theory forbids true information loss, creating the black\u2011hole paradox (Episode\u202f2).  \n- **Information\u2011theoretic limit**: One unbiased binary event can convey at most one bit (Episode\u202f4).  \n- **Computational limit**: No algorithm can decide every mathematical statement (Episode\u202f7).  \n\nEpisodes\u202f3 and\u202f6, while fascinating, don\u2019t raise any fundamental impossibility in the excerpts provided. Keep these boundaries in mind\u2014they\u2019re the \u201cno\u2011go\u201d zones that have shaped whole research programs!",
+      "citations": [
+        {
+          "chunk_id": "great_papers_01_einstein_s_special_relativity_c0026",
+          "episode_number": 1,
+          "episode_title": "Einstein's Special Relativity",
+          "start": 2178.855,
+          "end": 2268.485
+        },
+        {
+          "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0028",
+          "episode_number": 2,
+          "episode_title": "How Black Holes Radiate, Hawking 1975",
+          "start": 2378.495,
+          "end": 2466.475
+        },
+        {
+          "chunk_id": "great_papers_03_the_double_helix_watson_and_crick_1953_c0011",
+          "episode_number": 3,
+          "episode_title": "The Double Helix, Watson and Crick 1953",
+          "start": 867.65,
+          "end": 954.23004
+        },
+        {
+          "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0010",
+          "episode_number": 4,
+          "episode_title": "Shannon and the Birth of Information, 1948",
+          "start": 784.13,
+          "end": 869.88
+        },
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0016",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 1320.33,
+          "end": 1409.9299
+        },
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0005",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 345.9,
+          "end": 433.83002
+        }
+      ],
+      "refused": false,
+      "query_call_count_delta": 1
+    }
+  ],
+  "case_07": [
+    {
+      "query": "What do the episodes say about how governments regulated nuclear weapons development?",
+      "query_type": "general",
+      "episode_refs": [],
+      "retrieval_mode": "broad_rebalanced",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_07_on_computable_numbers_turing_1936_c0014",
+        "great_papers_03_the_double_helix_watson_and_crick_1953_c0003",
+        "great_papers_08_natural_selection_darwin_and_wallace_1858_c0005",
+        "great_papers_02_how_black_holes_radiate_hawking_1975_c0028",
+        "great_papers_01_einstein_s_special_relativity_c0015",
+        "great_papers_01_einstein_s_special_relativity_c0016",
+        "great_papers_03_the_double_helix_watson_and_crick_1953_c0010",
+        "great_papers_03_the_double_helix_watson_and_crick_1953_c0002",
+        "great_papers_07_on_computable_numbers_turing_1936_c0008",
+        "great_papers_01_einstein_s_special_relativity_c0025",
+        "great_papers_02_how_black_holes_radiate_hawking_1975_c0001",
+        "great_papers_07_on_computable_numbers_turing_1936_c0023",
+        "great_papers_02_how_black_holes_radiate_hawking_1975_c0027",
+        "great_papers_08_natural_selection_darwin_and_wallace_1858_c0013",
+        "great_papers_08_natural_selection_darwin_and_wallace_1858_c0023",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0003",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0015",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0020"
+      ],
+      "answer": "The supplied episodes don't appear to cover this.",
+      "citations": [],
+      "refused": true,
+      "query_call_count_delta": 1
+    }
+  ],
+  "case_08": [
+    {
+      "query": "Which episode should I listen to if I want to understand the limits of what computers can decide?",
+      "query_type": "recommendation",
+      "episode_refs": [
+        7
+      ],
+      "retrieval_mode": "broad_rebalanced",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_07_on_computable_numbers_turing_1936_c0012",
+        "great_papers_07_on_computable_numbers_turing_1936_c0011",
+        "great_papers_07_on_computable_numbers_turing_1936_c0010",
+        "great_papers_05_attention_is_all_you_need_2017_c0004",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0019",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0016",
+        "great_papers_03_the_double_helix_watson_and_crick_1953_c0011",
+        "great_papers_05_attention_is_all_you_need_2017_c0023",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0020"
+      ],
+      "answer": "If you want to hear a clear, focused discussion of the fundamental limits of what any computer (or Turing machine) can decide, start with **Episode\u202f7 \u2013 \u201cOn Computable Numbers, Turing\u202f1936.\u201d**  \n\n- The hosts walk through Cantor\u2019s diagonal trick and show how Turing uses the same idea to prove that there are far more real numbers than there are machines that could generate them, so most reals are **uncomputable** and can never be decided by any algorithm (16:05\u201117:35)\u3010Episode\u202f7, 16:05\u201117:35\u3011.  \n- Earlier in the same episode they spell out the counting argument: machines can be listed (they\u2019re countable), but the real numbers between\u202f0 and\u202f1 cannot be put on any such list, giving the classic \u201cmore reals than machines\u201d result (14:36\u201116:05)\u3010Episode\u202f7, 14:36\u201116:05\u3011.  \n\nTogether these sections give you the core insight into the theoretical ceiling on computability\u2014exactly the \u201climits of what computers can decide\u201d you\u2019re after.\n\n*Secondary options*: The other episodes in the catalogue (the attention\u2011mechanism talk in Episode\u202f5 or Shannon\u2019s coding discussion in Episode\u202f4) are fascinating, but they don\u2019t address computability limits directly. So Episode\u202f7 is the best single listen for your question.",
+      "citations": [
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0012",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 965.495,
+          "end": 1055.485
+        },
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0011",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 876.34503,
+          "end": 965.015
+        },
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0010",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 788.27,
+          "end": 875.78503
+        },
+        {
+          "chunk_id": "great_papers_05_attention_is_all_you_need_2017_c0004",
+          "episode_number": 5,
+          "episode_title": "Attention Is All You Need, 2017",
+          "start": 268.065,
+          "end": 357.41003
+        },
+        {
+          "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0019",
+          "episode_number": 4,
+          "episode_title": "Shannon and the Birth of Information, 1948",
+          "start": 1570.615,
+          "end": 1658.5851
+        }
+      ],
+      "refused": false,
+      "query_call_count_delta": 1
+    }
+  ],
+  "case_09": [
+    {
+      "query": "What does episode 99 say about black holes?",
+      "query_type": "single_episode",
+      "episode_refs": [
+        99
+      ],
+      "retrieval_mode": "scoped_loop",
+      "unknown_episodes": [
+        99
+      ],
+      "retrieved_chunk_ids": [],
+      "answer": "Episode(s) 99 don't exist in this catalogue.",
+      "citations": [],
+      "refused": false,
+      "query_call_count_delta": 0
+    }
+  ],
+  "case_10": [
+    {
+      "query": "What is discussed in episode 7 between minutes 26 and 28?",
+      "query_type": "single_episode",
+      "episode_refs": [
+        7
+      ],
+      "retrieval_mode": "scoped_loop",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_07_on_computable_numbers_turing_1936_c0020",
+        "great_papers_07_on_computable_numbers_turing_1936_c0019"
+      ],
+      "answer": "In the middle of\u202fEpisode\u202f7 the hosts are talking about two landmark results that showed the limits of mechanical computation.\n\n* First they explain **the halting problem** \u2013 the fact that no machine can decide, for every possible program, whether that program will eventually stop running. They stress that this isn\u2019t just a current gap in knowledge; it\u2019s a proven impossibility, a permanent barrier that no amount of cleverness can overcome (Episode\u202f7,\u202f26:22\u201127:51).\n\n* Right after that they turn to **the Church\u2011Turing thesis**. They describe how Alan\u202fTuring\u2019s machines and Alonzo\u202fChurch\u2019s \u03bb\u2011calculus, developed independently in 1936, turned out to capture exactly the same notion of \u201ccomputable.\u201d Because every effective procedure can be simulated by a Turing machine, the thesis claims that the Turing\u2011machine model defines the true limits of what can be computed (Episode\u202f7,\u202f27:52\u201128:??\u202f\u2013 the discussion continues past 28\u202fmin).",
+      "citations": [
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0020",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 1671.59,
+          "end": 1760.97
+        },
+        {
+          "chunk_id": "great_papers_07_on_computable_numbers_turing_1936_c0019",
+          "episode_number": 7,
+          "episode_title": "On Computable Numbers, Turing 1936",
+          "start": 1581.7151,
+          "end": 1671.4299
+        }
+      ],
+      "refused": false,
+      "query_call_count_delta": 1
+    }
+  ],
+  "case_11": [
+    {
+      "query": "What does episode 6 say about the equivalence principle?",
+      "query_type": "single_episode",
+      "episode_refs": [
+        6
+      ],
+      "retrieval_mode": "scoped_loop",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_06_general_relativity_einstein_1915_c0008",
+        "great_papers_06_general_relativity_einstein_1915_c0005",
+        "great_papers_06_general_relativity_einstein_1915_c0006",
+        "great_papers_06_general_relativity_einstein_1915_c0011",
+        "great_papers_06_general_relativity_einstein_1915_c0001"
+      ],
+      "answer": "Episode\u202f6 treats the equivalence principle as the cornerstone that lets Einstein turn \u201cgravity\u202f=\u202fforce\u201d on its head.  He explains that a uniform gravitational field is **exactly the same** as being in a constantly accelerating laboratory: everything you drop, every scale you step on, and every mechanical experiment you perform gives the same result whether the \u201cforce\u201d comes from the Earth\u2019s gravity or from the floor pushing up on you in an accelerating rocket (Episode\u202f6,\u202f05:53\u201107:22).  \n\nBecause the falling observer feels no gravity, Einstein argues that locally\u2014within a small enough region\u2014gravity can be \u201ccanceled\u201d and the physics looks just like special relativity.  That local cancellation is what lets him predict new effects: if light bends in an accelerating box, it must bend the same way in a gravitational field (Episode\u202f6,\u202f07:23\u201108:50), and the same reasoning leads to the idea that clocks run at different rates in gravity.  \n\nLater in the episode he emphasizes that the principle only holds **locally**; over larger distances the paths of two freely\u2011falling objects will start to converge because spacetime is curved (Episode\u202f6,\u202f14:37\u201116:07).  This local equivalence is what pushes him to view gravity not as a force but as a property of the spacetime arena itself (Episode\u202f6,\u202f10:15\u201111:45).",
+      "citations": [
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0008",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 615.185,
+          "end": 704.88495
+        },
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0005",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 352.52,
+          "end": 442.47
+        },
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0006",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 443.45502,
+          "end": 530.465
+        },
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0011",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 877.18,
+          "end": 966.57
+        },
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0001",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 0.0,
+          "end": 88.25
+        }
+      ],
+      "refused": false,
+      "query_call_count_delta": 1
+    },
+    {
+      "query": "Walk me through that step by step, I didn't quite follow",
+      "query_type": "follow_up",
+      "episode_refs": [],
+      "retrieval_mode": "follow_up",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_06_general_relativity_einstein_1915_c0001",
+        "great_papers_06_general_relativity_einstein_1915_c0005",
+        "great_papers_06_general_relativity_einstein_1915_c0006",
+        "great_papers_06_general_relativity_einstein_1915_c0008",
+        "great_papers_06_general_relativity_einstein_1915_c0011",
+        "great_papers_06_general_relativity_einstein_1915_c0002",
+        "great_papers_06_general_relativity_einstein_1915_c0004",
+        "great_papers_06_general_relativity_einstein_1915_c0006",
+        "great_papers_06_general_relativity_einstein_1915_c0007",
+        "great_papers_06_general_relativity_einstein_1915_c0009",
+        "great_papers_06_general_relativity_einstein_1915_c0010",
+        "great_papers_06_general_relativity_einstein_1915_c0012"
+      ],
+      "answer": "Sure thing! Let\u2019s break the whole \u201cequivalence\u202f=\u202fgravity\u202f\u2194\u202facceleration\u201d chain into bite\u2011size steps, exactly the way the podcast lays it out. I\u2019ll point to the time\u2011stamps so you can hear the original wording yourself.\n\n---\n\n### 1.\u202fThe \u201chappy thought\u201d: a falling person feels no gravity  \n- **What Einstein imagined:** \u201cA person falling off a roof feels no gravity.\u201d (Episode\u202f6,\u202f00:00\u201100:30)  \n- **Why it matters:** In free\u2011fall the usual \u201cforce of gravity\u201d disappears for the observer; locally everything looks weightless.\n\n### 2.\u202fUniform gravity \u2194 constantly accelerating lab  \n- **Key claim:** \u201cA uniform gravitational field is completely equivalent to an accelerating frame.\u201d (Episode\u202f6,\u202f05:53\u201107:22)  \n- **Illustration:** Drop a ball on Earth \u2192 it falls because Earth pulls it down.  \n  Drop the same ball in a rocket whose floor accelerates upward \u2192 the floor meets the ball in exactly the same way, so the ball \u201cfalls\u201d to the floor just as on Earth.  \n- **Result:** All mechanical experiments (scales, pendulums, etc.) give identical answers in the two situations. That is the **equivalence principle**.\n\n### 3.\u202fTurn the box into a light\u2011experiment  \n- **Set\u2011up:** Shine a laser horizontally across a sealed box (the \u201celevator\u201d). (Episode\u202f6,\u202f05:53\u201107:22)  \n- **In the accelerating rocket:** While the light crosses, the rocket speeds up a tiny bit, so the right wall moves upward a hair. The beam hits a point **lower** than where it left. (Episode\u202f6,\u202f07:23\u201108:50)  \n- **Interpretation:** Inside the box you *see* the light bend downward.\n\n### 4.\u202fBy equivalence, light must bend in a real gravitational field  \n- **Logic:** \u201cThe equivalence principle says you cannot tell the rocket from a room sitting in gravity\u2026 So if light bends in the rocket, light must bend in gravity too \u2026 by exactly the same amount.\u201d (Episode\u202f6,\u202f07:23\u201108:50)  \n- **Consequence:** Einstein predicts that starlight grazing the Sun will be deflected\u2014a testable, later\u2011confirmed result.\n\n### 5.\u202fClocks run at different rates in a gravitational field  \n- **Same box, now with clocks:** The podcast says \u201cthere\u2019s a second one hiding in the same box about time. Let\u2019s do clocks.\u201d (Episode\u202f6,\u202f07:23\u201108:50)  \n- **Idea:** Because the accelerating box makes light take a slightly longer (or shorter) path, the rate at which a light\u2011based clock ticks changes. By equivalence, a clock deeper in a gravitational field ticks slower than one higher up.\n\n### 6.\u202fWhy the principle is only *local*  \n- **Limitation:** \u201cThat local cancellation is what lets him predict new effects\u2026 The principle only holds locally; over larger distances the paths of two freely\u2011falling objects will start to converge because spacetime is curved.\u201d (Episode\u202f6,\u202f14:37\u201116:07)  \n- **Why:** If two observers start far apart and both fall toward Earth, their trajectories slowly converge toward the planet\u2019s centre\u2014showing that the \u201cno\u2011gravity\u201d picture breaks down when you look at a region that\u2019s too big.\n\n### 7.\u202fFrom local equivalence to curved spacetime  \n- **Metric as ruler:** \u201cThe metric \u2026 is the local ruler and clock \u2026 In curved spacetime it varies, and that variation is the gravity.\u201d (Episode\u202f6,\u202f14:37\u201116:07)  \n- **Putting it together:** Because the equivalence principle works only in tiny patches, we need a field (the metric) that tells us how distances and times change from point to point. The way the metric changes\u2014its **curvature**\u2014is what we finally call gravity.\n\n---\n\n**Putting the steps together:**  \n1. Free\u2011fall \u2192 no gravity locally.  \n2. Uniform gravity = constant acceleration \u2192 identical experiments.  \n3. Light in an accelerating box bends.  \n4. By equivalence, light bends in a gravitational field.  \n5. The same reasoning gives gravitational time dilation.  \n6. The effect is exact only in a small region; over larger scales curvature shows up.  \n7. Curvature of the metric is the geometric description of gravity.\n\nHope that clears it up! If any particular step still feels fuzzy, let me know and we can zoom in on that piece. \ud83c\udf1f",
+      "citations": [
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0001",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 0.0,
+          "end": 88.25
+        },
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0005",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 352.52,
+          "end": 442.47
+        },
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0006",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 443.45502,
+          "end": 530.465
+        },
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0008",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 615.185,
+          "end": 704.88495
+        },
+        {
+          "chunk_id": "great_papers_06_general_relativity_einstein_1915_c0011",
+          "episode_number": 6,
+          "episode_title": "General Relativity, Einstein 1915",
+          "start": 877.18,
+          "end": 966.57
+        }
+      ],
+      "refused": false,
+      "query_call_count_delta": 0
+    },
+    {
+      "query": "What does episode 8 say about the Wallace line?",
+      "query_type": "single_episode",
+      "episode_refs": [
+        8
+      ],
+      "retrieval_mode": "scoped_loop",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_08_natural_selection_darwin_and_wallace_1858_c0004",
+        "great_papers_08_natural_selection_darwin_and_wallace_1858_c0003",
+        "great_papers_08_natural_selection_darwin_and_wallace_1858_c0002",
+        "great_papers_08_natural_selection_darwin_and_wallace_1858_c0005",
+        "great_papers_08_natural_selection_darwin_and_wallace_1858_c0021"
+      ],
+      "answer": "Episode\u202f8 tells us that while Wallace was exploring the Malay Archipelago he kept asking why one island could be packed with animals that were totally different from those on a neighboring island just across a narrow strait.  He ended up spotting a very sharp boundary running through the islands where the character of the animal life suddenly flips\u202f\u2014\u202fa biogeographic break that is still called the **Wallace line** today (Episode\u202f8, 04:21\u201105:48).",
+      "citations": [
+        {
+          "chunk_id": "great_papers_08_natural_selection_darwin_and_wallace_1858_c0004",
+          "episode_number": 8,
+          "episode_title": "Natural Selection, Darwin and Wallace 1858",
+          "start": 261.22,
+          "end": 348.49
+        },
+        {
+          "chunk_id": "great_papers_08_natural_selection_darwin_and_wallace_1858_c0003",
+          "episode_number": 8,
+          "episode_title": "Natural Selection, Darwin and Wallace 1858",
+          "start": 172.17,
+          "end": 260.98
+        },
+        {
+          "chunk_id": "great_papers_08_natural_selection_darwin_and_wallace_1858_c0002",
+          "episode_number": 8,
+          "episode_title": "Natural Selection, Darwin and Wallace 1858",
+          "start": 89.14,
+          "end": 171.45
+        },
+        {
+          "chunk_id": "great_papers_08_natural_selection_darwin_and_wallace_1858_c0005",
+          "episode_number": 8,
+          "episode_title": "Natural Selection, Darwin and Wallace 1858",
+          "start": 349.265,
+          "end": 433.43
+        },
+        {
+          "chunk_id": "great_papers_08_natural_selection_darwin_and_wallace_1858_c0021",
+          "episode_number": 8,
+          "episode_title": "Natural Selection, Darwin and Wallace 1858",
+          "start": 1755.995,
+          "end": 1845.5049
+        }
+      ],
+      "refused": false,
+      "query_call_count_delta": 1
+    }
+  ],
+  "case_12": [
+    {
+      "query": "What does episode 4 say about Shannon's source-coding theorem?",
+      "query_type": "single_episode",
+      "episode_refs": [
+        4
+      ],
+      "retrieval_mode": "scoped_loop",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0011",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0019",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0012",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0016",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0015"
+      ],
+      "answer": "Shannon\u2019s **source\u2011coding theorem** is presented as the \u201cfloor\u201d for lossless compression.  \n\n* He defines the entropy of a source (the weighted average surprise of its symbols) and then says that **entropy is the exact lower bound on how much you can squeeze a message**\u202f\u2014\u202fthe \u201cfloor of compression\u201d (Episode\u202f4, 14:30\u201115:59).  \n\n* He follows up by stating the theorem more concretely: **any source can be compressed down to its entropy, and you can get arbitrarily close to that limit**, but you can never go below it without losing information (Episode\u202f4, 16:00\u201117:24).  \n\nIn short, the episode tells us that Shannon proved you can strip out all the predictable redundancy in a message until you reach the entropy rate, and that this rate is the best possible compression you can achieve.",
+      "citations": [
+        {
+          "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0011",
+          "episode_number": 4,
+          "episode_title": "Shannon and the Birth of Information, 1948",
+          "start": 870.36,
+          "end": 959.24
+        },
+        {
+          "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0019",
+          "episode_number": 4,
+          "episode_title": "Shannon and the Birth of Information, 1948",
+          "start": 1570.615,
+          "end": 1658.5851
+        },
+        {
+          "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0012",
+          "episode_number": 4,
+          "episode_title": "Shannon and the Birth of Information, 1948",
+          "start": 959.64,
+          "end": 1043.88
+        },
+        {
+          "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0016",
+          "episode_number": 4,
+          "episode_title": "Shannon and the Birth of Information, 1948",
+          "start": 1302.395,
+          "end": 1391.595
+        },
+        {
+          "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0015",
+          "episode_number": 4,
+          "episode_title": "Shannon and the Birth of Information, 1948",
+          "start": 1215.935,
+          "end": 1301.9149
+        }
+      ],
+      "refused": false,
+      "query_call_count_delta": 1
+    },
+    {
+      "query": "Explain that in short and concise",
+      "query_type": "follow_up",
+      "episode_refs": [],
+      "retrieval_mode": "follow_up",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0011",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0012",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0015",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0016",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0019",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0010",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0012",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0013",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0014",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0015",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0017",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0018",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0020"
+      ],
+      "answer": "Shannon showed that the **entropy** of a source\u2014computed by averaging\u202f\\(p\\log\\frac1p\\) over all symbols\u2014is the precise \u201cfloor\u201d for lossless compression (Episode\u202f4, 14:30\u201115:59). His source\u2011coding theorem then says **any** source can be squeezed down to that entropy value, and you can get arbitrarily close to it, but you can never go below without losing information (Episode\u202f4, 16:00\u201117:24). In other words, once you\u2019ve stripped out every predictable pattern, the remaining bits are the true information and can\u2019t be compressed further.",
+      "citations": [
+        {
+          "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0011",
+          "episode_number": 4,
+          "episode_title": "Shannon and the Birth of Information, 1948",
+          "start": 870.36,
+          "end": 959.24
+        },
+        {
+          "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0012",
+          "episode_number": 4,
+          "episode_title": "Shannon and the Birth of Information, 1948",
+          "start": 959.64,
+          "end": 1043.88
+        },
+        {
+          "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0015",
+          "episode_number": 4,
+          "episode_title": "Shannon and the Birth of Information, 1948",
+          "start": 1215.935,
+          "end": 1301.9149
+        },
+        {
+          "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0016",
+          "episode_number": 4,
+          "episode_title": "Shannon and the Birth of Information, 1948",
+          "start": 1302.395,
+          "end": 1391.595
+        },
+        {
+          "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0019",
+          "episode_number": 4,
+          "episode_title": "Shannon and the Birth of Information, 1948",
+          "start": 1570.615,
+          "end": 1658.5851
+        }
+      ],
+      "refused": false,
+      "query_call_count_delta": 0
+    }
+  ],
+  "case_13": [
+    {
+      "query": "What's in your podcast collection?",
+      "query_type": "catalogue",
+      "episode_refs": [],
+      "retrieval_mode": "catalogue",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [],
+      "answer": "The collection has 8 episode(s):\n- Episode 1: Einstein's Special Relativity (52:14)\n- Episode 2: How Black Holes Radiate, Hawking 1975 (45:17)\n- Episode 3: The Double Helix, Watson and Crick 1953 (43:16)\n- Episode 4: Shannon and the Birth of Information, 1948 (39:52)\n- Episode 5: Attention Is All You Need, 2017 (36:24)\n- Episode 6: General Relativity, Einstein 1915 (33:48)\n- Episode 7: On Computable Numbers, Turing 1936 (33:02)\n- Episode 8: Natural Selection, Darwin and Wallace 1858 (33:13)",
+      "citations": [],
+      "refused": false,
+      "query_call_count_delta": 0
+    },
+    {
+      "query": "Which episodes do you contain?",
+      "query_type": "catalogue",
+      "episode_refs": [],
+      "retrieval_mode": "catalogue",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [],
+      "answer": "The collection has 8 episode(s):\n- Episode 1: Einstein's Special Relativity (52:14)\n- Episode 2: How Black Holes Radiate, Hawking 1975 (45:17)\n- Episode 3: The Double Helix, Watson and Crick 1953 (43:16)\n- Episode 4: Shannon and the Birth of Information, 1948 (39:52)\n- Episode 5: Attention Is All You Need, 2017 (36:24)\n- Episode 6: General Relativity, Einstein 1915 (33:48)\n- Episode 7: On Computable Numbers, Turing 1936 (33:02)\n- Episode 8: Natural Selection, Darwin and Wallace 1858 (33:13)",
+      "citations": [],
+      "refused": false,
+      "query_call_count_delta": 0
+    }
+  ],
+  "case_14": [
+    {
+      "query": "Hey, how's it going?",
+      "query_type": "chitchat",
+      "episode_refs": [],
+      "retrieval_mode": "chitchat",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [],
+      "answer": "Hey there! I'm doing great, thanks for asking. How can I help you with your physics studies today?",
+      "citations": [],
+      "refused": false,
+      "query_call_count_delta": 0
+    }
+  ],
+  "case_15": [
+    {
+      "query": "hey real quick, what's entropy again lol",
+      "query_type": "general",
+      "episode_refs": [],
+      "retrieval_mode": "broad_rebalanced",
+      "unknown_episodes": [],
+      "retrieved_chunk_ids": [
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0008",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0010",
+        "great_papers_02_how_black_holes_radiate_hawking_1975_c0004",
+        "great_papers_04_shannon_and_the_birth_of_information_1948_c0011",
+        "great_papers_02_how_black_holes_radiate_hawking_1975_c0023",
+        "great_papers_02_how_black_holes_radiate_hawking_1975_c0005"
+      ],
+      "answer": "**Episode\u202f2 \u2013 \u201cHow Black Holes Radiate, Hawking\u202f1975\u201d**  \nIn this episode the hosts remind us that *entropy* is \u201ca measure of disorder, of the number of microscopic arrangements consistent with what you see\u201d and that \u201cthe total entropy of a closed system never decreases\u201d (Episode\u202f2,\u202f04:23\u201105:53).  They then draw a striking parallel with black\u2011hole physics: the area of a black\u2011hole\u2019s horizon never shrinks, just like entropy never goes down, so Jacob\u202fBekenstein proposed that the horizon area *is* a kind of entropy (Episode\u202f2,\u202f04:23\u201105:53).  In other words, for a black hole entropy quantifies the hidden internal disorder \u2013 the huge number of possible micro\u2011states that correspond to the same macroscopic black\u2011hole (Episode\u202f2,\u202f32:16\u201133:46).\n\n**Episode\u202f4 \u2013 \u201cShannon and the Birth of Information,\u202f1948\u201d**  \nHere entropy is introduced from the information\u2011theory side.  Shannon\u2019s \u201centropy\u201d measures \u201cthe amount of uncertainty in a system\u201d \u2013 the average surprise you get per symbol, or equivalently the average number of bits needed to describe a message (Episode\u202f4,\u202f10:05\u201111:35).  A concrete picture is given with a coin: a fair coin (heads/tails equally likely) carries exactly one bit of information because you\u2019re maximally uncertain; a biased coin carries less than one bit, and a two\u2011headed coin carries zero bits because the outcome is certain (Episode\u202f4,\u202f13:04\u201114:30).\n\n---\n\n### Quick recap  \n- **Thermodynamic entropy** (black\u2011hole context) = a count of how many microscopic ways a system can be arranged, always tending to increase (the \u201cdisorder\u201d of the universe).  \n- **Shannon entropy** (information context) = a measure of how unpredictable a source is, expressed in bits; more unpredictability \u2192 higher entropy.\n\nBoth uses share the same mathematical form, but one talks about physical disorder and the other about informational uncertainty. (The bridge between them is Landauer\u2019s principle, mentioned in Episode\u202f4,\u202f10:05\u201111:35.)",
+      "citations": [
+        {
+          "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0004",
+          "episode_number": 2,
+          "episode_title": "How Black Holes Radiate, Hawking 1975",
+          "start": 262.57498,
+          "end": 352.54498
+        },
+        {
+          "chunk_id": "great_papers_02_how_black_holes_radiate_hawking_1975_c0023",
+          "episode_number": 2,
+          "episode_title": "How Black Holes Radiate, Hawking 1975",
+          "start": 1936.355,
+          "end": 2025.7349
+        },
+        {
+          "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0008",
+          "episode_number": 4,
+          "episode_title": "Shannon and the Birth of Information, 1948",
+          "start": 605.225,
+          "end": 694.545
+        },
+        {
+          "chunk_id": "great_papers_04_shannon_and_the_birth_of_information_1948_c0010",
+          "episode_number": 4,
+          "episode_title": "Shannon and the Birth of Information, 1948",
+          "start": 784.13,
+          "end": 869.88
+        }
+      ],
+      "refused": false,
+      "query_call_count_delta": 1
+    }
+  ]
+}

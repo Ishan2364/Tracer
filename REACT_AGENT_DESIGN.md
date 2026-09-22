@@ -1,9 +1,20 @@
 # ReAct Agent Architecture — Design Notes
 
-This is a design document, not an implemented feature yet. It describes how Tracer's
-retrieval/answering pipeline would be rearchitected from a fixed, hand-coded workflow
-into a single ReAct-style agent, orchestrated with LangGraph/LangChain and observed via
-LangSmith. Nothing in this document has been built - it's the plan to build against.
+This was originally written as a pre-implementation design document. It's since been
+built (`src/agent.py`, branch `React_agent`) and several real decisions changed during
+building - most notably, no LangGraph checkpointer (see section 7's update). **For the
+current, as-built system - components, request flow, key decisions as actually made, and
+confirmed real-world test results - see `REACT_AGENT_WALKTHROUGH.md` instead.** This
+document is kept for the original rationale and the API verification work below, which
+are both still accurate.
+
+One confirmed result from real testing worth flagging here directly, since it's a
+concrete validation of this whole document's central argument (variable-depth retrieval
+beats a fixed single-shot schema): asked to cover two disjoint time windows within one
+episode in a single query, the fixed pipeline's classifier collapses them into one
+incorrect spanning range (verified), while the agent made two separate, correctly-scoped
+tool calls and its answer was confirmed to draw from both windows. Full writeup in
+`REACT_AGENT_WALKTHROUGH.md` section 8.
 
 **Verification note (2026-09-19):** the implementation sections below were checked
 against current, live documentation before being written, specifically because

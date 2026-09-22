@@ -105,7 +105,7 @@ def route(intent: dict, state) -> dict:
             "multi_episode": len(resolved) > 1,
         }
 
-    # broad_comparison / general / recommendation / named_comparison with >6 refs /
+    # broad_comparison / general / recommendation / named_comparison with >12 refs /
     # single_episode or named_comparison that named no resolvable episode.
     raw = retrieve(topic, n_results=config.BROAD_N_RESULTS)
     chunks = rebalance(raw, cap=config.PER_EPISODE_CAP)

@@ -70,7 +70,16 @@ MAX_EXCERPT_CHARS = 9000
 INTENT_MODEL = os.environ.get("INTENT_MODEL", "openai/gpt-oss-20b")
 
 # Retrieval routing (Phase 4)
-NAMED_COMPARISON_MAX = 6       # named_comparison with more refs than this is treated as broad
+NAMED_COMPARISON_MAX = 12      # named_comparison with this many refs or fewer: one retrieve_scoped() call per
+                                # episode. Was 6, with a "batch pairs into one Chroma call" scheme for 7-12 refs
+                                # tried on top - dropped after a real test showed it silently lost episodes:
+                                # a pair query pulls one shared top-N pool across both episodes, and if one
+                                # scores more similar than the other, the weaker one can get zero chunks with
+                                # no guaranteed floor. Chroma has no "top-N per episode within one call" option
+                                # to fix that properly, so one call per episode - which does guarantee every
+                                # named episode is represented - is simply extended to 12 instead. Chroma also
+                                # runs as a local embedded client today, not a network service, so "fewer calls"
+                                # has no real round-trip cost to justify the tradeoff anyway.
 BROAD_N_RESULTS = 25           # unscoped n_results for broad/general/recommendation queries
 PER_EPISODE_CAP = 3            # after a broad query, keep at most this many chunks per episode
 FOLLOWUP_CONTEXT_WINDOW = 1    # chunks fetched on each side of a chunk during follow-up expansion
